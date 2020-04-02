@@ -11,7 +11,6 @@
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-#include <stdio.h>
 
 int		find_char(char *str, char c)
 {
@@ -43,69 +42,36 @@ int		count_args(char *str, char c)
 	return (count);
 }
 
-
-typedef void(*fptrprintf)(char *);
-
-void ft_printf_int(char *elemento)
-{
-        ft_putnbr_fd(ft_atoi((const char*)elemento), 1);
-}
-
-
-void ft_printf_str(char *elemento)
-{
-    ft_putstr_fd(elemento, 1);
-}
-
-
-void ft_printf_final(fptrprintf printf, char *elemento)
-{
-	
-	//Tratamento dos espaços
-	printf(elemento);
-}
-
 int ft_printf(const char *str, ...)
 {
 	int	num_args;
 	int	i;
 	int	index;
 	int	start;
-	char	*elemento;
+	int	num;
+	char	*string;
 	va_list	ap;
 
-	//Conta o número de variávies que devem ser impressas
 	num_args = count_args((char *)str, '%');
 	va_start(ap, str);
 	i = 0;
 	start = 0;
 	while (i <= num_args)
 	{
-
-		//Encontra a posição o próximo do próximo elelemento formatado da string str a ser impresso
 		index = find_char(ft_substr(str, 0, ft_strlen(str)), '%');
-
-		//Quando não houver mais elementos formatados para serem impressos deve-se imprimir o restante a string
 		if (index == -1)
 			index = ft_strlen(str); 
-
-		/*Quando i = 0 imprime tudo que vem antes do primeiro elemento formatado a ser impresso
-		Quando i=num_args imprime tudo o que vem depois do último elelemto formatado que foi impresso
-		Quando  0 < i < num_args a string intermediária entre o o útimo elemento formatado impresso e o próximo a ser impresso*/
 		ft_putstr_fd(ft_substr(str, 0, index), 1);
-
-		//Descobrir qual tipo de formatação o elemento terá
 		if (str[index + 1] == 'd')
 		{
-			elemento = ft_itoa(va_arg(ap, int));
-			ft_printf_final(ft_printf_int, elemento);
+			num = va_arg(ap, int);
+			ft_putnbr_fd(num, 1);
 		}
 		else if (str[index + 1] == 's')
 		{
-			elemento = va_arg(ap, char*);
-			ft_printf_final(ft_printf_str, elemento);
+			string = va_arg(ap, char*);
+			ft_putstr_fd(string, 1);
 		}
-	
 		i++;
 		str = ft_substr(str, index + 2, ft_strlen(str));
 	}
