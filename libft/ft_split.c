@@ -28,8 +28,12 @@ char  **ft_split(char const *s, char c)
 	s1 = &c;
        	s1 = ft_strtrim(s, init);
         
-	if(!s1)
-		return(NULL);
+        if(!s1 || *s1 == '\0')
+        {
+                split = (char **)malloc(sizeof(char *));
+                *split = NULL;
+                return(split);
+        }
 	
 	n = ft_countword(s1,c);
 

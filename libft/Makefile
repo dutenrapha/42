@@ -26,7 +26,7 @@ FUNCTIONS_O  = $(subst .c,.o,$(FUNCTIONS))
 all: $(NAME)
 
 $(NAME):
-	@gcc -Wall -Wextra -Werror -c $(FUNCTIONS)
+	@clang -Wall -Wextra -Werror -c $(FUNCTIONS)
 	@ar rc $(NAME) $(FUNCTIONS_O) 
 	@ranlib $(NAME)
 
@@ -39,11 +39,11 @@ fclean: clean
 re: fclean all run
 
 debug:	fclean all
-	@gcc -Wall -Wextra -Werror -g main3.c -L. -lft -lbsd
+	@clang -Wall -Wextra -Werror -g main4.c -L. -lft -lbsd
 	@./a.out
 run:
-	@gcc -Wall -Wextra -Werror main.c -L. -lft -lbsd
+	@clang -Wall -Wextra -Werror main.c -L. -lft -lbsd
 	@./a.out
 so:
-	@gcc -fPIC -c $(FUNCTIONS)
-	@gcc -shared -o libft.so $(FUNCTIONS_O)
+	@clang -fPIC -c $(FUNCTIONS)
+	@clang -shared -o libft.so $(FUNCTIONS_O)
