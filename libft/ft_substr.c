@@ -7,13 +7,13 @@ char *ft_substr(char const *s, unsigned int start, size_t len)
 	
 	if(!s || (int)len <= 0 || (int)start < 0 || (int)start > (int)ft_strlen((char *)s) - 1)
 	{
-		return(NULL);
+		return(0);
 	}
 
 	substr = (char *)ft_calloc(len + 1,sizeof(char));
 	if(!substr)
 	{
-		return(NULL);
+		return(0);
 	}
 
 	i = 0;

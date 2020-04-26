@@ -14,11 +14,12 @@ char *ft_strnstr(const char *big, const char *little, size_t len)
 	j = 0;
 	len_little = ft_strlen((char *)little);
 	
-	while(*(big + i) != '\0' && i < len - len_little + 1)
+	while(*(big + i) != '\0' && i < len - len_little + 1 && len >0)
 	{
+		j = 0;
 		while(j < len_little)
 		{
-			if(*(big + i +j) != *(little + j))
+			if(*(big + i +j) != *(little + j) )
 			{
 				break;
 			}

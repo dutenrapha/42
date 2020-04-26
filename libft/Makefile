@@ -38,6 +38,9 @@ fclean: clean
 
 re: fclean all run
 
+debug:	fclean all
+	@gcc -Wall -Wextra -Werror -g main3.c -L. -lft -lbsd
+	@./a.out
 run:
 	@gcc -Wall -Wextra -Werror main.c -L. -lft -lbsd
 	@./a.out

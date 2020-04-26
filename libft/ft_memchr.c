@@ -10,6 +10,10 @@ void	 *ft_memchr(const void *str, int c, size_t n)
 	i = 0;
 	string = (char *)str;
 
+	if(*(string) == c && n >0)
+	{
+		return((char*)str);
+	}
 	while(i < n)
 	{
 		if(*(string + i) == c)
