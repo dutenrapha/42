@@ -39,7 +39,7 @@ fclean: clean
 re: fclean all run
 
 debug:	fclean all
-	@clang -Wall -Wextra -Werror -g main4.c -L. -lft -lbsd
+	@clang -Wall -Wextra -Werror -g main5.c -L. -lft -lbsd
 	@./a.out
 run:
 	@clang -Wall -Wextra -Werror main.c -L. -lft -lbsd

@@ -726,15 +726,15 @@ int main(void)
         /*Função ft_putnbr_fd*/
         printf("\nFunção ft_putnbr_fd\n");
 
-        ft_putnbr_fd(-2147483647 -1,1);
+        ft_putnbr_fd(0,1);
         printf("\n");
-        ft_putnbr_fd(-1,1);
+        ft_putnbr_fd(-5,1);
         printf("\n");
-	ft_putnbr_fd(0,1);
+	ft_putnbr_fd(-57,1);
         printf("\n");
-        ft_putnbr_fd(1,1);
+        ft_putnbr_fd(-987441,1);
         printf("\n");
- 	ft_putnbr_fd(5665551,1);
+ 	ft_putnbr_fd(-2147483648,1);
         printf("\n");
 
 	return(0);
