@@ -6,13 +6,13 @@
 /*   By: rdutenke <rdutenke@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/14 11:37:26 by rdutenke          #+#    #+#             */
-/*   Updated: 2020/04/28 15:12:05 by rdutenke         ###   ########.fr       */
+/*   Updated: 2020/04/28 20:32:14 by rdutenke         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	**ft_aloc(char **split, int n, char const *s)
+static	char	**ft_aloc(char **split, int n, char const *s)
 {
 	split = (char **)ft_calloc(n, sizeof(char *));
 	if (n == 1)
@@ -22,7 +22,7 @@ char	**ft_aloc(char **split, int n, char const *s)
 	return (split);
 }
 
-void	ft_start_struct_spt(t_spt *parms_spt, char const *s, char c)
+static	void	ft_start_struct_spt(t_spt *parms_spt, char const *s, char c)
 {
 	parms_spt->t = ft_strtrim(s, &c);
 	parms_spt->n = ft_countword(parms_spt->t, c);
@@ -31,14 +31,14 @@ void	ft_start_struct_spt(t_spt *parms_spt, char const *s, char c)
 	parms_spt->split = NULL;
 }
 
-char	**ft_aux(t_spt *parms_spt)
+static	char	**ft_aux(t_spt *parms_spt)
 {
 	*(parms_spt->split + parms_spt->i) =
 	ft_substr((char const *)parms_spt->t, 0, ft_strlen(parms_spt->t));
 	return (parms_spt->split);
 }
 
-char	**ft_split(char const *s, char c)
+char			**ft_split(char const *s, char c)
 {
 	t_spt	p;
 

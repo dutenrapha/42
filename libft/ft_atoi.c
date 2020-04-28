@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rdutenke <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: rdutenke <rdutenke@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/27 16:18:28 by rdutenke          #+#    #+#             */
-/*   Updated: 2020/04/27 16:25:07 by raphael          ###   ########.fr       */
+/*   Updated: 2020/04/28 15:21:24 by rdutenke         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_return(int sinal)
+static	int	ft_return(int sinal)
 {
 	if (sinal == 1)
 	{
@@ -22,7 +22,7 @@ int	ft_return(int sinal)
 	}
 }
 
-int	ft_atoi(const char *nptr)
+int			ft_atoi(const char *nptr)
 {
 	int			i;
 	int			sinal;

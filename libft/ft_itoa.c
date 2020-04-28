@@ -6,13 +6,13 @@
 /*   By: rdutenke <rdutenke@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/27 23:21:56 by rdutenke          #+#    #+#             */
-/*   Updated: 2020/04/28 12:07:31 by rdutenke         ###   ########.fr       */
+/*   Updated: 2020/04/28 15:23:18 by rdutenke         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_start_struct(t_pf *params, int n)
+static	void	ft_start_struct(t_pf *params, int n)
 {
 	params->itoa = NULL;
 	params->n_orig = n;
@@ -21,7 +21,7 @@ void	ft_start_struct(t_pf *params, int n)
 	params->passo = 0;
 }
 
-void	ft_first_count(int *resto, int *i, int *n)
+static	void	ft_first_count(int *resto, int *i, int *n)
 {
 	while (*resto != 0 || *n != 0)
 	{
@@ -31,7 +31,7 @@ void	ft_first_count(int *resto, int *i, int *n)
 	}
 }
 
-void	ft_last_count(t_pf *params)
+static	void	ft_last_count(t_pf *params)
 {
 	while (params->n_orig != 0)
 	{
@@ -42,7 +42,7 @@ void	ft_last_count(t_pf *params)
 	}
 }
 
-char	*ft_itoa(int n)
+char			*ft_itoa(int n)
 {
 	t_pf	itoa_p;
 
