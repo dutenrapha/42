@@ -6,7 +6,7 @@
 /*   By: rdutenke <rdutenke@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/27 23:19:00 by rdutenke          #+#    #+#             */
-/*   Updated: 2020/04/27 23:21:26 by rdutenke         ###   ########.fr       */
+/*   Updated: 2020/04/28 12:10:13 by rdutenke         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,11 +36,7 @@ void	*ft_memccpy(void *dest, const void *src, int c, size_t n)
 		i++;
 	}
 	if (find == 0 || n == 0)
-	{
 		return (NULL);
-	}
 	else
-	{
 		return (dest_char + i + 1);
-	}
 }

@@ -6,61 +6,67 @@
 /*   By: rdutenke <rdutenke@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/27 23:21:56 by rdutenke          #+#    #+#             */
-/*   Updated: 2020/04/27 23:27:03 by rdutenke         ###   ########.fr       */
+/*   Updated: 2020/04/28 12:07:31 by rdutenke         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
+void	ft_start_struct(t_pf *params, int n)
+{
+	params->itoa = NULL;
+	params->n_orig = n;
+	params->resto = 1;
+	params->i = -1;
+	params->passo = 0;
+}
+
+void	ft_first_count(int *resto, int *i, int *n)
+{
+	while (*resto != 0 || *n != 0)
+	{
+		*resto = *n % 10;
+		*n = *n / 10;
+		*i += 1;
+	}
+}
+
+void	ft_last_count(t_pf *params)
+{
+	while (params->n_orig != 0)
+	{
+		params->resto = params->n_orig % 10;
+		params->n_orig = params->n_orig / 10;
+		*(params->itoa + params->i + params->passo) = params->resto + 48;
+		params->i -= 1;
+	}
+}
+
 char	*ft_itoa(int n)
 {
-	char		*itoa;
-	long int	n_orig;
-	int			resto;
-	int			i;
-	int			passo;
+	t_pf	itoa_p;
 
-	passo = 0;
-	n_orig = n;
-	i = -1;
-	resto = 1;
-	while (resto != 0 || n != 0)
+	ft_start_struct(&itoa_p, n);
+	ft_first_count(&itoa_p.resto, &itoa_p.i, &n);
+	if (itoa_p.i == 0)
 	{
-		resto = n % 10;
-		n = n / 10;
-		i++;
+		itoa_p.i += 1;
+		itoa_p.itoa = (char *)ft_calloc(itoa_p.i + 1, sizeof(char));
+		*(itoa_p.itoa) = 48;
 	}
-	if (i == 0)
+	if (itoa_p.n_orig < 0)
 	{
-		i++;
-		itoa = (char *)ft_calloc(i + 1, sizeof(char));
-		if (!itoa)
-			return (NULL);
-		*(itoa) = 48;
+		itoa_p.itoa = (char *)ft_calloc(itoa_p.i + 2, sizeof(char));
+		*itoa_p.itoa = '-';
+		itoa_p.n_orig = -1 * itoa_p.n_orig;
+		itoa_p.passo = 0;
 	}
-	if (n_orig < 0)
+	else if (itoa_p.n_orig != 0)
 	{
-		itoa = (char *)ft_calloc(i + 2, sizeof(char));
-		if (!itoa)
-			return (NULL);
-		*itoa = '-';
-		n_orig = -1 * n_orig;
-		passo = 0;
+		itoa_p.itoa = (char *)ft_calloc(itoa_p.i + 1, sizeof(char));
+		itoa_p.passo = -1;
 	}
-	else if (n_orig != 0)
-	{
-		itoa = (char *)ft_calloc(i + 1, sizeof(char));
-		if (!itoa)
-			return (NULL);
-		passo = -1;
-	}
-	n = n_orig;
-	while (n_orig != 0)
-	{
-		resto = n_orig % 10;
-		n_orig = n_orig / 10;
-		*(itoa + i + passo) = resto + 48;
-		i--;
-	}
-	return (itoa);
+	n = itoa_p.n_orig;
+	ft_last_count(&itoa_p);
+	return (itoa_p.itoa);
 }

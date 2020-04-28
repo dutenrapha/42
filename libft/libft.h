@@ -6,7 +6,7 @@
 /*   By: rdutenke <rdutenke@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/27 19:29:23 by rdutenke          #+#    #+#             */
-/*   Updated: 2020/04/27 23:13:14 by rdutenke         ###   ########.fr       */
+/*   Updated: 2020/04/28 14:39:44 by rdutenke         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,24 @@
 # include <string.h>
 # include <stdlib.h>
 # include <unistd.h>
+
+typedef	struct	parms
+{
+	char		*itoa;
+	long int	n_orig;
+	int			resto;
+	int			i;
+	int			passo;
+}				t_pf;
+
+typedef	struct	parms_spt
+{
+	int		n;
+	int		i;
+	char	*t;
+	char	*init;
+	char	**split;
+}				t_spt;
 
 char	*ft_strrchr(const char *s, int c);
 void	*ft_memset(void *str, int c, size_t n);

@@ -6,60 +6,61 @@
 /*   By: rdutenke <rdutenke@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/14 11:37:26 by rdutenke          #+#    #+#             */
-/*   Updated: 2020/04/27 23:18:07 by rdutenke         ###   ########.fr       */
+/*   Updated: 2020/04/28 15:12:05 by rdutenke         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
+char	**ft_aloc(char **split, int n, char const *s)
+{
+	split = (char **)ft_calloc(n, sizeof(char *));
+	if (n == 1)
+		*split = NULL;
+	else if (n == 2)
+		*split = (char *)s;
+	return (split);
+}
+
+void	ft_start_struct_spt(t_spt *parms_spt, char const *s, char c)
+{
+	parms_spt->t = ft_strtrim(s, &c);
+	parms_spt->n = ft_countword(parms_spt->t, c);
+	parms_spt->i = 0;
+	parms_spt->init = NULL;
+	parms_spt->split = NULL;
+}
+
+char	**ft_aux(t_spt *parms_spt)
+{
+	*(parms_spt->split + parms_spt->i) =
+	ft_substr((char const *)parms_spt->t, 0, ft_strlen(parms_spt->t));
+	return (parms_spt->split);
+}
+
 char	**ft_split(char const *s, char c)
 {
-	int		n;
-	int		i;
-	int		len;
-	char	*s1;
-	char	*init;
-	char	**split;
+	t_spt	p;
 
+	ft_start_struct_spt(&p, s, c);
 	if (!s || !c)
 		return (NULL);
-	init = &c;
-	s1 = &c;
-	s1 = ft_strtrim(s, init);
-	if (!s1 || *s1 == '\0')
-	{
-		split = (char **)malloc(sizeof(char *));
-		*split = NULL;
-		return (split);
-	}
-	n = ft_countword(s1, c);
-	if (n == 0)
-	{
-		split = (char **)ft_calloc(2, sizeof(char *));
-		*split = (char *)s;
-		return (split);
-	}
+	if (!p.t || *p.t == '\0')
+		return (ft_aloc(p.split, 1, s));
+	if (p.n == 0)
+		return (ft_aloc(p.split, 2, s));
 	else
+		p.split = ft_aloc(p.split, p.n + 1, s);
+	while (p.i < p.n)
 	{
-		split = (char **)ft_calloc(n + 1, sizeof(char *));
+		p.init = ft_strchr(p.t, c);
+		if (p.init == 0)
+			return (ft_aux(&p));
+		*(p.split + p.i) = ft_substr((char const *)p.t, 0, p.init - p.t);
+		while (*p.init == c)
+			p.init += 1;
+		p.t = p.init;
+		p.i += 1;
 	}
-	i = -1;
-	while (++i < n)
-	{
-		init = ft_strchr(s1, c);
-		if (init == 0)
-		{
-			len = ft_strlen(s1);
-			*(split + i) = ft_substr((char const *)s1, 0, len);
-			return (split);
-		}
-		len = init - s1;
-		*(split + i) = ft_substr((char const *)s1, 0, len);
-		while (*init == c)
-		{
-			init++;
-		}
-		s1 = init;
-	}
-	return (split);
+	return (p.split);
 }
