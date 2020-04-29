@@ -9,4 +9,5 @@ libft/.vscode/
 libft/main/
 /42libft/
 /Libftest/
+/libft-unit-test/
 main.c

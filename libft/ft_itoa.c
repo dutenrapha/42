@@ -6,7 +6,7 @@
 /*   By: rdutenke <rdutenke@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/27 23:21:56 by rdutenke          #+#    #+#             */
-/*   Updated: 2020/04/28 15:23:18 by rdutenke         ###   ########.fr       */
+/*   Updated: 2020/04/29 16:20:40 by rdutenke         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,11 +52,15 @@ char			*ft_itoa(int n)
 	{
 		itoa_p.i += 1;
 		itoa_p.itoa = (char *)ft_calloc(itoa_p.i + 1, sizeof(char));
+		if (!itoa_p.itoa)
+			return (0);
 		*(itoa_p.itoa) = 48;
 	}
 	if (itoa_p.n_orig < 0)
 	{
 		itoa_p.itoa = (char *)ft_calloc(itoa_p.i + 2, sizeof(char));
+		if (!itoa_p.itoa)
+			return (0);
 		*itoa_p.itoa = '-';
 		itoa_p.n_orig = -1 * itoa_p.n_orig;
 		itoa_p.passo = 0;
@@ -64,6 +68,8 @@ char			*ft_itoa(int n)
 	else if (itoa_p.n_orig != 0)
 	{
 		itoa_p.itoa = (char *)ft_calloc(itoa_p.i + 1, sizeof(char));
+		if (!itoa_p.itoa)
+			return (0);
 		itoa_p.passo = -1;
 	}
 	n = itoa_p.n_orig;
