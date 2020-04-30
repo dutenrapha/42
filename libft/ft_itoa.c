@@ -6,7 +6,7 @@
 /*   By: rdutenke <rdutenke@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/27 23:21:56 by rdutenke          #+#    #+#             */
-/*   Updated: 2020/04/29 20:58:24 by rdutenke         ###   ########.fr       */
+/*   Updated: 2020/04/29 21:15:36 by rdutenke         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,19 +43,11 @@ static	void	ft_last_count(t_pf *params)
 	}
 }
 
-static	void	ft_aux(t_pf *params, int k)
+static	void	ft_aux(t_pf *params)
 {
-	if (k == 1)
-	{
-		params->i += 1;
-		*(params->itoa) = 48;
-	}
-	if (k == 2)
-	{
-		*params->itoa = '-';
-		params->n_orig = -1 * params->n_orig;
-		params->passo = 0;
-	}
+	*params->itoa = '-';
+	params->n_orig = -1 * params->n_orig;
+	params->passo = 0;
 }
 
 char			*ft_itoa(int n)
@@ -65,15 +57,16 @@ char			*ft_itoa(int n)
 	ft_start_struct(&itoa_p, n);
 	if (itoa_p.i == 0)
 	{
+		itoa_p.i += 1;
 		if (!(itoa_p.itoa = (char *)ft_calloc(itoa_p.i + 1, sizeof(char))))
 			return (0);
-		ft_aux(&itoa_p, 1);
+		*itoa_p.itoa = 48;
 	}
 	if (itoa_p.n_orig < 0)
 	{
 		if (!(itoa_p.itoa = (char *)ft_calloc(itoa_p.i + 2, sizeof(char))))
 			return (0);
-		ft_aux(&itoa_p, 2);
+		ft_aux(&itoa_p);
 	}
 	else if (itoa_p.n_orig != 0)
 	{
