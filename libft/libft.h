@@ -6,7 +6,7 @@
 /*   By: rdutenke <rdutenke@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/27 19:29:23 by rdutenke          #+#    #+#             */
-/*   Updated: 2020/04/29 10:18:26 by rdutenke         ###   ########.fr       */
+/*   Updated: 2020/04/29 20:38:00 by rdutenke         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,14 @@
 # include <string.h>
 # include <stdlib.h>
 # include <unistd.h>
+
+typedef	struct	s_parms_joi
+{
+	int		len_s2;
+	char	*strjoin;
+	char	*temp;
+	size_t	k;
+}				t_joi;
 
 typedef	struct	s_parms
 {

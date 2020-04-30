@@ -6,20 +6,11 @@
 /*   By: rdutenke <rdutenke@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/27 23:21:56 by rdutenke          #+#    #+#             */
-/*   Updated: 2020/04/29 16:20:40 by rdutenke         ###   ########.fr       */
+/*   Updated: 2020/04/29 20:58:24 by rdutenke         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-
-static	void	ft_start_struct(t_pf *params, int n)
-{
-	params->itoa = NULL;
-	params->n_orig = n;
-	params->resto = 1;
-	params->i = -1;
-	params->passo = 0;
-}
 
 static	void	ft_first_count(int *resto, int *i, int *n)
 {
@@ -29,6 +20,16 @@ static	void	ft_first_count(int *resto, int *i, int *n)
 		*n = *n / 10;
 		*i += 1;
 	}
+}
+
+static	void	ft_start_struct(t_pf *params, int n)
+{
+	params->itoa = NULL;
+	params->n_orig = n;
+	params->resto = 1;
+	params->i = -1;
+	params->passo = 0;
+	ft_first_count(&params->resto, &params->i, &n);
 }
 
 static	void	ft_last_count(t_pf *params)
@@ -42,33 +43,41 @@ static	void	ft_last_count(t_pf *params)
 	}
 }
 
+static	void	ft_aux(t_pf *params, int k)
+{
+	if (k == 1)
+	{
+		params->i += 1;
+		*(params->itoa) = 48;
+	}
+	if (k == 2)
+	{
+		*params->itoa = '-';
+		params->n_orig = -1 * params->n_orig;
+		params->passo = 0;
+	}
+}
+
 char			*ft_itoa(int n)
 {
 	t_pf	itoa_p;
 
 	ft_start_struct(&itoa_p, n);
-	ft_first_count(&itoa_p.resto, &itoa_p.i, &n);
 	if (itoa_p.i == 0)
 	{
-		itoa_p.i += 1;
-		itoa_p.itoa = (char *)ft_calloc(itoa_p.i + 1, sizeof(char));
-		if (!itoa_p.itoa)
+		if (!(itoa_p.itoa = (char *)ft_calloc(itoa_p.i + 1, sizeof(char))))
 			return (0);
-		*(itoa_p.itoa) = 48;
+		ft_aux(&itoa_p, 1);
 	}
 	if (itoa_p.n_orig < 0)
 	{
-		itoa_p.itoa = (char *)ft_calloc(itoa_p.i + 2, sizeof(char));
-		if (!itoa_p.itoa)
+		if (!(itoa_p.itoa = (char *)ft_calloc(itoa_p.i + 2, sizeof(char))))
 			return (0);
-		*itoa_p.itoa = '-';
-		itoa_p.n_orig = -1 * itoa_p.n_orig;
-		itoa_p.passo = 0;
+		ft_aux(&itoa_p, 2);
 	}
 	else if (itoa_p.n_orig != 0)
 	{
-		itoa_p.itoa = (char *)ft_calloc(itoa_p.i + 1, sizeof(char));
-		if (!itoa_p.itoa)
+		if (!(itoa_p.itoa = (char *)ft_calloc(itoa_p.i + 1, sizeof(char))))
 			return (0);
 		itoa_p.passo = -1;
 	}
