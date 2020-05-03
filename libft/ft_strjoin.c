@@ -6,7 +6,7 @@
 /*   By: rdutenke <rdutenke@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/27 22:44:43 by rdutenke          #+#    #+#             */
-/*   Updated: 2020/04/29 20:42:06 by rdutenke         ###   ########.fr       */
+/*   Updated: 2020/05/03 13:44:54 by rdutenke         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,28 +14,30 @@
 
 char	*ft_strjoin(char const *s1, char const *s2)
 {
-	size_t	i;
-	int		j;
-	t_joi	params;
+	char	*new;
+	int		size1;
+	int		i;
 
 	if (!s1 || !s2)
-		return (0);
-	params.len_s2 = ft_strlen((char *)s2);
-	params.strjoin = (char *)ft_calloc(ft_strlen((char *)s1)
-	+ ft_strlen((char *)s2) + 1, sizeof(char));
-	if (!params.strjoin)
-		return (0);
-	params.temp = (char *)ft_calloc(params.len_s2 + 1, sizeof(char));
-	if (!params.temp)
-		return (0);
+		return (NULL);
+	size1 = ft_strlen(s1);
+	i = ft_strlen(s2);
+	new = (char *)malloc((sizeof(char) * (size1 + i + 1)));
+	if (new == NULL)
+		return (NULL);
 	i = 0;
-	while (*s2 != '\0')
-		*(params.temp + i++) = *s2++;
-	i = -1;
-	while (++i < ft_strlen((char *)s1))
-		*(params.strjoin + i) = *(s1 + i);
-	j = 0;
-	while (j < params.len_s2)
-		*(params.strjoin + i++) = *(params.temp + j++);
-	return (params.strjoin);
+	while (i < size1)
+	{
+		new[i] = s1[i];
+		i++;
+	}
+	i = 0;
+	while (s2[i] != '\0')
+	{
+		new[size1 + i] = s2[i];
+		i++;
+	}
+	new[size1 + i] = '\0';
+	return (new);
+
 }

@@ -6,7 +6,7 @@
 /*   By: rdutenke <rdutenke@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/27 23:04:38 by rdutenke          #+#    #+#             */
-/*   Updated: 2020/04/27 23:06:09 by rdutenke         ###   ########.fr       */
+/*   Updated: 2020/05/03 13:44:05 by rdutenke         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,26 +14,18 @@
 
 char	*ft_strtrim(char const *s1, char const *set)
 {
-	size_t	len;
-	char	*zero;
+	char	*new;
+	size_t	i;
 
-	zero = (char *)ft_calloc(1, sizeof(char));
-	if (!zero)
-		return (NULL);
 	if (!s1 || !set)
-		return (NULL);
-	while (*s1 && ft_strchr(set, *s1) != NULL)
-	{
+		return (0);
+	while (*s1 && ft_strchr(set, *s1))
 		s1++;
-	}
-	len = ft_strlen(s1);
-	if (len == 0)
-	{
-		return (zero);
-	}
-	while (len && ft_strchr(set, *(s1 + len - 1)) != NULL)
-	{
-		len--;
-	}
-	return (ft_substr((char *)s1, 0, len));
+	i = ft_strlen(s1);
+	while (i && ft_strchr(set, s1[i]))
+		i--;
+	new = ft_substr((char*)s1, 0, i + 1);
+	if (!new)
+		return (NULL);
+	return (new);
 }
