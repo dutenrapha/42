@@ -3,21 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Lia <Lia@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: rdutenke <rdutenke@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/03/26 21:14:03 by Lia               #+#    #+#             */
-/*   Updated: 2020/03/31 14:53:07 by Lia              ###   ########.fr       */
+/*   Created: 2020/05/06 22:01:52 by rdutenke          #+#    #+#             */
+/*   Updated: 2020/05/06 22:03:27 by rdutenke         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libftprintf.h"
 
-int		main()
+int main()
 {
-	int	age = 21;
-	char *name = "Lia";
+	int a;
 
-	//ft_printf("\nMy name is Lia  and I am %d years old.\n", age);
-	ft_printf("\nMy name is %s and I am %d years old.\n", name, age);
+	a = ft_printf("A casa");
 	return (0);
 }

@@ -1,23 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   libftprintf.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Lia <Lia@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: rdutenke <rdutenke@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/03/26 15:34:46 by Lia               #+#    #+#             */
-/*   Updated: 2020/03/30 16:03:41 by Lia              ###   ########.fr       */
+/*   Created: 2020/05/06 17:21:35 by rdutenke          #+#    #+#             */
+/*   Updated: 2020/05/06 21:59:20 by raphael          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 
 #ifndef FT_PRINTF_H
 # define FT_PRINTF_H
 
 # include <stdarg.h>
-# include <unistd.h>
-# include <stdio.h>
-# include "Libft/libft.h"
+# include "../libft/libft.h"
 
-int ft_printf(const char *str, ...);
+typedef struct	s_params
+{
+	va_list		ap;
+	int			minus;
+	int			zero;
+	int			point;
+	int			single_l;
+	int			double_l;
+	int			single_h;
+	int			double_h;
+	int			hashtag;
+	int			plus;
+}				t_ptf;
+
+
+int	ft_printf(const char *str, ...);
 
 #endif

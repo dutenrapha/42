@@ -3,48 +3,42 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: Lia <Lia@student.42.fr>                    +#+  +:+       +#+         #
+#    By: rdutenke <rdutenke@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2020/03/26 16:51:12 by Lia               #+#    #+#              #
-#    Updated: 2020/03/30 15:54:09 by Lia              ###   ########.fr        #
+#    Created: 2020/05/06 16:48:38 by rdutenke          #+#    #+#              #
+#    Updated: 2020/05/06 23:31:24 by rdutenke         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
+
 NAME = libftprintf.a
 
-FILES = ft_printf.c
+HEADER = libftprintf.h
 
-OBJ = ft_printf.o
+FUNCTIONS = ft_printf.c
 
-LIBDIR = ./Libft
+FLAGS = -Wall -Werror -Wextra 
 
-OBJLIB = $(LIBDIR)/*.o
+DIRLIBFT = ../libft
 
-HEADER = ft_printf.h
+FUNCTIONS_O = $(subst .c,.o,$(FUNCTIONS))
 
-FLAG = -Wall -Werror -Wextra -g
+OBJ = $(subst .c,.o,$(FUNCTIONS))
 
-all: $(NAME)
+all:	$(NAME)
 
-$(NAME): $(OBJ) $(LIBDIR)/libft.a
-	ar rc $(NAME) $(OBJ) $(OBJLIB)
-	ranlib $(NAME)
+$(NAME):	$(DIRLIBFT)/libft.a
+		@clang $(FLAGS) -c $(FUNCTIONS)
+		@ar rc $(NAME) $(FUNCTIONS_O) $(DIRLIBFT)/*.o
+		@ranlib $(NAME)
 
-.o: .c 
-	gcc -c $(FLAG) $(FILES) -I $(HEADER)
-
-$(LIBDIR)/libft.a:
-	$(MAKE) -C $(LIBDIR)
-
-test: $(NAME)
-	gcc $(FLAG) main.c $(NAME)
-	./a.out
-	
 clean:
-	rm -f $(OBJECTS1) $(OBJECTS2)
+	@/bin/rm -f *.o
 
 fclean: clean
-	rm -f $(NAME)
-	rm -f ./Libft/libft.a
+	@/bin/rm -f $(NAME)
 
-re: fclean all
+re:	fclean all
+
+$(DIRLIBFT)/libft.a:
+	@$(MAKE) -C $(DIRLIBFT)
