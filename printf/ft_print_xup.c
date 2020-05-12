@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_X.c                                       :+:      :+:    :+:   */
+/*   ft_print_xup.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rdutenke <rdutenke@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/12 15:47:14 by rdutenke          #+#    #+#             */
-/*   Updated: 2020/05/12 15:48:23 by raphael          ###   ########.fr       */
+/*   Updated: 2020/05/12 17:21:18 by raphael          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
-void    ft_print_X(t_ptf *pms)
+void    ft_print_xup(t_ptf *pms)
 {
     pms->v_int = va_arg(pms->ap, size_t);
     pms->v_str = ft_itoa_hex(pms->v_int, 'u');
