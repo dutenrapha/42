@@ -1,21 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_x.c                                       :+:      :+:    :+:   */
+/*   ft_print_X.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rdutenke <rdutenke@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/05/11 15:24:03 by rdutenke          #+#    #+#             */
-/*   Updated: 2020/05/12 09:43:56 by raphael          ###   ########.fr       */
+/*   Created: 2020/05/12 15:47:14 by rdutenke          #+#    #+#             */
+/*   Updated: 2020/05/12 15:48:23 by raphael          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
-void	ft_print_x(t_ptf *pms)
+void    ft_print_X(t_ptf *pms)
 {
     pms->v_int = va_arg(pms->ap, size_t);
-    pms->v_str = ft_itoa_hex(pms->v_int, 'd');
+    pms->v_str = ft_itoa_hex(pms->v_int, 'u');
     ft_putstr_fd(pms->v_str, 1);
     pms->len += ft_strlen(pms->v_str) - 1;
 }
