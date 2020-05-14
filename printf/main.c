@@ -6,7 +6,7 @@
 /*   By: rdutenke <rdutenke@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/06 22:01:52 by rdutenke          #+#    #+#             */
-/*   Updated: 2020/05/13 17:53:25 by rdutenke         ###   ########.fr       */
+/*   Updated: 2020/05/14 15:32:43 by rdutenke         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -194,6 +194,79 @@ int main()
     obtido = ft_printf("%u\n", 0);
     printf("Tamanho obtido %d\n", obtido);
 
+   	printf("\n");
+	/*este flag width*/
+    printf("**Teste flag width**\n");
 
+	esperado = printf("E%40cA\n", c);
+    printf("Tamanho esperado %d\n", esperado);
+    obtido = ft_printf("E%40cA\n", c);
+	printf("Tamanho obtido %d\n", obtido);
+	
+	esperado = printf("E%40sA\n", s);
+    printf("Tamanho esperado %d\n", esperado);
+    obtido = ft_printf("E%40sA\n", s);
+	printf("Tamanho obtido %d\n", obtido);
+	
+	esperado = printf("E%40pA\n", &s);
+    printf("Tamanho esperado %d\n", esperado);
+    obtido = ft_printf("E%40pA\n", &s);
+	printf("Tamanho obtido %d\n", obtido);
+	
+	esperado = printf("E%40dA\n", d);
+    printf("Tamanho esperado %d\n", esperado);
+    obtido = ft_printf("E%40dA\n", d);
+	printf("Tamanho obtido %d\n", obtido);
+
+	esperado = printf("E%40iA\n", i);
+    printf("Tamanho esperado %d\n", esperado);
+    obtido = ft_printf("E%40iA\n", i);
+	printf("Tamanho obtido %i\n", obtido);
+
+	esperado = printf("E%40uA\n", u_2);
+    printf("Tamanho esperado %d\n", esperado);
+    obtido = ft_printf("E%40uA\n", u_2);
+	printf("Tamanho obtido %d\n", obtido);
+	
+	esperado = printf("E%40xA\n", u_2);
+    printf("Tamanho esperado %d\n", esperado);
+    obtido = ft_printf("E%40xA\n", u_2);
+	printf("Tamanho obtido %d\n", obtido);
+	
+	esperado = printf("E%40XA\n", u_2);
+    printf("Tamanho esperado %d\n", esperado);
+    obtido = ft_printf("E%40XA\n", u_2);
+	printf("Tamanho obtido %d\n", obtido);
+/*
+	printf("\n");
+	printf("\n");
+	printf("\n");
+
+    printf("E%40cA\n", c);
+	printf("E%40sA\n", s);
+	printf("E%40pA\n", &u_2);
+    printf("E%40dA\n", u_2);
+	printf("E%40iA\n", u_2);
+	printf("E%40uA\n", u_2);
+	printf("E%40xA\n", u_2);
+	printf("E%40XA\n", u_2);
+
+
+    printf("E%-20uA\n", u_2);
+    printf("E%020uA\n", u_2);
+    printf("E%.0sA\n", s);
+    printf("E%.1sA\n", s);
+	printf("E%.3sA\n", s);
+	
+	printf("E%30.0sA\n", s);
+    printf("E%30.1sA\n", s);
+	printf("E%30.3sA\n", s);
+	printf("E%30.50sA\n", s);
+
+	printf("E%-30.0sA\n", s);
+    printf("E%-30.1sA\n", s);
+	printf("E%-30.3sA\n", s);
+	printf("E%-30.50sA\n", s);
+*/
     return (0);
 }
