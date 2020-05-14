@@ -6,7 +6,7 @@
 /*   By: rdutenke <rdutenke@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/06 17:21:35 by rdutenke          #+#    #+#             */
-/*   Updated: 2020/05/14 17:47:17 by rdutenke         ###   ########.fr       */
+/*   Updated: 2020/05/14 19:01:57 by rdutenke         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,9 +59,10 @@ char	*ft_itoa_base(uintmax_t nb, char* base);
 void	ft_print_xup(t_ptf *pms);
 void	ft_print_p(t_ptf *pms);
 void	ft_print_u(t_ptf *pms);
-void	ft_flag_apply(t_ptf *pms);
-void ft_print_int(t_ptf *pms);
-void ft_print_char(t_ptf *pms);
-void ft_print_str(t_ptf *pms);
+void	ft_print_int(t_ptf *pms);
+void	ft_print_char(t_ptf *pms);
+void	ft_print_str(t_ptf *pms);
+int		ft_match(char c, char *conversion);
+void	ft_padding(char type, int size);
 
 #endif

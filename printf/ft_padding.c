@@ -1,36 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_p.c                                       :+:      :+:    :+:   */
+/*   ft_padding.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rdutenke <rdutenke@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/05/12 16:06:27 by rdutenke          #+#    #+#             */
-/*   Updated: 2020/05/14 19:11:51 by rdutenke         ###   ########.fr       */
+/*   Created: 2020/05/14 18:41:34 by rdutenke          #+#    #+#             */
+/*   Updated: 2020/05/14 19:02:25 by rdutenke         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
-void    ft_print_p(t_ptf *pms)
+static void ft_print_left_padding(int size)
 {
-    pms->v_p = va_arg(pms->ap, void *);
-    pms->v_str = ft_strjoin("0x", ft_itoa_base((uintmax_t)pms->v_p, HEX_BASE_L));
-    // ft_putstr_fd(pms->v_str, 1);
+	int i;
 
-	if (pms->width > 0)
+	i = 0;
+	while (i < size)
 	{
-		ft_padding('l', pms->width - ft_strlen(pms->v_str));
-		ft_putstr_fd(pms->v_str, 1);
-		pms->len += pms->width - ft_strlen(pms->v_str) - 1;
+		ft_putchar_fd(' ', 1);
+		i++;
 	}
-	else
-	{
-		ft_putstr_fd(pms->v_str, 1);
-		pms->len += ft_strlen(pms->v_str) - 1;
-	}
-
-
-    
 }
 
+void ft_padding(char type, int size)
+{
+	if (type == 'l')
+	{
+		ft_print_left_padding(size);
+	}
+}
