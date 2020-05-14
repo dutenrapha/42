@@ -6,7 +6,7 @@
 /*   By: rdutenke <rdutenke@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/06 22:01:52 by rdutenke          #+#    #+#             */
-/*   Updated: 2020/05/12 16:29:38 by raphael          ###   ########.fr       */
+/*   Updated: 2020/05/13 17:53:25 by rdutenke         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,6 @@ int main()
     int u_2;
     char c;
     char *s;
-    int a;
-    int b;
     int *n;
 
     s = "A casa é de beira rio";
@@ -111,20 +109,6 @@ int main()
     printf("Tamanho obtido %d\n", obtido);
 
     printf("\n");
-    char *teste;
-
-    b = 42;
-    a = -1*b;
-    
-    while (a <= b)
-    {
-        teste = ft_itoa_hex(a,'d');
-        printf("%s - ", teste);
-        printf("%x\n", a);
-        printf("\n");
-        a++;
-    }
-
 
     /*Teste printar variável x*/
     printf("**Teste printar variável x**\n");
@@ -140,7 +124,11 @@ int main()
     printf("Tamanho esperado %d\n", esperado);
     obtido = ft_printf("%x\n", u_2);
     printf("Tamanho obtido %d\n", obtido);
- 
+    esperado = printf("%x\n", 0);
+    printf("Tamanho esperado %d\n", esperado);
+    obtido = ft_printf("%x\n", 0);
+    printf("Tamanho obtido %d\n", obtido);
+
     printf("\n");
 
     /*Teste printar variável X*/
@@ -156,6 +144,10 @@ int main()
     esperado = printf("%X\n", u_2);
     printf("Tamanho esperado %d\n", esperado);
     obtido = ft_printf("%X\n", u_2);
+    printf("Tamanho obtido %d\n", obtido);
+    esperado = printf("%X\n", 0);
+    printf("Tamanho esperado %d\n", esperado);
+    obtido = ft_printf("%X\n", 0);
     printf("Tamanho obtido %d\n", obtido);
 
     printf("\n");
@@ -179,6 +171,27 @@ int main()
     esperado = printf("%p\n", &n);
     printf("Tamanho esperado %d\n", esperado);
     obtido = ft_printf("%p\n", &n);
+    printf("Tamanho obtido %d\n", obtido);
+
+   	printf("\n");
+
+	/*Teste printar variável u*/
+    printf("**Teste printar variável u**\n");
+    esperado = printf("%u\n", i);
+    printf("Tamanho esperado %d\n", esperado);
+    obtido = ft_printf("%u\n", i);
+    printf("Tamanho obtido %d\n", obtido);
+    esperado = printf("%u\n", u_1);
+    printf("Tamanho esperado %d\n", esperado);
+    obtido = ft_printf("%u\n", u_1);
+    printf("Tamanho obtido %d\n", obtido);
+    esperado = printf("%u\n", u_2);
+    printf("Tamanho esperado %d\n", esperado);
+    obtido = ft_printf("%u\n", u_2);
+    printf("Tamanho obtido %d\n", obtido);
+    esperado = printf("%u\n", 0);
+    printf("Tamanho esperado %d\n", esperado);
+    obtido = ft_printf("%u\n", 0);
     printf("Tamanho obtido %d\n", obtido);
 
 

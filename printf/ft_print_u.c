@@ -1,22 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_p.c                                       :+:      :+:    :+:   */
+/*   ft_print_u.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rdutenke <rdutenke@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/05/12 16:06:27 by rdutenke          #+#    #+#             */
-/*   Updated: 2020/05/14 11:14:11 by rdutenke         ###   ########.fr       */
+/*   Created: 2020/05/13 17:39:23 by rdutenke          #+#    #+#             */
+/*   Updated: 2020/05/14 11:26:30 by rdutenke         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
-void    ft_print_p(t_ptf *pms)
+void	ft_print_u(t_ptf *pms)
 {
     pms->v_p = va_arg(pms->ap, void *);
-    pms->v_str = ft_strjoin("0x", ft_itoa_base((uintmax_t)pms->v_p, HEX_BASE_L));
+    pms->v_str = ft_itoa_base((uintmax_t)pms->v_p, DEC_BASE);
     ft_putstr_fd(pms->v_str, 1);
     pms->len += ft_strlen(pms->v_str) - 1;
-}
 
+}

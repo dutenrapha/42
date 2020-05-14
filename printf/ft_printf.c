@@ -6,7 +6,7 @@
 /*   By: rdutenke <rdutenke@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/06 17:19:33 by rdutenke          #+#    #+#             */
-/*   Updated: 2020/05/11 14:55:42 by raphael          ###   ########.fr       */
+/*   Updated: 2020/05/13 17:44:45 by rdutenke         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ static  void    ft_init_pms(t_ptf   *pms, const char *str)
 {
     pms->str = (char *)str;
     pms->v_int = 0;
+	pms->v_ui = 0;
     pms->minus = 0;
     pms->zero = 0 ;
     pms->point = 0;

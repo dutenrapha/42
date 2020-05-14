@@ -6,16 +6,16 @@
 /*   By: rdutenke <rdutenke@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/11 15:51:30 by rdutenke          #+#    #+#             */
-/*   Updated: 2020/05/11 15:51:53 by rdutenke         ###   ########.fr       */
+/*   Updated: 2020/05/14 10:52:00 by raphael          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
-int	ft_int_len(int d)
+int	ft_int_len(intmax_t d)
  {
      int int_len;
-     int q;
+     intmax_t q;
  
      q = d;
      int_len = 0;
