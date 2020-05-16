@@ -12,6 +12,21 @@
 
 #include    "libftprintf.h"
 
+static	void 	ft_check_precision(t_ptf *pms)
+{
+	char *init;
+	char *final;
+
+	init = NULL;
+	final = NULL;
+	init = pms->flag - ft_strchr(pms->flag,'.');
+	final = ft_strrchr(pms->flag, 's');
+	pms->precision = ft_atoi(ft_substr(pms->flag,init+1,final - init - 1));
+	ft_putstr_fd("ZZZ",1);
+	ft_putnbr_fd(pms->precision,1);
+	ft_putstr_fd("ZZZ",1);
+}
+
 static	void	ft_get_width(t_ptf *pms, int k)
 {
 	size_t l_flag;
@@ -21,7 +36,7 @@ static	void	ft_get_width(t_ptf *pms, int k)
 	{
 		l_flag++;
 	}
-	pms->width = ft_atoi(ft_substr(pms->flag,1,l_flag));
+	pms->width = ft_atoi(ft_substr(pms->flag,k,l_flag));
 	pms->i += l_flag;
 }
 
@@ -67,6 +82,7 @@ static void	ft_get_flag(t_ptf *pms)
 	}
 	pms->conversion = pms->flag[j-1];
 	pms->len -= ft_strlen(pms->flag);
+	ft_check_precision(pms);
 }
 
 void	ft_check_flag(t_ptf *pms)
@@ -75,10 +91,8 @@ void	ft_check_flag(t_ptf *pms)
 	pms->i += 1;
 	ft_get_flag(pms);
 	ft_set_conversion(pms);
-	// ft_putstr_fd("ZZZ",1);
-	// ft_putchar_fd(pms->conversion,1);
-	// ft_putstr_fd("ZZZ",1);
-	if (ft_isdigit(pms->flag[0]))
+
+	if (ft_match(pms->flag[0], DIGITO))
 	{
 		ft_get_width(pms, 0);
 		ft_padding('l', pms);
@@ -88,6 +102,12 @@ void	ft_check_flag(t_ptf *pms)
 		pms->i += 1;
 		ft_get_width(pms, 1);
 		ft_padding('r', pms);
+	}
+	else if (pms->flag[0] == '0')
+	{
+		pms->i += 1;
+		ft_get_width(pms, 1);
+		ft_padding('0', pms);
 	}
 	else
 	{

@@ -18,12 +18,13 @@
 # include <stdint.h>
 # include "../libft/libft.h"
 
+# define DIGITO	"123456789"
 # define DEC_BASE	"0123456789"
 # define HEX_BASE_L	"0123456789abcdef"
 # define HEX_BASE_U	"0123456789ABCDEF"
 # define CONVERSIONS	"cspdiuxX%nfge"
-# define BREAKS	".*cspdiuxX%"
-# define FLAGS	"’-0.*# +lh"
+# define BREAKS	"cspdiuxX%"
+# define FLAGS	"-0.*# +lh"
 
 typedef struct	s_params
 {
@@ -38,6 +39,7 @@ typedef struct	s_params
 	uintmax_t v_ui;
 	char		conversion;
 	int			width;
+	int			precision;
 	int			minus;
 	int			zero;
 	int			point;

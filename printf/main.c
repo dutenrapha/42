@@ -243,7 +243,6 @@ int main()
     obtido = ft_printf("E%40XA\n", u_2);
 	printf("Tamanho obtido %d\n", obtido);
 
-
     printf("\n");
 	/*teste flag -*/
     printf("**Teste flag -**\n");
@@ -292,6 +291,77 @@ int main()
     printf("Tamanho esperado %d\n", esperado);
     obtido = ft_printf("E%-40XA\n", u_2);
 	printf("Tamanho obtido %d\n", obtido);
+
+
+    printf("\n");
+	/*teste flag 0*/
+    printf("**Teste flag 0**\n");
+
+	esperado = printf("E%040dA\n", d);
+    printf("Tamanho esperado %d\n", esperado);
+    obtido = ft_printf("E%040dA\n", d);
+	printf("Tamanho obtido %d\n", obtido);
+
+	esperado = printf("E%040iA\n", i);
+    printf("Tamanho esperado %d\n", esperado);
+    obtido = ft_printf("E%040iA\n", i);
+	printf("Tamanho obtido %i\n", obtido);
+
+	esperado = printf("E%040uA\n", u_2);
+    printf("Tamanho esperado %d\n", esperado);
+    obtido = ft_printf("E%040uA\n", u_2);
+	printf("Tamanho obtido %d\n", obtido);
+	
+	esperado = printf("E%040xA\n", u_2);
+    printf("Tamanho esperado %d\n", esperado);
+    obtido = ft_printf("E%040xA\n", u_2);
+	printf("Tamanho obtido %d\n", obtido);
+
+	esperado = printf("E%04xA\n", u_2);
+    printf("Tamanho esperado %d\n", esperado);
+    obtido = ft_printf("E%04xA\n", u_2);
+	printf("Tamanho obtido %d\n", obtido);
+	
+	esperado = printf("E%040XA\n", u_2);
+    printf("Tamanho esperado %d\n", esperado);
+    obtido = ft_printf("E%040XA\n", u_2);
+	printf("Tamanho obtido %d\n", obtido);
+
+    printf("\n");
+    /*teste flag .*/
+    printf("**Teste flag .**\n");
+
+	esperado = printf("E%.100sA\n", s);
+    printf("Tamanho esperado %d\n", esperado);
+    obtido = ft_printf("E%.100sA\n", s);
+	printf("Tamanho obtido %d\n", obtido);
+
+	esperado = printf("E%.1sA\n", s);
+    printf("Tamanho esperado %d\n", esperado);
+    obtido = ft_printf("E%.1sA\n", s);
+	printf("Tamanho obtido %d\n", obtido);
+
+	esperado = printf("E%40.1sA\n", s);
+    printf("Tamanho esperado %d\n", esperado);
+    obtido = ft_printf("E%40.1sA\n", s);
+	printf("Tamanho obtido %d\n", obtido);
+
+	esperado = printf("E%4.1sA\n", s);
+    printf("Tamanho esperado %d\n", esperado);
+    obtido = ft_printf("E%4.1sA\n", s);
+	printf("Tamanho obtido %d\n", obtido);
+
+	esperado = printf("E%-40.1sA\n", s);
+    printf("Tamanho esperado %d\n", esperado);
+    obtido = ft_printf("E%-40.1sA\n", s);
+	printf("Tamanho obtido %d\n", obtido);
+
+	esperado = printf("E%-4.1sA\n", s);
+    printf("Tamanho esperado %d\n", esperado);
+    obtido = ft_printf("E%-4.1sA\n", s);
+	printf("Tamanho obtido %d\n", obtido);
+
+
 /*
 	printf("\n");
 	printf("\n");

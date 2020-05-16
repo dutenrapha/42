@@ -20,6 +20,7 @@ static  void    ft_init_pms(t_ptf   *pms, const char *str)
     pms->v_int = 0;
 	pms->v_ui = 0;
 	pms->width = 0;
+    pms->precision = 0;
     pms->minus = 0;
     pms->zero = 0 ;
     pms->point = 0;
