@@ -14,19 +14,7 @@
 
 void ft_print_char(t_ptf *pms)
 {
-    pms->v_char = va_arg(pms->ap, int);
-    // ft_putchar_fd(pms->v_char, 1);
-
-	if (pms->width > 0)
-	{
-		ft_padding('l', pms->width - ft_strlen(&pms->v_char));
-		ft_putchar_fd(pms->v_char, 1);
-		pms->len += pms->width - ft_strlen(&pms->v_char) - 2;
-	}
-	else
-	{
-		ft_putchar_fd(pms->v_char, 1);
-		pms->len += ft_strlen(&pms->v_char) - 1;
-	}
-    
+    pms->v_char[0] = va_arg(pms->ap, int);
+	pms->len_c = ft_strlen(pms->v_char);
+	pms->len += ft_strlen(pms->v_char);
 }

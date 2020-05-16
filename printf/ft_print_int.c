@@ -15,18 +15,9 @@
 void ft_print_int(t_ptf *pms)
 {
     pms->v_int = va_arg(pms->ap, int);
-	if (pms->width > 0)
-	{
-		ft_padding('l', pms->width - ft_int_len(pms->v_int));
-		ft_putnbr_fd(pms->v_int, 1);
-		pms->len += pms->width - ft_int_len(pms->v_int) - 1;
-	}
-	else
-	{
-		ft_putnbr_fd(pms->v_int, 1);
-		pms->len += ft_int_len(pms->v_int) - 1;
-	}
-    
+	pms->v_str = ft_itoa(pms->v_int);
+	pms->len_c = ft_strlen(pms->v_str);
+	pms->len += ft_strlen(pms->v_str); 
 }
 
 

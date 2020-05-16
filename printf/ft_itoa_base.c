@@ -29,7 +29,6 @@ static char    *ft_itoa_aux(uintmax_t nb, char* base, size_t b_len)
      {   
          resp = ft_strjoin(ft_itoa_aux(q, base, b_len), temp);
      }   
-
 	 free(temp);
      return (resp);  
 }
@@ -42,6 +41,5 @@ static char    *ft_itoa_aux(uintmax_t nb, char* base, size_t b_len)
 	 
 	b_len = ft_strlen(base);
     temp = ft_itoa_aux(nb, base, b_len);
-
     return (temp);
  }

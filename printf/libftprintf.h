@@ -21,16 +21,18 @@
 # define DEC_BASE	"0123456789"
 # define HEX_BASE_L	"0123456789abcdef"
 # define HEX_BASE_U	"0123456789ABCDEF"
-# define CONVERSIONS	"cspdiuxX%"
-# define FLAG_BREAKS	".*cspdiuxX%"
+# define CONVERSIONS	"cspdiuxX%nfge"
+# define BREAKS	".*cspdiuxX%"
+# define FLAGS	"’-0.*# +lh"
 
 typedef struct	s_params
 {
 	va_list		ap;
+	size_t		len_c;
 	char		*flag;
 	char		*str;
 	char		*v_str;
-	char		v_char;
+	char		*v_char;
 	intmax_t	v_int;
 	void		*v_p;
 	uintmax_t v_ui;
@@ -63,6 +65,6 @@ void	ft_print_int(t_ptf *pms);
 void	ft_print_char(t_ptf *pms);
 void	ft_print_str(t_ptf *pms);
 int		ft_match(char c, char *conversion);
-void	ft_padding(char type, int size);
+void	ft_padding(char type, t_ptf *pms);
 
 #endif

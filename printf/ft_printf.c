@@ -16,6 +16,7 @@ static  void    ft_init_pms(t_ptf   *pms, const char *str)
 {
 	pms->flag = NULL;
     pms->str = (char *)str;
+    pms->v_char = (char *)ft_calloc(2, sizeof(char));
     pms->v_int = 0;
 	pms->v_ui = 0;
 	pms->width = 0;
@@ -31,6 +32,7 @@ static  void    ft_init_pms(t_ptf   *pms, const char *str)
     pms->plus = 0;
     pms->len = ft_strlen(str);
     pms->slen = ft_strlen(str);
+    pms->len_c = 0;
     pms->i = 0;
 }
 
@@ -48,8 +50,6 @@ int	ft_printf (const char *str, ...)
         ft_putchar_fd(str[pms.i],1);
         pms.i += 1;
     }
- 
 	va_end(pms.ap);
-
 	return (pms.len);
 }
