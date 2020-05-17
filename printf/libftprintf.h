@@ -39,7 +39,7 @@ typedef struct	s_params
 	uintmax_t v_ui;
 	char		conversion;
 	int			width;
-	int			precision;
+	size_t		precision;
 	int			minus;
 	int			zero;
 	int			point;

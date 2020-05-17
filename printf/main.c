@@ -336,9 +336,19 @@ int main()
     obtido = ft_printf("E%.100sA\n", s);
 	printf("Tamanho obtido %d\n", obtido);
 
+	esperado = printf("E%.1000sA\n", s);
+    printf("Tamanho esperado %d\n", esperado);
+    obtido = ft_printf("E%.1000sA\n", s);
+	printf("Tamanho obtido %d\n", obtido);
+
 	esperado = printf("E%.1sA\n", s);
     printf("Tamanho esperado %d\n", esperado);
     obtido = ft_printf("E%.1sA\n", s);
+	printf("Tamanho obtido %d\n", obtido);
+
+	esperado = printf("E%.2sA\n", s);
+    printf("Tamanho esperado %d\n", esperado);
+    obtido = ft_printf("E%.2sA\n", s);
 	printf("Tamanho obtido %d\n", obtido);
 
 	esperado = printf("E%40.1sA\n", s);

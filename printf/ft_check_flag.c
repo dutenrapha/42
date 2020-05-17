@@ -14,17 +14,16 @@
 
 static	void 	ft_check_precision(t_ptf *pms)
 {
-	char *init;
-	char *final;
-
-	init = NULL;
-	final = NULL;
-	init = pms->flag - ft_strchr(pms->flag,'.');
-	final = ft_strrchr(pms->flag, 's');
-	pms->precision = ft_atoi(ft_substr(pms->flag,init+1,final - init - 1));
-	ft_putstr_fd("ZZZ",1);
-	ft_putnbr_fd(pms->precision,1);
-	ft_putstr_fd("ZZZ",1);
+	int init;
+	int final;
+	if (ft_strchr(pms->flag,'.') != NULL)
+	{
+		init = 0;
+		final = 0;
+		init = ft_strlen(pms->flag) - ft_strlen(ft_strchr(pms->flag,'.')) + 1;
+		final = ft_strlen(pms->flag) - ft_strlen(ft_strrchr(pms->flag,pms->conversion));
+		pms->precision = ft_atoi(ft_substr(pms->flag,init,final - init));
+	}
 }
 
 static	void	ft_get_width(t_ptf *pms, int k)
@@ -37,7 +36,6 @@ static	void	ft_get_width(t_ptf *pms, int k)
 		l_flag++;
 	}
 	pms->width = ft_atoi(ft_substr(pms->flag,k,l_flag));
-	pms->i += l_flag;
 }
 
 static	void	ft_set_conversion(t_ptf *pms)
@@ -56,7 +54,6 @@ static	void	ft_set_conversion(t_ptf *pms)
 		ft_print_p(pms);
 	if (pms->conversion == 'u')
 		ft_print_u(pms);
-	pms->i += 1;
 }
 
 static void	ft_get_flag(t_ptf *pms)
@@ -82,6 +79,7 @@ static void	ft_get_flag(t_ptf *pms)
 	}
 	pms->conversion = pms->flag[j-1];
 	pms->len -= ft_strlen(pms->flag);
+	pms->i += ft_strlen(pms->flag);
 	ft_check_precision(pms);
 }
 
@@ -90,6 +88,7 @@ void	ft_check_flag(t_ptf *pms)
     pms->len -= 1;
 	pms->i += 1;
 	ft_get_flag(pms);
+	// pms->i += ft_strlen(pms->flag);
 	ft_set_conversion(pms);
 
 	if (ft_match(pms->flag[0], DIGITO))
@@ -99,13 +98,11 @@ void	ft_check_flag(t_ptf *pms)
 	}
 	else if (pms->flag[0] == '-')
 	{
-		pms->i += 1;
 		ft_get_width(pms, 1);
 		ft_padding('r', pms);
 	}
 	else if (pms->flag[0] == '0')
 	{
-		pms->i += 1;
 		ft_get_width(pms, 1);
 		ft_padding('0', pms);
 	}
