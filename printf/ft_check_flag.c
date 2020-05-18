@@ -6,7 +6,7 @@
 /*   By: rdutenke <rdutenke@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/11 12:04:36 by rdutenke          #+#    #+#             */
-/*   Updated: 2020/05/14 18:57:55 by rdutenke         ###   ########.fr       */
+/*   Updated: 2020/05/18 11:19:09 by rdutenke         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,8 +95,21 @@ static void	ft_get_flag(t_ptf *pms)
 	{	
 		pms->width = va_arg(pms->ap, int);
 	}
+	if (pms->flag[0] == '-')
+	{
+		if (pms->flag[1] == '*')
+			pms->width = va_arg(pms->ap, int);
+		else
+			ft_get_width(pms, 1);
+	}
+	if (pms->flag[0] == '0')
+	{
+		if (pms->flag[1] == '*')
+			pms->width = va_arg(pms->ap, int);
+		else
+			ft_get_width(pms, 1);
+	}
 	ft_check_precision(pms);
-
 }
 
 void	ft_check_flag(t_ptf *pms)
@@ -104,9 +117,8 @@ void	ft_check_flag(t_ptf *pms)
     pms->len -= 1;
 	pms->i += 1;
 	ft_get_flag(pms);
-
 	ft_set_conversion(pms);
-
+	
 	if (ft_match(pms->flag[0], DIGITO))
 	{
 		if (pms->width == 0)
@@ -115,12 +127,10 @@ void	ft_check_flag(t_ptf *pms)
 	}
 	else if (pms->flag[0] == '-')
 	{
-		ft_get_width(pms, 1);
 		ft_padding('r', pms);
 	}
 	else if (pms->flag[0] == '0')
 	{
-		ft_get_width(pms, 1);
 		ft_padding('0', pms);
 	}
 	else

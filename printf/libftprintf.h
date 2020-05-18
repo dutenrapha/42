@@ -6,7 +6,7 @@
 /*   By: rdutenke <rdutenke@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/06 17:21:35 by rdutenke          #+#    #+#             */
-/*   Updated: 2020/05/14 19:01:57 by rdutenke         ###   ########.fr       */
+/*   Updated: 2020/05/18 11:37:02 by rdutenke         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,16 +40,13 @@ typedef struct	s_params
 	char		conversion;
 	int			width;
 	size_t		precision;
-	int			minus;
-	int			zero;
-	int			point;
-	int			single_l;
-	int			double_l;
-	int			single_h;
-	int			double_h;
-	int			hashtag;
-	int			space;
-	int			plus;
+	// int			single_l;
+	// int			double_l;
+	// int			single_h;
+	// int			double_h;
+	// int			hashtag;
+	// int			space;
+	// int			plus;
 	int			len;
 	int			slen;
 	int 		i;
