@@ -18,7 +18,7 @@
 # include <stdint.h>
 # include "../libft/libft.h"
 
-# define DIGITO	"123456789"
+# define DIGITO	"*123456789"
 # define DEC_BASE	"0123456789"
 # define HEX_BASE_L	"0123456789abcdef"
 # define HEX_BASE_U	"0123456789ABCDEF"

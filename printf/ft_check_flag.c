@@ -16,13 +16,24 @@ static	void 	ft_check_precision(t_ptf *pms)
 {
 	int init;
 	int final;
-	if (ft_strchr(pms->flag,'.') != NULL)
+	char *pos;
+
+	pos = NULL;
+	pos = ft_strchr(pms->flag,'.');
+	if (pos!= NULL)
 	{
-		init = 0;
-		final = 0;
-		init = ft_strlen(pms->flag) - ft_strlen(ft_strchr(pms->flag,'.')) + 1;
-		final = ft_strlen(pms->flag) - ft_strlen(ft_strrchr(pms->flag,pms->conversion));
-		pms->precision = ft_atoi(ft_substr(pms->flag,init,final - init));
+		if (*(pos + 1) == '*')
+		{
+			pms->precision = va_arg(pms->ap, int);
+		}
+		else
+		{
+			init = 0;
+			final = 0;
+			init = ft_strlen(pms->flag) - ft_strlen(pos) + 1;
+			final = ft_strlen(pms->flag) - ft_strlen(ft_strrchr(pms->flag,pms->conversion));
+			pms->precision = ft_atoi(ft_substr(pms->flag,init,final - init));
+		}
 	}
 }
 
@@ -80,7 +91,12 @@ static void	ft_get_flag(t_ptf *pms)
 	pms->conversion = pms->flag[j-1];
 	pms->len -= ft_strlen(pms->flag);
 	pms->i += ft_strlen(pms->flag);
+	if (pms->flag[0] == '*')
+	{	
+		pms->width = va_arg(pms->ap, int);
+	}
 	ft_check_precision(pms);
+
 }
 
 void	ft_check_flag(t_ptf *pms)
@@ -88,12 +104,13 @@ void	ft_check_flag(t_ptf *pms)
     pms->len -= 1;
 	pms->i += 1;
 	ft_get_flag(pms);
-	// pms->i += ft_strlen(pms->flag);
+
 	ft_set_conversion(pms);
 
 	if (ft_match(pms->flag[0], DIGITO))
 	{
-		ft_get_width(pms, 0);
+		if (pms->width == 0)
+			ft_get_width(pms, 0);
 		ft_padding('l', pms);
 	}
 	else if (pms->flag[0] == '-')

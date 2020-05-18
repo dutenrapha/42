@@ -372,6 +372,185 @@ int main()
 	printf("Tamanho obtido %d\n", obtido);
 
 
+    printf("\n");
+    /*teste flag * */
+    printf("**Teste flag * **\n");
+
+	esperado = printf("E%.*sA\n", 100,s);
+    printf("Tamanho esperado %d\n", esperado);
+    obtido = ft_printf("E%.*sA\n", 100, s);
+	printf("Tamanho obtido %d\n", obtido);
+
+	esperado = printf("E%.*sA\n", 1000,s);
+    printf("Tamanho esperado %d\n", esperado);
+    obtido = ft_printf("E%.*sA\n", 1000,s);
+	printf("Tamanho obtido %d\n", obtido);
+
+	esperado = printf("E%.*sA\n", 1, s);
+    printf("Tamanho esperado %d\n", esperado);
+    obtido = ft_printf("E%.*sA\n", 1, s);
+	printf("Tamanho obtido %d\n", obtido);
+
+	esperado = printf("E%.*sA\n", 2, s);
+    printf("Tamanho esperado %d\n", esperado);
+    obtido = ft_printf("E%.*sA\n", 2, s);
+	printf("Tamanho obtido %d\n", obtido);
+
+	esperado = printf("E%*.*sA\n", 40, 1, s);
+    printf("Tamanho esperado %d\n", esperado);
+    obtido = ft_printf("E%*.*sA\n", 40, 1, s);
+	printf("Tamanho obtido %d\n", obtido);
+
+	esperado = printf("E%*.*sA\n", 4, 1, s);
+    printf("Tamanho esperado %d\n", esperado);
+    obtido = ft_printf("E%*.*sA\n", 4, 1, s);
+	printf("Tamanho obtido %d\n", obtido);
+
+	// esperado = printf("E%-*.*sA\n", 40, 1, s);
+    // printf("Tamanho esperado %d\n", esperado);
+    // obtido = ft_printf("E%-*.*sA\n", 40, 1, s);
+	// printf("Tamanho obtido %d\n", obtido);
+
+	// esperado = printf("E%-*.*sA\n", 4, 1, s);
+    // printf("Tamanho esperado %d\n", esperado);
+    // obtido = ft_printf("E%-*.*sA\n", 4, 1, s);
+	// printf("Tamanho obtido %d\n", obtido);
+
+	// esperado = printf("E%0*dA\n", 40, d);
+    // printf("Tamanho esperado %d\n", esperado);
+    // obtido = ft_printf("E%0*dA\n", 40, d);
+	// printf("Tamanho obtido %d\n", obtido);
+
+	// esperado = printf("E%0*iA\n", 40, i);
+    // printf("Tamanho esperado %d\n", esperado);
+    // obtido = ft_printf("E%0*iA\n", 40, i);
+	// printf("Tamanho obtido %i\n", obtido);
+
+	// esperado = printf("E%0*uA\n", 40, u_2);
+    // printf("Tamanho esperado %d\n", esperado);
+    // obtido = ft_printf("E%0*uA\n", 40, u_2);
+	// printf("Tamanho obtido %d\n", obtido);
+	
+	// esperado = printf("E%0*xA\n", 40, u_2);
+    // printf("Tamanho esperado %d\n", esperado);
+    // obtido = ft_printf("E%0*xA\n", 40, u_2);
+	// printf("Tamanho obtido %d\n", obtido);
+
+	// esperado = printf("E%0*xA\n", 4, u_2);
+    // printf("Tamanho esperado %d\n", esperado);
+    // obtido = ft_printf("E%0*xA\n", 4, u_2);
+	// printf("Tamanho obtido %d\n", obtido);
+	
+	// esperado = printf("E%0*XA\n", 40, u_2);
+    // printf("Tamanho esperado %d\n", esperado);
+    // obtido = ft_printf("E%0*XA\n", 40, u_2);
+	// printf("Tamanho obtido %d\n", obtido);
+
+	// esperado = printf("E%-*cA\n", 40, c);
+    // printf("Tamanho esperado %d\n", esperado);
+    // obtido = ft_printf("E%-*cA\n", 40, c);
+	// printf("Tamanho obtido %d\n", obtido);
+	
+	// esperado = printf("E%-*sA\n", 40, s);
+    // printf("Tamanho esperado %d\n", esperado);
+    // obtido = ft_printf("E%-*sA\n", 40, s);
+	// printf("Tamanho obtido %d\n", obtido);
+
+	// esperado = printf("E%-*sA\n", 4, s);
+    // printf("Tamanho esperado %d\n", esperado);
+    // obtido = ft_printf("E%-*sA\n", 4, s);
+	// printf("Tamanho obtido %d\n", obtido);
+
+	// esperado = printf("E%-*pA\n", 40, &s);
+    // printf("Tamanho esperado %d\n", esperado);
+    // obtido = ft_printf("E%-*pA\n", 40, &s);
+	// printf("Tamanho obtido %d\n", obtido);
+	
+	// esperado = printf("E%-*dA\n", 40, d);
+    // printf("Tamanho esperado %d\n", esperado);
+    // obtido = ft_printf("E%-*dA\n", 40, d);
+	// printf("Tamanho obtido %d\n", obtido);
+
+	// esperado = printf("E%-*iA\n", 40, i);
+    // printf("Tamanho esperado %d\n", esperado);
+    // obtido = ft_printf("E%-*iA\n", 40, i);
+	// printf("Tamanho obtido %i\n", obtido);
+
+	// esperado = printf("E%-*uA\n", 40, u_2);
+    // printf("Tamanho esperado %d\n", esperado);
+    // obtido = ft_printf("E%-*uA\n", 40, u_2);
+	// printf("Tamanho obtido %d\n", obtido);
+	
+	// esperado = printf("E%-*xA\n", 40, u_2);
+    // printf("Tamanho esperado %d\n", esperado);
+    // obtido = ft_printf("E%-*xA\n", 40, u_2);
+	// printf("Tamanho obtido %d\n", obtido);
+	
+	// esperado = printf("E%-*XA\n", 40, u_2);
+    // printf("Tamanho esperado %d\n", esperado);
+    // obtido = ft_printf("E%-*XA\n", 40, u_2);
+	// printf("Tamanho obtido %d\n", obtido);
+
+	// esperado = printf("E%40cA\n", c);
+    // printf("Tamanho esperado %d\n", esperado);
+    // obtido = ft_printf("E%40cA\n", c);
+	// printf("Tamanho obtido %d\n", obtido);
+	
+	// esperado = printf("E%40sA\n", s);
+    // printf("Tamanho esperado %d\n", esperado);
+    // obtido = ft_printf("E%40sA\n", s);
+	// printf("Tamanho obtido %d\n", obtido);
+
+	// esperado = printf("E%4sA\n", s);
+    // printf("Tamanho esperado %d\n", esperado);
+    // obtido = ft_printf("E%4sA\n", s);
+	// printf("Tamanho obtido %d\n", obtido);
+	
+	// esperado = printf("E%40pA\n", &s);
+    // printf("Tamanho esperado %d\n", esperado);
+    // obtido = ft_printf("E%40pA\n", &s);
+	// printf("Tamanho obtido %d\n", obtido);
+	
+	// esperado = printf("E%*dA\n", 40, d);
+    // printf("Tamanho esperado %d\n", esperado);
+    // obtido = ft_printf("E%*dA\n", 40, d);
+	// printf("Tamanho obtido %d\n", obtido);
+
+	// esperado = printf("E%*iA\n", 40, i);
+    // printf("Tamanho esperado %d\n", esperado);
+    // obtido = ft_printf("E%*iA\n", 40, i);
+	// printf("Tamanho obtido %i\n", obtido);
+
+	// esperado = printf("E%*uA\n", 40, u_2);
+    // printf("Tamanho esperado %d\n", esperado);
+    // obtido = ft_printf("E%*uA\n", 40, u_2);
+	// printf("Tamanho obtido %d\n", obtido);
+	
+	// esperado = printf("E%*xA\n", 40, u_2);
+    // printf("Tamanho esperado %d\n", esperado);
+    // obtido = ft_printf("E%*xA\n", 40, u_2);
+	// printf("Tamanho obtido %d\n", obtido);
+	
+	// esperado = printf("E%*XA\n", 40, u_2);
+    // printf("Tamanho esperado %d\n", esperado);
+    // obtido = ft_printf("E%*XA\n", 40, u_2);
+	// printf("Tamanho obtido %d\n", obtido);
+
+
+    // printf("\n");
+    // /*este multiplas conversões e flags*/
+    // printf("**Teste multiplas conversões e flags**\n");
+
+	// esperado = printf("|%d|%i|%c|%s|%x|%X|%p|%u|\n", d, i, c, s, u_2, u_2, &u_2, u_2);
+    // printf("Tamanho esperado %d\n", esperado);
+    // obtido = ft_printf("|%d|%i|%c|%s|%x|%X|%p|%u|\n", d, i, c, s, u_2, u_2, &u_2, u_2);
+	// printf("Tamanho obtido %d\n", obtido);
+
+	// esperado = printf("|%*d|%*i|%*c|%*.*s|%*x|%*X|%*p|%*u|\n", 5, d, 5, i, 5, c, 5, 2, s, 5, u_2, 5, u_2, 5, &u_2, 5, u_2);
+    // printf("Tamanho esperado %d\n", esperado);
+    // obtido = ft_printf("|%*d|%*i|%*c|%*.*s|%*x|%*X|%*p|%*u|\n", 5, d, 5, i, 5, c, 5, 2, s, 5, u_2, 5, u_2, 5, &u_2, 5, u_2);
+	// printf("Tamanho obtido %d\n", obtido);
+
 /*
 	printf("\n");
 	printf("\n");
