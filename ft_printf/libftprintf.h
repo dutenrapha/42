@@ -6,7 +6,7 @@
 /*   By: rdutenke <rdutenke@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/06 17:21:35 by rdutenke          #+#    #+#             */
-/*   Updated: 2020/05/18 11:37:02 by rdutenke         ###   ########.fr       */
+/*   Updated: 2020/05/18 14:25:26 by rdutenke         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,8 @@ typedef struct	s_params
 	char		*str;
 	char		*v_str;
 	char		*v_char;
-	intmax_t	v_int;
 	void		*v_p;
+	intmax_t	v_int;
 	uintmax_t v_ui;
 	char		conversion;
 	int			width;
