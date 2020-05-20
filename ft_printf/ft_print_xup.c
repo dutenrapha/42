@@ -6,18 +6,18 @@
 /*   By: rdutenke <rdutenke@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/12 15:47:14 by rdutenke          #+#    #+#             */
-/*   Updated: 2020/05/14 19:11:35 by rdutenke         ###   ########.fr       */
+/*   Updated: 2020/05/20 10:59:47 by rdutenke         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
-void    ft_print_xup(t_ptf *pms)
+void    ft_print_xup(t_ptf *parms)
 {
-    pms->v_p = va_arg(pms->ap, void *);
-    pms->v_str = ft_itoa_base((uintmax_t)pms->v_p, HEX_BASE_U);
-    pms->len_c = ft_strlen(pms->v_str);
-	pms->len += ft_strlen(pms->v_str);
+    parms->v_p = va_arg(parms->ap, void *);
+    parms->v_str = ft_itoa_base((uintmax_t)parms->v_p, HEX_BASE_U);
+    parms->len_c = ft_strlen(parms->v_str);
+	parms->len += ft_strlen(parms->v_str);
 }
 
 

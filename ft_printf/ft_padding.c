@@ -6,7 +6,7 @@
 /*   By: rdutenke <rdutenke@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/14 18:41:34 by rdutenke          #+#    #+#             */
-/*   Updated: 2020/05/18 15:05:11 by rdutenke         ###   ########.fr       */
+/*   Updated: 2020/05/20 18:13:53 by rdutenke         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,19 +35,13 @@ void ft_padding(char type, t_ptf *pms)
 		ft_print_padding(size, ' ');
 		if (size > 0)
 			pms->len += pms->width - pms->len_c;
-		if (pms->conversion == 'c')
-		    ft_putstr_fd(pms->v_char, 1);
-	    else
-		    ft_putstr_fd(pms->v_str, 1);
+		ft_putstr_fd(pms->v_str, 1);
 	}
 	if (type == 'r')
 	{
 		if (size > 0)
 			pms->len += pms->width - pms->len_c;
-		if (pms->conversion == 'c')
-		    ft_putstr_fd(pms->v_char, 1);
-	    else
-		    ft_putstr_fd(pms->v_str, 1);
+		ft_putstr_fd(pms->v_str, 1);
 		ft_print_padding(size, ' ');
 	}
 	if (type == '0')
@@ -55,9 +49,6 @@ void ft_padding(char type, t_ptf *pms)
 		ft_print_padding(size, '0');
 		if (size > 0)
 			pms->len += pms->width - pms->len_c;
-		if (pms->conversion == 'c')
-		    ft_putstr_fd(pms->v_char, 1);
-	    else
-		    ft_putstr_fd(pms->v_str, 1);
+		ft_putstr_fd(pms->v_str, 1);
 	}
 }
