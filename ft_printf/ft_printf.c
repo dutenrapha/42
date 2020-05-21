@@ -6,7 +6,7 @@
 /*   By: rdutenke <rdutenke@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/06 17:19:33 by rdutenke          #+#    #+#             */
-/*   Updated: 2020/05/20 16:55:35 by rdutenke         ###   ########.fr       */
+/*   Updated: 2020/05/21 19:44:58 by rdutenke         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,12 @@ static void ft_free(t_ptf   *parms)
 	parms->flag = NULL;
 	free(parms->v_str);
 	parms->v_str = NULL;
-	// free(parms->v_p);
+	parms->v_p = NULL;
+	parms->v_c = 0;
+    parms->v_int = 0;
+	parms->conversion = '\0';
+	parms->width = 0;
+    parms->precision = 0;
 }
 
 static  void    ft_init_pms(t_ptf   *parms, const char *str)

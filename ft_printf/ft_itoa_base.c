@@ -6,13 +6,13 @@
 /*   By: rdutenke <rdutenke@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/11 18:26:36 by rdutenke          #+#    #+#             */
-/*   Updated: 2020/05/20 18:31:52 by rdutenke         ###   ########.fr       */
+/*   Updated: 2020/05/21 20:09:18 by rdutenke         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
-static char    *ft_itoa_aux(uintmax_t nb, char* base, size_t b_len)
+static char    *ft_itoa_aux(uintmax_t nb, char* base, uintmax_t b_len)
 {
 	uintmax_t q;
 	char *resp;
@@ -45,7 +45,7 @@ static char    *ft_itoa_aux(uintmax_t nb, char* base, size_t b_len)
 char *ft_itoa_base(uintmax_t nb, char* base)
 {
 	char *temp;
-	size_t b_len;
+	uintmax_t b_len;
 	
 	temp  = NULL;
 	b_len = 0;

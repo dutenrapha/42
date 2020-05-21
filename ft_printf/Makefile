@@ -6,7 +6,7 @@
 #    By: rdutenke <rdutenke@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/05/06 16:48:38 by rdutenke          #+#    #+#              #
-#    Updated: 2020/05/14 18:42:45 by rdutenke         ###   ########.fr        #
+#    Updated: 2020/05/21 12:28:23 by rdutenke         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -46,6 +46,10 @@ run:	re
 	@clear
 	@clang $(FLAGS) -g main.c -L. -lftprintf
 	@./a.out
+
+test:	fclean $(DIRLIBFT)/libft.a
+	@clang $(FLAGS) -g main.c $(FUNCTIONS) -L. $(DIRLIBFT)/libft.a
+
 
 $(DIRLIBFT)/libft.a:
 	@$(MAKE) -C $(DIRLIBFT)
