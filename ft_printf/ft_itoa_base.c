@@ -6,50 +6,34 @@
 /*   By: rdutenke <rdutenke@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/11 18:26:36 by rdutenke          #+#    #+#             */
-/*   Updated: 2020/05/21 20:09:18 by rdutenke         ###   ########.fr       */
+/*   Updated: 2020/05/22 16:32:23 by rdutenke         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
-static char    *ft_itoa_aux(uintmax_t nb, char* base, uintmax_t b_len)
+char	*ft_itoa_base(uintmax_t nb, char* base)
 {
-	uintmax_t q;
-	char *resp;
-	char *temp;
-	char *temp2;
-	
-	resp = NULL;
-	temp = NULL;
-	temp2 = NULL;
-	q = 0;
-	if(!(temp = (char *)ft_calloc(2,sizeof(char))))
+	int		cont_num;
+	uintmax_t		base_len;
+	uintmax_t	aux;
+	char	*str;
+
+	base_len = ft_strlen(base);
+	cont_num = 1;
+	aux = nb;
+	str = NULL;
+	while ((aux = aux / base_len) > 0)
+		cont_num++;
+	str = (char *)ft_calloc((cont_num + 1), sizeof(char));
+	if (!str)
 		return (NULL);
-	q = nb / b_len;
-	*temp = base[nb % b_len];
-	if (q == 0)
+	cont_num--;
+	while (cont_num >= 0)
 	{
-		return(temp);
+		str[cont_num] = base[nb % base_len];
+		nb = nb / base_len;
+		cont_num--;
 	}
-	else
-	{
-		temp2 = ft_itoa_aux(q, base, b_len);
-		resp = ft_strjoin(temp2, temp);
-		free(temp2);
-	}
-	free(temp);
-	return (resp);
+	return (str);
 }
-
-
-char *ft_itoa_base(uintmax_t nb, char* base)
-{
-	char *temp;
-	uintmax_t b_len;
-	
-	temp  = NULL;
-	b_len = 0;
-	b_len = ft_strlen(base);
-	temp = ft_itoa_aux(nb, base, b_len);
-	return (temp);
- }
