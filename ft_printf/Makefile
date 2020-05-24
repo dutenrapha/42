@@ -15,6 +15,10 @@ NAME = libftprintf.a
 
 HEADER = libftprintf.h
 
+COMPI = clang
+
+MAIN = main2.c
+
 FUNCTIONS = ft_printf.c ft_check_flag.c ft_int_len.c ft_print_x.c ft_itoa_base.c ft_print_xup.c \
 			ft_print_p.c ft_print_u.c ft_print_int.c ft_print_char.c ft_print_str.c\
 			ft_match.c ft_padding.c\
@@ -30,7 +34,7 @@ OBJ = $(subst .c,.o,$(FUNCTIONS))
 all:	$(NAME)
 
 $(NAME):	$(DIRLIBFT)/libft.a
-		@clang $(FLAGS) -c $(FUNCTIONS)
+		@$(COMPI) $(FLAGS) -c $(FUNCTIONS)
 		@ar rc $(NAME) $(FUNCTIONS_O) $(DIRLIBFT)/*.o
 		@ranlib $(NAME)
 
@@ -44,11 +48,11 @@ re:	fclean all
 
 run:	re
 	@clear
-	@clang $(FLAGS) -g main.c -L. -lftprintf
+	@$(COMPI) $(FLAGS) $(MAIN) -L. -lftprintf
 	@./a.out
 
 test:	fclean $(DIRLIBFT)/libft.a
-	@clang $(FLAGS) -g main.c $(FUNCTIONS) -L. $(DIRLIBFT)/libft.a
+	@$(COMPI) $(FLAGS) -g $(MAIN) $(FUNCTIONS) -L. $(DIRLIBFT)/libft.a
 
 
 $(DIRLIBFT)/libft.a:

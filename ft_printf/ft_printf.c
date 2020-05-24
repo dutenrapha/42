@@ -58,9 +58,12 @@ int	ft_printf (const char *str, ...)
             ft_check_flag(&parms);
 			ft_free(&parms);
 		}
-		ft_putchar_fd(str[parms.i],1);
-        parms.i += 1;
-    }
+		else
+		{
+			ft_putchar_fd(str[parms.i],1);
+			parms.i += 1;
+		}
+	}
 	va_end(parms.ap);
 	return (parms.len);
 }

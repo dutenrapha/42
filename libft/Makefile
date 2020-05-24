@@ -12,6 +12,8 @@
 
 NAME = libft.a
 
+COMPI = gcc
+
 FUNCTIONS = ft_memset.c ft_bzero.c ft_memcpy.c ft_memccpy.c ft_memmove.c \
 		ft_memchr.c ft_memcmp.c ft_strlen.c ft_strlcpy.c ft_strlcat.c \
 		ft_strchr.c ft_strrchr.c ft_strnstr.c ft_strncmp.c ft_atoi.c \
@@ -31,7 +33,7 @@ FUNCTIONSB_O = $(subst .c,.o,$(FUNCTIONSB))
 all: $(NAME)
 
 $(NAME):
-	@clang -Wall -Wextra -Werror -c $(FUNCTIONS)
+	@$(COMPI) -Wall -Wextra -Werror -c $(FUNCTIONS)
 	@ar rc $(NAME) $(FUNCTIONS_O) 
 	@ranlib $(NAME)
 
@@ -44,18 +46,18 @@ fclean: clean
 re: fclean all run
 
 debug:	fclean all
-	@clang -Wall -Wextra -Werror -g main5.c -L. -lft -lbsd
+	@$(COMPI) -Wall -Wextra -Werror -g main5.c -L. -lft -lbsd
 	@./a.out
 run:
-	@clang -Wall -Wextra -Werror main.c -L. -lft -lbsd
+	@$(COMPI) -Wall -Wextra -Werror main.c -L. -lft -lbsd
 	@./a.out
 so:
-	@clang -fPIC -c $(FUNCTIONS)
-	@clang -shared -o libft.so $(FUNCTIONS_O)
+	@$(COMPI) -fPIC -c $(FUNCTIONS)
+	@$(COMPI) -shared -o libft.so $(FUNCTIONS_O)
 
 bonus: $(NAME)
-	clang -Wall -Werror -Wextra -c $(FUNCTIONSB) 
+	$(COMPI) -Wall -Werror -Wextra -c $(FUNCTIONSB) 
 	ar rc $(NAME) $(FUNCTIONSB_O)
 	ranlib $(NAME)
-	@clang -Wall -Wextra -Werror -g mainbonus.c -L. -lft -lbsd
+	@$(COMPI) -Wall -Wextra -Werror -g mainbonus.c -L. -lft -lbsd
 	@./a.out
