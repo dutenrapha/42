@@ -19,7 +19,14 @@ void ft_print_str(t_ptf *parms)
 	temp = NULL;
     
 	parms->v_str = va_arg(parms->ap, char *);
-	parms->v_str = ft_substr(parms->v_str, 0, ft_strlen(parms->v_str));
+	if (parms->v_str == NULL)
+	{
+		parms->v_str = ft_strdup("(null)");
+	}
+	else
+	{
+		parms->v_str = ft_substr(parms->v_str, 0, ft_strlen(parms->v_str));
+	}
 	parms->len_c = ft_strlen(parms->v_str);
 	if (parms->precision < parms->len_c && ft_strchr(parms->flag,'.') != NULL)
 	{
