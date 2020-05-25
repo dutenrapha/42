@@ -6,7 +6,7 @@
 #    By: rdutenke <rdutenke@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/05/06 16:48:38 by rdutenke          #+#    #+#              #
-#    Updated: 2020/05/21 12:28:23 by rdutenke         ###   ########.fr        #
+#    Updated: 2020/05/25 13:47:13 by rdutenke         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,7 @@ MAIN = main2.c
 
 FUNCTIONS = ft_printf.c ft_check_flag.c ft_int_len.c ft_print_x.c ft_itoa_base.c ft_print_xup.c \
 			ft_print_p.c ft_print_u.c ft_print_int.c ft_print_char.c ft_print_str.c\
-			ft_match.c ft_padding.c\
+			ft_match.c ft_padding.c ft_itoa_hex.c\
 
 FLAGS = -Wall -Werror -Wextra 
 

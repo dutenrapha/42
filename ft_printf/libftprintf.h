@@ -6,7 +6,7 @@
 /*   By: rdutenke <rdutenke@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/06 17:21:35 by rdutenke          #+#    #+#             */
-/*   Updated: 2020/05/21 19:44:32 by rdutenke         ###   ########.fr       */
+/*   Updated: 2020/05/25 13:51:30 by rdutenke         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,5 +57,5 @@ void	ft_print_char(t_ptf *parms);
 void	ft_print_str(t_ptf *parms);
 int		ft_match(char c, char *conversion);
 void	ft_padding(char type, t_ptf *parms);
-
+char    *ft_itoa_hex(uint32_t nb, char* base);
 #endif
