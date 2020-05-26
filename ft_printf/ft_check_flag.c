@@ -6,7 +6,7 @@
 /*   By: rdutenke <rdutenke@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/11 12:04:36 by rdutenke          #+#    #+#             */
-/*   Updated: 2020/05/20 18:21:13 by rdutenke         ###   ########.fr       */
+/*   Updated: 2020/05/26 14:54:32 by rdutenke         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,8 @@ static	void 	ft_check_precision(t_ptf *parms)
 			temp = ft_substr(parms->flag,init,final - init);
 			parms->precision = ft_atoi(temp);
 		}
+		free(temp);
 	}
-	free(temp);
 }
 
 static	void	ft_get_width(t_ptf *parms, int k)
@@ -126,7 +126,7 @@ void	ft_check_flag(t_ptf *parms)
 	parms->i += 1;
 	ft_get_flag(parms);
 	ft_set_conversion(parms);
-	
+
 	if (ft_match(parms->flag[0], DIGITO))
 	{
 		if (parms->width == 0)
@@ -150,7 +150,7 @@ void	ft_check_flag(t_ptf *parms)
 		}
 		else
 		{
-		    ft_putstr_fd(parms->v_str, 1);
+			ft_putstr_fd(parms->v_str, 1);
 		}
 	}
 }
