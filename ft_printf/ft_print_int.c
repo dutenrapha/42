@@ -6,7 +6,7 @@
 /*   By: rdutenke <rdutenke@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/14 17:45:25 by rdutenke          #+#    #+#             */
-/*   Updated: 2020/05/26 17:25:59 by rdutenke         ###   ########.fr       */
+/*   Updated: 2020/05/29 10:22:33 by rdutenke         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,18 @@ void ft_print_int(t_ptf *parms)
 	parms->v_str = ft_itoa(parms->v_int);
 	parms->len_c = ft_strlen(parms->v_str);
 	diff = parms->precision - parms->len_c ;
-	
-	if (diff > 0)
-	{
 
+	if(parms->precision == 0 && parms->v_str[0] == '0')
+	{
+		temp =  ft_strdup(parms->v_str);
+		free(parms->v_str);
+		parms->v_str = NULL;
+		parms->v_str =  ft_strdup("");
+		free(temp);
+		parms->len_c = 0;
+	}
+	else if (diff > 0)
+	{
 		temp =  ft_strdup(parms->v_str);
 		free(parms->v_str);
 		parms->v_str = NULL;

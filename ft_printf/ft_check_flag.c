@@ -6,7 +6,7 @@
 /*   By: rdutenke <rdutenke@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/11 12:04:36 by rdutenke          #+#    #+#             */
-/*   Updated: 2020/05/26 17:25:43 by rdutenke         ###   ########.fr       */
+/*   Updated: 2020/05/29 10:38:37 by rdutenke         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -126,38 +126,38 @@ void	ft_check_flag(t_ptf *parms)
 	parms->i += 1;
 	ft_get_flag(parms);
 	ft_set_conversion(parms);
-
-	if (parms->precision == 0 && parms->v_str[0] == '0')	
+	
+	if (ft_match(parms->flag[0], DIGITO))
 	{
-		parms->len -= 1;
+		if (parms->width == 0)
+			ft_get_width(parms, 0);
+		ft_padding('l', parms);
 	}
-	else
+	else if (parms->flag[0] == '-')
 	{
-		if (ft_match(parms->flag[0], DIGITO))
+		ft_padding('r', parms);
+	}
+	else if (parms->flag[0] == '0')
+	{
+		if (parms->len_c < (int)parms->width)
 		{
-			if (parms->width == 0)
-				ft_get_width(parms, 0);
 			ft_padding('l', parms);
-		}
-		else if (parms->flag[0] == '-')
-		{
-			ft_padding('r', parms);
-		}
-		else if (parms->flag[0] == '0')
-		{
-			ft_padding('0', parms);
 		}
 		else
 		{
-			if (parms->conversion == '%')
-			{
-				parms->len += 1;
-				ft_putchar_fd('%', 1);
-			}
-			else
-			{
-				ft_putstr_fd(parms->v_str, 1);
-			}
+			ft_padding('0', parms);
+		}
+	}
+	else
+	{
+		if (parms->conversion == '%')
+		{
+			parms->len += 1;
+			ft_putchar_fd('%', 1);
+		}
+		else
+		{
+			ft_putstr_fd(parms->v_str, 1);
 		}
 	}
 }
