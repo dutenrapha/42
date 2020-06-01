@@ -1,28 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_p.c                                       :+:      :+:    :+:   */
+/*   ft_get_width.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rdutenke <rdutenke@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/05/12 16:06:27 by rdutenke          #+#    #+#             */
-/*   Updated: 2020/06/01 12:04:29 by rdutenke         ###   ########.fr       */
+/*   Created: 2020/05/29 15:49:07 by rdutenke          #+#    #+#             */
+/*   Updated: 2020/05/29 15:49:49 by rdutenke         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
-void    ft_print_p(t_ptf *parms)
+void	ft_get_width(t_ptf *parms, int k)
 {
+	size_t l_flag;
 	char *temp;
 
 	temp = NULL;
-    parms->v_p = va_arg(parms->ap, void *);
-    temp = ft_itoa_base((intptr_t)parms->v_p, HEX_BASE_L);
-	parms->v_str = ft_strjoin("0x", temp);
+	l_flag = 0;
+	while (!ft_match(parms->flag[l_flag + k], BREAKS))
+	{
+		l_flag++;
+	}
+	temp = ft_substr(parms->flag,k,l_flag);
+	parms->width = ft_atoi(temp);
 	free(temp);
-    parms->len_c = ft_strlen(parms->v_str);
-	parms->len += ft_strlen(parms->v_str);
-
 }
-

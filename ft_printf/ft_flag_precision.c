@@ -1,28 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_p.c                                       :+:      :+:    :+:   */
+/*   ft_flag_precision.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rdutenke <rdutenke@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/05/12 16:06:27 by rdutenke          #+#    #+#             */
-/*   Updated: 2020/06/01 12:04:29 by rdutenke         ###   ########.fr       */
+/*   Created: 2020/06/01 11:33:26 by rdutenke          #+#    #+#             */
+/*   Updated: 2020/06/01 11:49:58 by rdutenke         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
-void    ft_print_p(t_ptf *parms)
+void ft_flag_precision(t_ptf *parms)
 {
-	char *temp;
-
-	temp = NULL;
-    parms->v_p = va_arg(parms->ap, void *);
-    temp = ft_itoa_base((intptr_t)parms->v_p, HEX_BASE_L);
-	parms->v_str = ft_strjoin("0x", temp);
-	free(temp);
-    parms->len_c = ft_strlen(parms->v_str);
-	parms->len += ft_strlen(parms->v_str);
-
-}
-
+	if (parms->flag[1] == '*')
+		parms->precision = va_arg(parms->ap, int);	
+	else
+		ft_check_precision(parms);
+	ft_set_conversion(parms);
+	ft_putstr_fd(parms->v_str, 1);
+}	

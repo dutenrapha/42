@@ -1,28 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_p.c                                       :+:      :+:    :+:   */
+/*   ft_flag_asterisk.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rdutenke <rdutenke@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/05/12 16:06:27 by rdutenke          #+#    #+#             */
-/*   Updated: 2020/06/01 12:04:29 by rdutenke         ###   ########.fr       */
+/*   Created: 2020/05/29 15:59:02 by rdutenke          #+#    #+#             */
+/*   Updated: 2020/06/01 12:34:26 by rdutenke         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
-void    ft_print_p(t_ptf *parms)
+void ft_flag_asterisk(t_ptf *parms)
 {
-	char *temp;
-
-	temp = NULL;
-    parms->v_p = va_arg(parms->ap, void *);
-    temp = ft_itoa_base((intptr_t)parms->v_p, HEX_BASE_L);
-	parms->v_str = ft_strjoin("0x", temp);
-	free(temp);
-    parms->len_c = ft_strlen(parms->v_str);
-	parms->len += ft_strlen(parms->v_str);
-
+	parms->asterisk = va_arg(parms->ap, int);	
+	if (parms->asterisk > 0)
+	{
+		parms->width = parms->asterisk;
+		ft_flag_width(parms);
+	}
+	else
+	{
+		parms->width = -1*parms->asterisk;
+		ft_flag_minus(parms);
+	}
 }
-

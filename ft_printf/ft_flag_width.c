@@ -1,28 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_p.c                                       :+:      :+:    :+:   */
+/*   ft_flag_width.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rdutenke <rdutenke@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/05/12 16:06:27 by rdutenke          #+#    #+#             */
-/*   Updated: 2020/06/01 12:04:29 by rdutenke         ###   ########.fr       */
+/*   Created: 2020/05/29 15:44:57 by rdutenke          #+#    #+#             */
+/*   Updated: 2020/06/01 12:26:39 by rdutenke         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
-void    ft_print_p(t_ptf *parms)
+
+void ft_flag_width(t_ptf *parms)
 {
-	char *temp;
-
-	temp = NULL;
-    parms->v_p = va_arg(parms->ap, void *);
-    temp = ft_itoa_base((intptr_t)parms->v_p, HEX_BASE_L);
-	parms->v_str = ft_strjoin("0x", temp);
-	free(temp);
-    parms->len_c = ft_strlen(parms->v_str);
-	parms->len += ft_strlen(parms->v_str);
-
+	ft_check_precision(parms);
+	ft_set_conversion(parms);
+	if (parms->width == 0)
+		ft_get_width(parms, 0);
+	ft_padding('l', parms);
 }
-
