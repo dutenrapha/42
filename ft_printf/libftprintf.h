@@ -6,7 +6,7 @@
 /*   By: rdutenke <rdutenke@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/06 17:21:35 by rdutenke          #+#    #+#             */
-/*   Updated: 2020/06/03 20:18:19 by rdutenke         ###   ########.fr       */
+/*   Updated: 2020/06/03 20:32:48 by rdutenke         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,6 @@ typedef struct	s_params
 	char		conversion;
 	size_t			width;
 	int		precision;
-	int		string;
 	int			len;
 	int			slen;
 	int 		i;
