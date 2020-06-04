@@ -6,7 +6,7 @@
 /*   By: rdutenke <rdutenke@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/14 17:45:25 by rdutenke          #+#    #+#             */
-/*   Updated: 2020/06/01 18:35:35 by rdutenke         ###   ########.fr       */
+/*   Updated: 2020/06/04 17:47:42 by rdutenke         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,13 +19,12 @@ void ft_print_int(t_ptf *parms)
 	int i;
 
 	i = 0;
-	diff =0;
+	diff = 0;
 	temp = NULL;
     parms->v_int = va_arg(parms->ap, int);
 	parms->v_str = ft_itoa(parms->v_int);
 	parms->len_c = ft_strlen(parms->v_str);
-	diff = parms->precision - parms->len_c ;
-
+	diff = parms->precision - parms->len_c;
 	if(parms->precision == 0 && parms->v_str[0] == '0')
 	{
 		temp =  ft_strdup(parms->v_str);
@@ -62,13 +61,9 @@ void ft_print_int(t_ptf *parms)
 				i++;
 			}
 		}
-
-
-
 		free(temp);
 		parms->len_c = ft_strlen(parms->v_str);
 	}
-
 	parms->len += ft_strlen(parms->v_str); 
 }
 

@@ -6,7 +6,7 @@
 /*   By: rdutenke <rdutenke@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/13 17:39:23 by rdutenke          #+#    #+#             */
-/*   Updated: 2020/06/01 12:04:38 by rdutenke         ###   ########.fr       */
+/*   Updated: 2020/06/04 17:45:15 by rdutenke         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,5 +42,7 @@ void	ft_print_u(t_ptf *parms)
 		free(temp);
 		parms->len_c = ft_strlen(parms->v_str);
 	}
+	if(parms->precision == 0 && parms->v_str[0] == '0')
+		parms->v_str = ft_strdup(" ");
 	parms->len += ft_strlen(parms->v_str);
 }
