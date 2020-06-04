@@ -6,7 +6,7 @@
 /*   By: rdutenke <rdutenke@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/29 16:57:22 by rdutenke          #+#    #+#             */
-/*   Updated: 2020/06/03 19:17:36 by rdutenke         ###   ########.fr       */
+/*   Updated: 2020/06/03 21:33:37 by rdutenke         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void 	ft_check_precision(t_ptf *parms)
 			if (temp2 < 0)
 				parms->precision  = -1;
 			else
-				parms->precision  = temp2;			
+				parms->precision  = temp2;
 		}
 		else
 		{

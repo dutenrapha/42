@@ -6,7 +6,7 @@
 /*   By: rdutenke <rdutenke@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/14 17:46:30 by rdutenke          #+#    #+#             */
-/*   Updated: 2020/06/01 12:04:33 by rdutenke         ###   ########.fr       */
+/*   Updated: 2020/06/03 21:33:29 by rdutenke         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void ft_print_str(t_ptf *parms)
 		parms->v_str = ft_substr(parms->v_str, 0, ft_strlen(parms->v_str));
 	}
 	parms->len_c = ft_strlen(parms->v_str);
-	if (parms->precision < parms->len_c && ft_strchr(parms->flag,'.') != NULL)
+	if (parms->precision < parms->len_c && parms->precision >= 0)
 	{
 		temp =  ft_strdup(parms->v_str);
 		free(parms->v_str);
