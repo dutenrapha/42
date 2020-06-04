@@ -6,7 +6,7 @@
 /*   By: rdutenke <rdutenke@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/11 15:24:03 by rdutenke          #+#    #+#             */
-/*   Updated: 2020/06/04 17:51:00 by rdutenke         ###   ########.fr       */
+/*   Updated: 2020/06/04 20:45:33 by rdutenke         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,11 +24,9 @@ void	ft_print_x(t_ptf *parms)
     parms->v_p = va_arg(parms->ap, void *);
     parms->v_str = ft_itoa_hex((int32_t)parms->v_p, HEX_BASE_L);
     parms->len_c = ft_strlen(parms->v_str);
-	diff = parms->precision - parms->len_c ;
-	
+	diff = parms->precision - parms->len_c;
 	if (diff > 0)
 	{
-
 		temp =  ft_strdup(parms->v_str);
 		free(parms->v_str);
 		parms->v_str = NULL;
@@ -42,8 +40,14 @@ void	ft_print_x(t_ptf *parms)
 		free(temp);
 		parms->len_c = ft_strlen(parms->v_str);
 	}
-	if(parms->precision == 0 && parms->v_str[0] == '0')
-		parms->v_str = ft_strdup(" ");
+	if (parms->v_str[0] == '0' && parms->precision < parms->len_c && parms->precision >= 0)
+	{
+		temp =  ft_strdup(parms->v_str);
+		free(parms->v_str);
+		parms->v_str = NULL;
+		parms->v_str = ft_substr(temp, 0, parms->precision);
+		free(temp);
+		parms->len_c = ft_strlen(parms->v_str);
+	}		
 	parms->len += ft_strlen(parms->v_str);
-
 }
