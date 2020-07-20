@@ -6,7 +6,7 @@
 /*   By: rdutenke <rdutenke@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/29 15:59:02 by rdutenke          #+#    #+#             */
-/*   Updated: 2020/06/04 20:07:29 by rdutenke         ###   ########.fr       */
+/*   Updated: 2020/07/20 13:50:24 by rdutenke         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 void ft_flag_asterisk(t_ptf *parms)
 {
+	parms->v_ast = 1;
 	parms->asterisk = va_arg(parms->ap, int);	
 	if (parms->asterisk > 0)
 	{
@@ -25,4 +26,5 @@ void ft_flag_asterisk(t_ptf *parms)
 		parms->width = -1*parms->asterisk;
 		ft_flag_minus(parms);
 	}
+
 }
