@@ -6,7 +6,7 @@
 /*   By: rdutenke <rdutenke@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/14 17:46:03 by rdutenke          #+#    #+#             */
-/*   Updated: 2020/07/20 15:02:30 by rdutenke         ###   ########.fr       */
+/*   Updated: 2020/07/20 15:33:46 by rdutenke         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,14 @@ void ft_print_char(t_ptf *parms)
 	if(!(temp = (char *)ft_calloc(2,sizeof(char))))
 		return ;
 	parms->v_c = va_arg(parms->ap, int);
-	temp[0] = (char)parms->v_c;
+	if (parms->v_c == 0)
+	{
+		temp[0] = '\0';
+	}
+	else
+	{
+		temp[0] = (char)parms->v_c;
+	}
 	parms->v_str = ft_strdup(temp);
 	free(temp);
 	parms->len_c = ft_strlen(parms->v_str);
