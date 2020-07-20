@@ -6,7 +6,7 @@
 /*   By: rdutenke <rdutenke@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/29 15:50:48 by rdutenke          #+#    #+#             */
-/*   Updated: 2020/07/20 08:56:47 by rdutenke         ###   ########.fr       */
+/*   Updated: 2020/07/20 09:04:43 by rdutenke         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void ft_flag_minus(t_ptf *parms)
 	{
 		if (*pos == '*' && pre == NULL)
 		{
-			temp = va_arg(parms->ap, void *);
+			temp = va_arg(parms->ap, int);
 			if (temp <0)
 				parms->width = -temp;
 			else
