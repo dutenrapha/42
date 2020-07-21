@@ -6,7 +6,7 @@
 /*   By: rdutenke <rdutenke@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/11 12:04:36 by rdutenke          #+#    #+#             */
-/*   Updated: 2020/07/20 09:18:01 by rdutenke         ###   ########.fr       */
+/*   Updated: 2020/07/20 21:58:01 by rdutenke         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,13 @@ void	ft_check_flag(t_ptf *parms)
     parms->len -= 1;
 	parms->i += 1;
 	ft_get_flag(parms);
-	ft_set_flag(parms);
+	if (parms->conversion == '%')
+	{
+		ft_flag_none(parms);
+	}
+	else
+	{
+		ft_set_flag(parms);
+	}
 }
 

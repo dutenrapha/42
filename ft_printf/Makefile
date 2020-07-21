@@ -6,7 +6,7 @@
 #    By: rdutenke <rdutenke@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/05/06 16:48:38 by rdutenke          #+#    #+#              #
-#    Updated: 2020/07/20 20:37:52 by rdutenke         ###   ########.fr        #
+#    Updated: 2020/07/20 21:44:38 by rdutenke         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,7 @@ HEADER = libftprintf.h
 
 COMPI = clang
 
-MAIN = main8.c
+MAIN = main9.c
 
 FUNCTIONS = ft_printf.c ft_check_flag.c ft_int_len.c ft_print_x.c ft_itoa_base.c ft_print_xup.c \
 			ft_print_p.c ft_print_u.c ft_print_int.c ft_print_char.c ft_print_str.c\
@@ -51,8 +51,7 @@ re:	fclean all
 run:	re
 	@clear
 	@$(COMPI) $(FLAGS) $(MAIN) -L. -lftprintf
-	@./a.out | cat -e
-	@./a.out
+	@./a.out 
 
 test:	fclean $(DIRLIBFT)/libft.a
 	@$(COMPI) $(FLAGS) -g $(MAIN) $(FUNCTIONS) -L. $(DIRLIBFT)/libft.a

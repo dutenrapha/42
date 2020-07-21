@@ -1,0 +1,29 @@
+#include "libftprintf.h"
+#include <stdio.h>
+int main()
+{
+int		a = 12;
+int             i = 8;
+int             j = -12;
+int     l = 0;
+
+
+
+printf(" --- printf : %d\n", printf("A%%A"));
+ft_printf(" --- ft_printf : %d\n", ft_printf("A%%A"));
+
+printf(" --- printf : %d\n", printf("A%5%A"));
+ft_printf(" --- ft_printf : %d\n", ft_printf("A%5%A"));
+
+printf(" --- printf : %d\n", printf("A%-5%A"));
+ft_printf(" --- ft_printf : %d\n", ft_printf("A%-5%A"));
+
+printf(" --- printf : %d\n", printf("A%05%A"));
+ft_printf(" --- ft_printf : %d\n", ft_printf("A%05%A"));
+
+printf(" --- printf : %d\n", printf("A%-05%A"));
+ft_printf(" --- ft_printf : %d\n", ft_printf("A%-05%A"));
+
+
+return (0);
+}
