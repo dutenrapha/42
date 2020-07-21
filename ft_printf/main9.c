@@ -11,17 +11,22 @@ int     l = 0;
 
 printf(" --- printf : %d\n", printf("A%%A"));
 ft_printf(" --- ft_printf : %d\n", ft_printf("A%%A"));
+printf("\n");
 
-printf(" --- printf : %d\n", printf("A%5%A"));
+
+printf(" --- printf : %d\n", printf("A    %%A"));
 ft_printf(" --- ft_printf : %d\n", ft_printf("A%5%A"));
+printf("\n");
 
-printf(" --- printf : %d\n", printf("A%-5%A"));
+printf(" --- printf : %d\n", printf("A%%    A"));
 ft_printf(" --- ft_printf : %d\n", ft_printf("A%-5%A"));
+printf("\n");
 
-printf(" --- printf : %d\n", printf("A%05%A"));
+printf(" --- printf : %d\n", printf("A0000%%A"));
 ft_printf(" --- ft_printf : %d\n", ft_printf("A%05%A"));
+printf("\n");
 
-printf(" --- printf : %d\n", printf("A%-05%A"));
+printf(" --- printf : %d\n", printf("A%%    A"));
 ft_printf(" --- ft_printf : %d\n", ft_printf("A%-05%A"));
 
 
