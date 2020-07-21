@@ -6,7 +6,7 @@
 /*   By: rdutenke <rdutenke@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/14 18:41:34 by rdutenke          #+#    #+#             */
-/*   Updated: 2020/06/05 16:00:49 by rdutenke         ###   ########.fr       */
+/*   Updated: 2020/07/20 21:15:51 by rdutenke         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,13 +41,31 @@ void ft_padding(char type, t_ptf *pms)
 		ft_print_padding(size, ' ');
 		if (size > 0)
 			pms->len += pms->width - pms->len_c;
-		ft_putstr_fd(pms->v_str, 1);
+		
+		if (pms->v_char == 1)
+		{
+			ft_putchar_fd('\0', 1);
+		}
+		else
+		{
+			ft_putstr_fd(pms->v_str, 1);
+		}
+		//ft_putstr_fd(pms->v_str, 1);
 	}
 	if (type == 'r')
 	{
 		if (size > 0)
 			pms->len += pms->width - pms->len_c;
-		ft_putstr_fd(pms->v_str, 1);
+		
+		if (pms->v_char == 1)
+		{
+			ft_putchar_fd('\0', 1);
+		}
+		else
+		{
+			ft_putstr_fd(pms->v_str, 1);
+		}
+		// ft_putstr_fd(pms->v_str, 1);
 		ft_print_padding(size, ' ');
 	}
 	if (type == '0')
@@ -57,11 +75,18 @@ void ft_padding(char type, t_ptf *pms)
 			ft_putchar_fd('-', 1);
 			size--;
 			pms->v_str[0] = '0';
-			// pms->len += 1;
 		}
 		ft_print_padding(size, '0');
 		if (size >= 0)
 			pms->len += pms->width - pms->len_c;
-		ft_putstr_fd(pms->v_str, 1);
+		if (pms->v_char == 1)
+		{
+			ft_putchar_fd('\0', 1);
+		}
+		else
+		{
+			ft_putstr_fd(pms->v_str, 1);
+		}
+		// ft_putstr_fd(pms->v_str, 1);
 	}
 }

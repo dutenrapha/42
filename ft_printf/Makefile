@@ -6,7 +6,7 @@
 #    By: rdutenke <rdutenke@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/05/06 16:48:38 by rdutenke          #+#    #+#              #
-#    Updated: 2020/07/20 13:51:01 by rdutenke         ###   ########.fr        #
+#    Updated: 2020/07/20 20:37:52 by rdutenke         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -51,6 +51,7 @@ re:	fclean all
 run:	re
 	@clear
 	@$(COMPI) $(FLAGS) $(MAIN) -L. -lftprintf
+	@./a.out | cat -e
 	@./a.out
 
 test:	fclean $(DIRLIBFT)/libft.a

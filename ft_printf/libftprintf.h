@@ -6,7 +6,7 @@
 /*   By: rdutenke <rdutenke@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/06 17:21:35 by rdutenke          #+#    #+#             */
-/*   Updated: 2020/07/20 13:48:14 by rdutenke         ###   ########.fr       */
+/*   Updated: 2020/07/20 21:11:52 by rdutenke         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ typedef struct	s_params
 	void		*v_p;
 	int			asterisk;
 	int			v_ast;
+	int			v_char;
 	char		v_c;
 	intmax_t	v_int;
 	char		conversion;
