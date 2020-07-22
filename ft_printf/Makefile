@@ -6,7 +6,7 @@
 #    By: rdutenke <rdutenke@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/05/06 16:48:38 by rdutenke          #+#    #+#              #
-#    Updated: 2020/07/21 22:09:57 by rdutenke         ###   ########.fr        #
+#    Updated: 2020/07/22 09:29:10 by rdutenke         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,7 +27,7 @@ FUNCTIONS = ft_printf.c ft_check_flag.c ft_int_len.c ft_print_x.c ft_itoa_base.c
 
 FLAGS = -Wall -Wextra -Werror
 
-DIRLIBFT = libft
+DIRLIBFT = ./libft
 
 FUNCTIONS_O = $(subst .c,.o,$(FUNCTIONS))
 

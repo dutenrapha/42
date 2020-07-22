@@ -6,13 +6,13 @@
 #    By: rdutenke <rdutenke@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/01/27 12:40:11 by rdutenke          #+#    #+#              #
-#    Updated: 2020/04/28 20:06:29 by rdutenke         ###   ########.fr        #
+#    Updated: 2020/07/22 09:33:29 by rdutenke         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libft.a
 
-COMPI = gcc
+COMPI = clang
 
 FUNCTIONS = ft_memset.c ft_bzero.c ft_memcpy.c ft_memccpy.c ft_memmove.c \
 		ft_memchr.c ft_memcmp.c ft_strlen.c ft_strlcpy.c ft_strlcat.c \
@@ -35,7 +35,6 @@ all: $(NAME)
 $(NAME):
 	@$(COMPI) -Wall -Wextra -Werror -c $(FUNCTIONS)
 	@ar rc $(NAME) $(FUNCTIONS_O) 
-	@ranlib $(NAME)
 
 clean:
 	@/bin/rm -f *.o
@@ -43,7 +42,7 @@ clean:
 fclean: clean
 	@/bin/rm -f $(NAME)
 
-re: fclean all run
+re: fclean all 
 
 debug:	fclean all
 	@$(COMPI) -Wall -Wextra -Werror -g main5.c -L. -lft -lbsd
