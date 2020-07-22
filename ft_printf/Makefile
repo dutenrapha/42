@@ -6,7 +6,7 @@
 #    By: rdutenke <rdutenke@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/05/06 16:48:38 by rdutenke          #+#    #+#              #
-#    Updated: 2020/07/20 21:44:38 by rdutenke         ###   ########.fr        #
+#    Updated: 2020/07/21 16:46:19 by rdutenke         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,7 +25,7 @@ FUNCTIONS = ft_printf.c ft_check_flag.c ft_int_len.c ft_print_x.c ft_itoa_base.c
 			ft_flag_zeros.c ft_flag_none.c ft_flag_asterisk.c ft_set_conversion.c ft_check_precision.c\
 			ft_flag_precision.c \
 
-FLAGS = 
+FLAGS = -Wall -Wextra -Werror
 
 DIRLIBFT = ../libft
 
@@ -38,7 +38,6 @@ all:	$(NAME)
 $(NAME):	$(DIRLIBFT)/libft.a
 		@$(COMPI) $(FLAGS) -c $(FUNCTIONS)
 		@ar rc $(NAME) $(FUNCTIONS_O) $(DIRLIBFT)/*.o
-		@ranlib $(NAME)
 
 clean:
 	@/bin/rm -f *.o $(DIRLIBFT)/*.o
