@@ -1,20 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isascii.c                                       :+:      :+:    :+:   */
+/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rdutenke <rdutenke@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/04/27 22:24:27 by rdutenke          #+#    #+#             */
-/*   Updated: 2020/04/27 22:25:02 by rdutenke         ###   ########.fr       */
+/*   Created: 2020/04/27 22:37:40 by rdutenke          #+#    #+#             */
+/*   Updated: 2020/07/22 20:20:02 by rdutenke         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_isascii(int c)
+#include "libftprintf.h"
+
+void	ft_putstr_fd(char *s, int fd)
 {
-	if (c >= 0 && c <= 127)
+	size_t	len;
+	size_t	i;
+
+	if (!s)
+		return ;
+	i = 0;
+	len = ft_strlen(s);
+	while (i < len)
 	{
-		return (1);
+		ft_putchar_fd(*(s + i), fd);
+		i++;
 	}
-	return (0);
 }

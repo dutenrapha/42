@@ -1,20 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_tolower.c                                       :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rdutenke <rdutenke@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/04/27 23:08:37 by rdutenke          #+#    #+#             */
-/*   Updated: 2020/04/27 23:09:04 by rdutenke         ###   ########.fr       */
+/*   Created: 2020/04/27 22:43:10 by rdutenke          #+#    #+#             */
+/*   Updated: 2020/07/22 20:20:12 by rdutenke         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_tolower(int c)
+#include "libftprintf.h"
+
+char	*ft_strdup(const char *s1)
 {
-	if (c >= 65 && c <= 90)
+	char	*point;
+	int		i;
+	int		len;
+
+	i = 0;
+	len = 0;
+	while (*(s1 + len) != '\0')
+		len++;
+	point = malloc(sizeof(char) * (len + 1));
+	if (point == 0)
+		return (0);
+	while (*(s1 + i) != '\0')
 	{
-		return (c + 32);
+		*(point + i) = *(s1 + i);
+		i++;
 	}
-	return (c);
+	*(point + i) = '\0';
+	return (point);
 }

@@ -1,36 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strchr.c                                        :+:      :+:    :+:   */
+/*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rdutenke <rdutenke@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/04/27 22:42:04 by rdutenke          #+#    #+#             */
-/*   Updated: 2020/04/27 22:42:58 by rdutenke         ###   ########.fr       */
+/*   Created: 2020/04/27 22:20:14 by rdutenke          #+#    #+#             */
+/*   Updated: 2020/07/22 20:19:15 by rdutenke         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "libftprintf.h"
 
-char	*ft_strchr(const char *s, int c)
+void	*ft_calloc(size_t nmemb, size_t size)
 {
-	int	i;
+	void	*array;
 
-	i = 0;
-	while (*(s + i) != '\0')
-	{
-		if (*(s + i) == c)
-		{
-			return ((char *)s + i);
-		}
-		i++;
-	}
-	if (c == '\0')
-	{
-		return ((char *)s + i);
-	}
-	else
-	{
+	if (!(array = (char *)malloc(size * nmemb)))
 		return (NULL);
-	}
+	return (ft_memset(array, 0, size * nmemb));
 }

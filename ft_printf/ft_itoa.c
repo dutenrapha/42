@@ -6,11 +6,11 @@
 /*   By: rdutenke <rdutenke@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/27 23:21:56 by rdutenke          #+#    #+#             */
-/*   Updated: 2020/04/29 21:15:36 by rdutenke         ###   ########.fr       */
+/*   Updated: 2020/07/22 20:19:27 by rdutenke         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "libftprintf.h"
 
 static	void	ft_first_count(int *resto, int *i, int *n)
 {

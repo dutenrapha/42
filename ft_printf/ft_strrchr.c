@@ -1,36 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstmap.c                                        :+:      :+:    :+:   */
+/*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rdutenke <rdutenke@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/04/28 18:47:48 by rdutenke          #+#    #+#             */
-/*   Updated: 2020/04/28 18:50:19 by rdutenke         ###   ########.fr       */
+/*   Created: 2020/04/27 23:02:46 by rdutenke          #+#    #+#             */
+/*   Updated: 2020/07/22 20:22:17 by rdutenke         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "libftprintf.h"
 
-t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
+char	*ft_strrchr(const char *s, int c)
 {
-	t_list	*new;
-	t_list	*temp;
+	int	last;
+	int	i;
+	int	existe;
 
-	new = NULL;
-	if (lst)
+	existe = 0;
+	last = 0;
+	i = 0;
+	while (*(s + i) != '\0')
 	{
-		while (lst)
+		if (*(s + i) == c)
 		{
-			if (!(temp = ft_lstnew(f(lst->content))))
-			{
-				ft_lstclear(&new, del);
-				return (NULL);
-			}
-			ft_lstadd_back(&new, temp);
-			lst = lst->next;
+			last = i;
+			if (existe != 1)
+				existe = 1;
 		}
-		return (new);
+		i++;
 	}
-	return (NULL);
+	if (c == '\0')
+		return (((char*)s + i));
+	if (last == 0 && existe == 0)
+		return (NULL);
+	else
+	{
+		return ((char*)s + last);
+	}
 }

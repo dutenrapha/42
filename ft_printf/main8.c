@@ -2,10 +2,10 @@
 #include <stdio.h>
 int main()
 {
-int		a = 12;
-int             i = 8;
-int             j = -12;
-int     l = 0;
+// int		a = 12;
+// int             i = 8;
+// int             j = -12;
+// int     l = 0;
 
 
 

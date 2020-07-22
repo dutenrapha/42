@@ -1,41 +1,43 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_substr.c                                        :+:      :+:    :+:   */
+/*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rdutenke <rdutenke@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/04/27 23:06:23 by rdutenke          #+#    #+#             */
-/*   Updated: 2020/04/27 23:08:23 by rdutenke         ###   ########.fr       */
+/*   Created: 2020/04/27 22:44:43 by rdutenke          #+#    #+#             */
+/*   Updated: 2020/07/22 20:20:18 by rdutenke         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "libftprintf.h"
 
-char	*ft_substr(char const *s, unsigned int start, size_t len)
+char	*ft_strjoin(char const *s1, char const *s2)
 {
-	char	*substr;
-	size_t	i;
+	char	*new;
+	int		size1;
+	int		i;
 
-	if (!s)
+	if (!s1 || !s2)
 		return (NULL);
-	if ((int)len <= 0 || (int)start < 0 ||
-	(int)start > (int)ft_strlen((char *)s) - 1)
+	size1 = ft_strlen(s1);
+	i = ft_strlen(s2);
+	new = (char *)malloc((sizeof(char) * (size1 + i + 1)));
+	if (new == NULL)
+		return (NULL);
+	i = 0;
+	while (i < size1)
 	{
-		return (ft_strdup(""));
-	}
-	substr = (char *)ft_calloc(len + 1, sizeof(char));
-	if (!substr)
-	{
-		return (0);
+		new[i] = s1[i];
+		i++;
 	}
 	i = 0;
-	while (i < len && *(s + start) != '\0')
+	while (s2[i] != '\0')
 	{
-		*(substr + i) = *(s + start);
+		new[size1 + i] = s2[i];
 		i++;
-		start++;
 	}
-	*(substr + i) = '\0';
-	return (substr);
+	new[size1 + i] = '\0';
+	return (new);
+
 }

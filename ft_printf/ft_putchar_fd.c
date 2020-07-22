@@ -1,22 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_calloc.c                                        :+:      :+:    :+:   */
+/*   ft_putchar_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rdutenke <rdutenke@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/04/27 22:20:14 by rdutenke          #+#    #+#             */
-/*   Updated: 2020/04/27 22:20:20 by rdutenke         ###   ########.fr       */
+/*   Created: 2020/04/27 22:33:14 by rdutenke          #+#    #+#             */
+/*   Updated: 2020/07/22 20:19:57 by rdutenke         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "libftprintf.h"
 
-void	*ft_calloc(size_t nmemb, size_t size)
+void	ft_putchar_fd(char c, int fd)
 {
-	void	*array;
-
-	if (!(array = (char *)malloc(size * nmemb)))
-		return (NULL);
-	return (ft_memset(array, 0, size * nmemb));
+	write(fd, &c, 1);
 }

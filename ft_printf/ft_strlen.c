@@ -1,42 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strrchr.c                                       :+:      :+:    :+:   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rdutenke <rdutenke@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/04/27 23:02:46 by rdutenke          #+#    #+#             */
-/*   Updated: 2020/04/27 23:04:08 by rdutenke         ###   ########.fr       */
+/*   Created: 2020/01/27 19:39:59 by rdutenke          #+#    #+#             */
+/*   Updated: 2020/07/22 20:20:22 by rdutenke         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "libftprintf.h"
 
-char	*ft_strrchr(const char *s, int c)
+size_t	ft_strlen(const char *s)
 {
-	int	last;
-	int	i;
-	int	existe;
+	size_t len;
 
-	existe = 0;
-	last = 0;
-	i = 0;
-	while (*(s + i) != '\0')
+	len = 0;
+	while (*s++)
 	{
-		if (*(s + i) == c)
-		{
-			last = i;
-			if (existe != 1)
-				existe = 1;
-		}
-		i++;
+		len++;
 	}
-	if (c == '\0')
-		return (((char*)s + i));
-	if (last == 0 && existe == 0)
-		return (NULL);
-	else
-	{
-		return ((char*)s + last);
-	}
+	return (len);
 }

@@ -1,36 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strmapi.c                                       :+:      :+:    :+:   */
+/*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rdutenke <rdutenke@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/04/27 22:54:26 by rdutenke          #+#    #+#             */
-/*   Updated: 2020/04/27 22:56:18 by rdutenke         ###   ########.fr       */
+/*   Created: 2020/04/27 22:42:04 by rdutenke          #+#    #+#             */
+/*   Updated: 2020/07/22 20:20:07 by rdutenke         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "libftprintf.h"
 
-char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
+char	*ft_strchr(const char *s, int c)
 {
-	int		len;
-	int		i;
-	char	*strmapi;
+	int	i;
 
-	if (!s)
-		return (NULL);
 	i = 0;
-	len = ft_strlen(s);
-	strmapi = (char *)ft_calloc(len + 1, sizeof(char));
-	if (!strmapi)
+	while (*(s + i) != '\0')
 	{
-		return (NULL);
-	}
-	while (i < len)
-	{
-		*(strmapi + i) = f(i, *(s + i));
+		if (*(s + i) == c)
+		{
+			return ((char *)s + i);
+		}
 		i++;
 	}
-	return (strmapi);
+	if (c == '\0')
+	{
+		return ((char *)s + i);
+	}
+	else
+	{
+		return (NULL);
+	}
 }
