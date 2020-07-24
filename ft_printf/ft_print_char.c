@@ -6,23 +6,23 @@
 /*   By: rdutenke <rdutenke@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/14 17:46:03 by rdutenke          #+#    #+#             */
-/*   Updated: 2020/07/20 21:12:59 by rdutenke         ###   ########.fr       */
+/*   Updated: 2020/07/24 13:35:08 by rdutenke         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libftprintf.h"
+#include "ft_printf.h"
 
-void ft_print_char(t_ptf *parms)
+void	ft_print_char(t_ptf *parms)
 {
 	char *temp;
 
 	temp = NULL;
-	if(!(temp = (char *)ft_calloc(2,sizeof(char))))
+	if (!(temp = (char *)ft_calloc(2, sizeof(char))))
 		return ;
 	parms->v_c = va_arg(parms->ap, int);
 	if (parms->v_c == 0)
 	{
-			parms->v_char = 1;
+		parms->v_char = 1;
 	}
 	else
 	{

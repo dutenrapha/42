@@ -6,43 +6,52 @@
 /*   By: rdutenke <rdutenke@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/29 16:57:22 by rdutenke          #+#    #+#             */
-/*   Updated: 2020/06/03 22:32:11 by rdutenke         ###   ########.fr       */
+/*   Updated: 2020/07/24 13:33:57 by rdutenke         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libftprintf.h"
+#include "ft_printf.h"
 
-void 	ft_check_precision(t_ptf *parms)
+static void	ft_aux(t_ptf *pms, char *pos)
 {
-	int init;
-	int final;
-	int temp2;
-	char *pos;
-	char *temp;
+	char	*temp;
+	int		init;
+	int		f;
+	int		length;
+
+	length = 0;
+	temp = NULL;
+	init = 0;
+	f = 0;
+	length = ft_strlen(pms->flag);
+	init = length - ft_strlen(pos) + 1;
+	f = length - ft_strlen(ft_strrchr(pms->flag, pms->conversion));
+	temp = ft_substr(pms->flag, init, f - init);
+	pms->precision = ft_atoi(temp);
+	free(temp);
+}
+
+void		ft_check_precision(t_ptf *pms)
+{
+	int		temp2;
+	char	*pos;
 
 	temp2 = 0;
-	temp = NULL;
 	pos = NULL;
-	pos = ft_strchr(parms->flag,'.');
-	if (pos!= NULL)
+	pos = ft_strchr(pms->flag, '.');
+	if (pos != NULL)
 	{
 		if (*(pos + 1) == '*')
 		{
-			temp2 = va_arg(parms->ap, int);
+			temp2 = va_arg(pms->ap, int);
 			if (temp2 < 0)
-				parms->precision  = -1;
+				pms->precision = -1;
 			else
-				parms->precision  = temp2;
+				pms->precision = temp2;
 		}
 		else
 		{
-			init = 0;
-			final = 0;
-			init = ft_strlen(parms->flag) - ft_strlen(pos) + 1;
-			final = ft_strlen(parms->flag) - ft_strlen(ft_strrchr(parms->flag,parms->conversion));
-			temp = ft_substr(parms->flag,init,final - init);
-			parms->precision = ft_atoi(temp);
+			ft_aux(pms, pos);
 		}
-		free(temp);
 	}
 }

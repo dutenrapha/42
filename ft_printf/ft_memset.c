@@ -6,11 +6,11 @@
 /*   By: rdutenke <rdutenke@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/27 22:32:25 by rdutenke          #+#    #+#             */
-/*   Updated: 2020/07/22 20:19:48 by rdutenke         ###   ########.fr       */
+/*   Updated: 2020/07/24 13:35:01 by rdutenke         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libftprintf.h"
+#include "ft_printf.h"
 
 void	*ft_memset(void *str, int c, size_t n)
 {

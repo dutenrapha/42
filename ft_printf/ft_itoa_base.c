@@ -6,18 +6,18 @@
 /*   By: rdutenke <rdutenke@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/11 18:26:36 by rdutenke          #+#    #+#             */
-/*   Updated: 2020/05/22 16:32:23 by rdutenke         ###   ########.fr       */
+/*   Updated: 2020/07/24 13:34:48 by rdutenke         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libftprintf.h"
+#include "ft_printf.h"
 
-char	*ft_itoa_base(uintmax_t nb, char* base)
+char	*ft_itoa_base(uintmax_t nb, char *base)
 {
-	int		cont_num;
-	uintmax_t		base_len;
+	int			cont_num;
+	uintmax_t	base_len;
 	uintmax_t	aux;
-	char	*str;
+	char		*str;
 
 	base_len = ft_strlen(base);
 	cont_num = 1;

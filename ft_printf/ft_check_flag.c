@@ -6,11 +6,11 @@
 /*   By: rdutenke <rdutenke@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/11 12:04:36 by rdutenke          #+#    #+#             */
-/*   Updated: 2020/07/21 09:50:03 by rdutenke         ###   ########.fr       */
+/*   Updated: 2020/07/24 13:33:53 by rdutenke         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include    "libftprintf.h"
+#include "ft_printf.h"
 
 static	void	ft_set_flag(t_ptf *parms)
 {
@@ -27,11 +27,10 @@ static	void	ft_set_flag(t_ptf *parms)
 	else
 	{
 		ft_flag_none(parms);
-		
 	}
 }
 
-static void	ft_get_flag(t_ptf *parms)
+static void		ft_get_flag(t_ptf *parms)
 {
 	size_t l_flag;
 	size_t j;
@@ -43,7 +42,7 @@ static void	ft_get_flag(t_ptf *parms)
 		l_flag++;
 		j++;
 	}
-	if(!(parms->flag = (char *)ft_calloc(l_flag + 1, sizeof(char))))
+	if (!(parms->flag = (char *)ft_calloc(l_flag + 1, sizeof(char))))
 		return ;
 	parms->flag[0] = parms->str[parms->i];
 	j = 1;
@@ -52,24 +51,15 @@ static void	ft_get_flag(t_ptf *parms)
 		parms->flag[j] = parms->str[parms->i + j];
 		j++;
 	}
-	parms->conversion = parms->flag[j-1];
+	parms->conversion = parms->flag[j - 1];
 	parms->len -= ft_strlen(parms->flag);
 	parms->i += ft_strlen(parms->flag);
 }
 
-void	ft_check_flag(t_ptf *parms)
+void			ft_check_flag(t_ptf *parms)
 {
-    parms->len -= 1;
+	parms->len -= 1;
 	parms->i += 1;
 	ft_get_flag(parms);
-	// if (parms->conversion == '%')
-	// {
-	// 	ft_flag_none(parms);
-	// }
-	// else
-	// {
-	// 	ft_set_flag(parms);
-	// }
 	ft_set_flag(parms);
 }
-

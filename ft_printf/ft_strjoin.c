@@ -6,11 +6,11 @@
 /*   By: rdutenke <rdutenke@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/27 22:44:43 by rdutenke          #+#    #+#             */
-/*   Updated: 2020/07/22 20:20:18 by rdutenke         ###   ########.fr       */
+/*   Updated: 2020/07/24 13:36:52 by rdutenke         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libftprintf.h"
+#include "ft_printf.h"
 
 char	*ft_strjoin(char const *s1, char const *s2)
 {
@@ -39,5 +39,4 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	}
 	new[size1 + i] = '\0';
 	return (new);
-
 }

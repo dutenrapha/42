@@ -1,18 +1,30 @@
-#include "libftprintf.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_itoa_hex.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: rdutenke <rdutenke@student.42sp.org.br>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/07/23 19:16:19 by rdutenke          #+#    #+#             */
+/*   Updated: 2020/07/24 13:34:52 by rdutenke         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-char	*ft_itoa_hex(uint32_t nb, char* base)
+#include "ft_printf.h"
+
+char	*ft_itoa_hex(uint32_t nb, char *base)
 {
-	int		cont_num;
-	uintmax_t		base_len;
+	int			cont_num;
+	uintmax_t	base_len;
 	uint32_t	aux;
-	char	*str;
+	char		*str;
 
- 	base_len = ft_strlen(base);
+	base_len = ft_strlen(base);
 	cont_num = 1;
 	aux = nb;
 	str = NULL;
 	while ((aux = aux / base_len) > 0)
-	cont_num++;
+		cont_num++;
 	str = (char *)ft_calloc((cont_num + 1), sizeof(char));
 	if (!str)
 		return (NULL);

@@ -6,11 +6,11 @@
 /*   By: rdutenke <rdutenke@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/27 23:02:46 by rdutenke          #+#    #+#             */
-/*   Updated: 2020/07/22 20:22:17 by rdutenke         ###   ########.fr       */
+/*   Updated: 2020/07/24 13:37:00 by rdutenke         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libftprintf.h"
+#include "ft_printf.h"
 
 char	*ft_strrchr(const char *s, int c)
 {

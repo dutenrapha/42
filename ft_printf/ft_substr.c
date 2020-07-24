@@ -6,11 +6,11 @@
 /*   By: rdutenke <rdutenke@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/27 23:06:23 by rdutenke          #+#    #+#             */
-/*   Updated: 2020/07/22 20:20:25 by rdutenke         ###   ########.fr       */
+/*   Updated: 2020/07/24 13:37:03 by rdutenke         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libftprintf.h"
+#include "ft_printf.h"
 
 char	*ft_substr(char const *s, unsigned int start, size_t len)
 {

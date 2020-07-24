@@ -6,13 +6,13 @@
 /*   By: rdutenke <rdutenke@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/29 15:54:45 by rdutenke          #+#    #+#             */
-/*   Updated: 2020/07/20 21:13:51 by rdutenke         ###   ########.fr       */
+/*   Updated: 2020/07/24 13:34:15 by rdutenke         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libftprintf.h"
+#include "ft_printf.h"
 
-void ft_flag_none(t_ptf *parms)
+void	ft_flag_none(t_ptf *parms)
 {
 	if (parms->conversion == '%')
 	{
@@ -32,5 +32,5 @@ void ft_flag_none(t_ptf *parms)
 		}
 	}
 	if (parms->conversion == 'c' && parms->v_str[0] == '\0')
-		parms->len +=1;	
+		parms->len += 1;
 }

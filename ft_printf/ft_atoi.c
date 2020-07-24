@@ -6,9 +6,11 @@
 /*   By: rdutenke <rdutenke@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/27 16:18:28 by rdutenke          #+#    #+#             */
-/*   Updated: 2020/04/28 15:21:24 by rdutenke         ###   ########.fr       */
+/*   Updated: 2020/07/24 13:33:46 by rdutenke         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "ft_printf.h"
 
 static	int	ft_return(int sinal)
 {

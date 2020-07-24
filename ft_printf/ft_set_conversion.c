@@ -6,14 +6,13 @@
 /*   By: rdutenke <rdutenke@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/29 16:01:30 by rdutenke          #+#    #+#             */
-/*   Updated: 2020/05/29 16:02:40 by rdutenke         ###   ########.fr       */
+/*   Updated: 2020/07/24 13:36:42 by rdutenke         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libftprintf.h"
+#include "ft_printf.h"
 
-
-void ft_set_conversion(t_ptf *parms)
+void	ft_set_conversion(t_ptf *parms)
 {
 	if (parms->conversion == 'd' || parms->conversion == 'i')
 		ft_print_int(parms);
