@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libftprintf.h                                      :+:      :+:    :+:   */
+/*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rdutenke <rdutenke@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/06 17:21:35 by rdutenke          #+#    #+#             */
-/*   Updated: 2020/07/24 13:30:54 by rdutenke         ###   ########.fr       */
+/*   Updated: 2020/07/24 14:04:07 by rdutenke         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,8 @@
 
 # include <stdarg.h>
 # include <stdint.h>
-# include "../libft/libft.h"
+# include <stdlib.h>
+# include <unistd.h>
 
 # define DIGITO			"*123456789"
 # define DEC_BASE		"0123456789"
@@ -24,6 +25,15 @@
 # define CONVERSIONS	"cspdiuxX%nfge"
 # define BREAKS			"cspdiuxX%"
 # define FLAGS			"-0.*# +lh"
+
+typedef	struct	s_parms_itoa
+{
+	char		*itoa;
+	long int	n_orig;
+	int			resto;
+	int			i;
+	int			passo;
+}				t_pf;
 
 typedef struct	s_params
 {
@@ -69,5 +79,16 @@ void			ft_flag_asterisk(t_ptf *parms);
 void			ft_set_conversion(t_ptf *parms);
 void			ft_check_precision(t_ptf *parms);
 void			ft_flag_precision(t_ptf *parms);
-
+void			ft_putchar_fd(char c, int fd);
+void			ft_putstr_fd(char *s, int fd);
+size_t			ft_strlen(const char *s);
+void			*ft_calloc(size_t nmemb, size_t size);
+char			*ft_substr(char const *s, unsigned int start, size_t len);
+int				ft_atoi(const char *nptr);
+char			*ft_strchr(const char *s, int c);
+char			*ft_strdup(const char *s);
+void			*ft_memset(void *str, int c, size_t n);
+char			*ft_strjoin(char const *s1, char const *s2);
+char			*ft_itoa(int n);
+char			*ft_strrchr(const char *s, int c);
 #endif
