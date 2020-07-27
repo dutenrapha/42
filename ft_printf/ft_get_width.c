@@ -6,7 +6,7 @@
 /*   By: rdutenke <rdutenke@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/29 15:49:07 by rdutenke          #+#    #+#             */
-/*   Updated: 2020/07/27 14:46:11 by rdutenke         ###   ########.fr       */
+/*   Updated: 2020/07/27 14:53:44 by rdutenke         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,29 +14,14 @@
 
 static int	ft_len_flag(t_ptf *parms, int k)
 {
-	int i;
-	int j;
-	int end;
-	
-	end = 0;
-	j = 0;
-	while (1)
+	int	l_flag;
+	l_flag = 0;
+	while (ft_isdigit(parms->flag[l_flag + k]))
 	{
-		i = 0;
-		while (BREAKS[i] != '\0' && end == 0)
-		{
-			if (parms->str[j + k] == BREAKS[i])
-				end = 1;
-			i++;
-		}
-		j++;
-		if (end == 1)
-			break;
+		l_flag++;
 	}
-	return (j);
+	return (l_flag);
 }
-
-
 
 void	ft_get_width(t_ptf *parms, int k)
 {
