@@ -1,27 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_match.c                                         :+:      :+:    :+:   */
+/*   ft_isdigit.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rdutenke <rdutenke@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/05/14 17:52:20 by rdutenke          #+#    #+#             */
-/*   Updated: 2020/07/27 11:34:05 by rdutenke         ###   ########.fr       */
+/*   Created: 2020/07/27 14:12:32 by rdutenke          #+#    #+#             */
+/*   Updated: 2020/07/27 14:12:43 by rdutenke         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_match(char c, char *conversion)
+int	ft_isdigit(int c)
 {
-	int i;
-		
-	i = 0;
-	while (conversion[i] != '\0')
+	if (c >= '0' && c <= '9')
 	{
-		if (c == conversion[i])
-			return (1);
-		i++;
+		return (1);
 	}
 	return (0);
 }

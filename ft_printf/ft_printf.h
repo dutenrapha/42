@@ -6,7 +6,7 @@
 /*   By: rdutenke <rdutenke@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/06 17:21:35 by rdutenke          #+#    #+#             */
-/*   Updated: 2020/07/24 14:04:07 by rdutenke         ###   ########.fr       */
+/*   Updated: 2020/07/27 14:13:40 by rdutenke         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,6 @@ void			ft_print_u(t_ptf *parms);
 void			ft_print_int(t_ptf *parms);
 void			ft_print_char(t_ptf *parms);
 void			ft_print_str(t_ptf *parms);
-int				ft_match(char c, char *conversion);
 void			ft_padding(char type, t_ptf *parms);
 char			*ft_itoa_hex(uint32_t nb, char *base);
 void			ft_flag_width(t_ptf *parms);
@@ -91,4 +90,5 @@ void			*ft_memset(void *str, int c, size_t n);
 char			*ft_strjoin(char const *s1, char const *s2);
 char			*ft_itoa(int n);
 char			*ft_strrchr(const char *s, int c);
+int				ft_isdigit(int c);
 #endif
