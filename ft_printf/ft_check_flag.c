@@ -6,7 +6,7 @@
 /*   By: rdutenke <rdutenke@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/11 12:04:36 by rdutenke          #+#    #+#             */
-/*   Updated: 2020/07/27 14:13:00 by rdutenke         ###   ########.fr       */
+/*   Updated: 2020/07/27 15:16:51 by rdutenke         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ static	void	ft_set_flag(t_ptf *parms)
 {
 	if (parms->flag[0] == '*')
 		ft_flag_asterisk(parms);
-	else if (ft_isdigit(parms->flag[0]))
+	else if (ft_isdigit(parms->flag[0]) && parms->flag[0] != '0')
 		ft_flag_width(parms);
 	else if (parms->flag[0] == '-')
 		ft_flag_minus(parms);
