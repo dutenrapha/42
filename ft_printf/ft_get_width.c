@@ -6,13 +6,13 @@
 /*   By: rdutenke <rdutenke@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/29 15:49:07 by rdutenke          #+#    #+#             */
-/*   Updated: 2020/07/27 14:14:49 by rdutenke         ###   ########.fr       */
+/*   Updated: 2020/07/27 14:24:04 by rdutenke         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static int	ft_len_flag(t_ptf *parms)
+static int	ft_len_flag(t_ptf *parms, int k)
 {
 	int i;
 	int j;
@@ -25,7 +25,7 @@ static int	ft_len_flag(t_ptf *parms)
 		i = 0;
 		while (BREAKS[i] != '\0' && end == 0)
 		{
-			if (parms->str[parms->i + j] == BREAKS[i])
+			if (parms->str[parms->i + k + j] == BREAKS[i])
 				end = 1;
 			i++;
 		}
@@ -49,7 +49,7 @@ void	ft_get_width(t_ptf *parms, int k)
 	// {
 	// 	l_flag++;
 	// }
-	l_flag = ft_len_flag(parms);
+	l_flag = ft_len_flag(parms, k);
 	temp = ft_substr(parms->flag, k, l_flag);
 	parms->width = ft_atoi(temp);
 	free(temp);
