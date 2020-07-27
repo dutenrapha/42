@@ -6,7 +6,7 @@
 /*   By: rdutenke <rdutenke@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/14 18:41:34 by rdutenke          #+#    #+#             */
-/*   Updated: 2020/07/27 19:59:37 by rdutenke         ###   ########.fr       */
+/*   Updated: 2020/07/27 20:02:55 by rdutenke         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@ void		ft_padding(char type, t_ptf *pms)
 	int	size;
 
 	size = 0;
-	if (pms->v_str != NULL)
+	if (pms->v_str != NULL && parms->conversion == '\0')
 	{
 		if (pms->conversion == '%')
 		{
