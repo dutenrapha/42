@@ -6,7 +6,7 @@
 /*   By: rdutenke <rdutenke@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/11 12:04:36 by rdutenke          #+#    #+#             */
-/*   Updated: 2020/07/27 19:23:22 by rdutenke         ###   ########.fr       */
+/*   Updated: 2020/07/27 19:30:26 by rdutenke         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ static int	ft_len_flag(t_ptf *parms)
 			i++;
 		}
 		j++;
-		if (end == 1 || parms->str[parms->i + j]!= '\0')
+		if (end == 1 || parms->str[parms->i + j] == '\0')
 			break;
 	}
 	return (j);
