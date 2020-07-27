@@ -6,7 +6,7 @@
 /*   By: rdutenke <rdutenke@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/11 12:04:36 by rdutenke          #+#    #+#             */
-/*   Updated: 2020/07/27 15:16:51 by rdutenke         ###   ########.fr       */
+/*   Updated: 2020/07/27 16:40:59 by rdutenke         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,14 +59,11 @@ static void		ft_get_flag(t_ptf *parms)
 {
 	size_t l_flag;
 	size_t j;
+	char *temp;
 
+	temp = NULL;
 	j = 0;
 	l_flag = 0;
-	// while (!ft_match(parms->str[parms->i + j], CONVERSIONS))
-	// {
-	// 	l_flag++;
-	// 	j++;
-	// }
 	l_flag = ft_len_flag(parms);
 
 	if (!(parms->flag = (char *)ft_calloc(l_flag + 1, sizeof(char))))
@@ -78,9 +75,25 @@ static void		ft_get_flag(t_ptf *parms)
 		parms->flag[j] = parms->str[parms->i + j];
 		j++;
 	}
-	parms->conversion = parms->flag[j - 1];
 	parms->len -= ft_strlen(parms->flag);
 	parms->i += ft_strlen(parms->flag);
+	if (parms->flag[0] == '0' && parms->flag[1] =='-')
+	{
+		temp = ft_substr(parms->flag, 1, l_flag - 1);
+		free(parms->flag);
+		if (!(parms->flag = (char *)ft_calloc(l_flag - 1 + 1, sizeof(char))))
+			return ;
+		j = 0;
+		while (j < l_flag - 1) 
+		{	
+			parms->flag[j] = temp[j];
+			j++;
+		}
+		free(temp);
+	}
+
+	parms->conversion = parms->flag[j - 1];
+
 }
 
 void			ft_check_flag(t_ptf *parms)

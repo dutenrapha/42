@@ -6,7 +6,7 @@
 #    By: rdutenke <rdutenke@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/05/06 16:48:38 by rdutenke          #+#    #+#              #
-#    Updated: 2020/07/27 15:03:16 by rdutenke         ###   ########.fr        #
+#    Updated: 2020/07/27 15:29:29 by rdutenke         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,7 @@ HEADER = libftprintf.h
 
 COMPI = clang
 
-MAIN = main.c
+MAIN = main10.c
 
 FUNCTIONS = ft_printf.c ft_check_flag.c ft_int_len.c ft_print_x.c ft_itoa_base.c ft_print_xup.c \
 			ft_print_p.c ft_print_u.c ft_print_int.c ft_print_char.c ft_print_str.c\
@@ -26,7 +26,7 @@ FUNCTIONS = ft_printf.c ft_check_flag.c ft_int_len.c ft_print_x.c ft_itoa_base.c
 			ft_flag_precision.c ft_putchar_fd.c ft_strlen.c ft_calloc.c ft_substr.c ft_atoi.c ft_strchr.c \
 			ft_putstr_fd.c ft_strdup.c ft_memset.c ft_strjoin.c ft_itoa.c ft_strrchr.c ft_isdigit.c \
 
-FLAGS = -Wall -Wextra -Werror
+FLAGS = 
 
 FUNCTIONS_O = $(subst .c,.o,$(FUNCTIONS))
 

@@ -6,7 +6,7 @@
 /*   By: rdutenke <rdutenke@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/29 15:49:07 by rdutenke          #+#    #+#             */
-/*   Updated: 2020/07/27 15:06:36 by rdutenke         ###   ########.fr       */
+/*   Updated: 2020/07/27 16:11:22 by rdutenke         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,10 +44,6 @@ void	ft_get_width(t_ptf *parms, int k)
 
 	temp = NULL;
 	l_flag = 0;
-	// while (!ft_match(parms->flag[l_flag + k], BREAKS))
-	// {
-	// 	l_flag++;
-	// }
 	l_flag = ft_len_flag(parms, k);
 	temp = ft_substr(parms->flag, k, l_flag);
 	parms->width = ft_atoi(temp);
