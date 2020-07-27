@@ -6,7 +6,7 @@
 /*   By: rdutenke <rdutenke@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/11 12:04:36 by rdutenke          #+#    #+#             */
-/*   Updated: 2020/07/24 13:33:53 by rdutenke         ###   ########.fr       */
+/*   Updated: 2020/07/27 13:42:41 by rdutenke         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,18 +30,45 @@ static	void	ft_set_flag(t_ptf *parms)
 	}
 }
 
+static int	ft_len_flag(t_ptf *parms)
+{
+	int i;
+	int j;
+	int end;
+	
+	end = 0;
+	j = 0;
+	while (1)
+	{
+		i = 0;
+		while (CONVERSIONS[i] != '\0' && end == 0)
+		{
+			if (parms->str[parms->i + j] == CONVERSIONS[i])
+				end = 1;
+			i++;
+		}
+		j++;
+		if (end == 1)
+			break;
+	}
+	return (j);
+}
+
+
 static void		ft_get_flag(t_ptf *parms)
 {
 	size_t l_flag;
 	size_t j;
 
 	j = 0;
-	l_flag = 1;
-	while (!ft_match(parms->str[parms->i + j], CONVERSIONS))
-	{
-		l_flag++;
-		j++;
-	}
+	l_flag = 0;
+	// while (!ft_match(parms->str[parms->i + j], CONVERSIONS))
+	// {
+	// 	l_flag++;
+	// 	j++;
+	// }
+	l_flag = ft_len_flag(parms);
+
 	if (!(parms->flag = (char *)ft_calloc(l_flag + 1, sizeof(char))))
 		return ;
 	parms->flag[0] = parms->str[parms->i];

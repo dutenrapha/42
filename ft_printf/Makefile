@@ -6,7 +6,7 @@
 #    By: rdutenke <rdutenke@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/05/06 16:48:38 by rdutenke          #+#    #+#              #
-#    Updated: 2020/07/27 11:34:22 by rdutenke         ###   ########.fr        #
+#    Updated: 2020/07/27 13:44:57 by rdutenke         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -49,7 +49,7 @@ re:	fclean all
 
 run:	re
 	@clear
-	@$(COMPI) $(FLAGS) main10.c -L. -lftprintf
+	@$(COMPI) $(FLAGS) $(MAIN) -L. -lftprintf
 	@./a.out 
 
 test:	fclean 
