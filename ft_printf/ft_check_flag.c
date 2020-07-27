@@ -6,7 +6,7 @@
 /*   By: rdutenke <rdutenke@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/11 12:04:36 by rdutenke          #+#    #+#             */
-/*   Updated: 2020/07/27 16:40:59 by rdutenke         ###   ########.fr       */
+/*   Updated: 2020/07/27 19:23:22 by rdutenke         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,14 +41,14 @@ static int	ft_len_flag(t_ptf *parms)
 	while (1)
 	{
 		i = 0;
-		while (CONVERSIONS[i] != '\0' && end == 0)
+		while (CONVERSIONS[i] != '\0' && end == 0 )
 		{
 			if (parms->str[parms->i + j] == CONVERSIONS[i])
 				end = 1;
 			i++;
 		}
 		j++;
-		if (end == 1)
+		if (end == 1 || parms->str[parms->i + j]!= '\0')
 			break;
 	}
 	return (j);
