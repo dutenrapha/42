@@ -1,30 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_get_width.c                                     :+:      :+:    :+:   */
+/*   ft_match.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rdutenke <rdutenke@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/05/29 15:49:07 by rdutenke          #+#    #+#             */
-/*   Updated: 2020/07/27 14:58:59 by rdutenke         ###   ########.fr       */
+/*   Created: 2020/05/14 17:52:20 by rdutenke          #+#    #+#             */
+/*   Updated: 2020/07/27 11:34:05 by rdutenke         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-
-void	ft_get_width(t_ptf *parms, int k)
+int	ft_match(char c, char *conversion)
 {
-	size_t	l_flag;
-	char	*temp;
-
-	temp = NULL;
-	l_flag = 0;
-	while (!ft_match(parms->flag[l_flag + k], BREAKS))
+	int i;
+		
+	i = 0;
+	while (conversion[i] != '\0')
 	{
-		l_flag++;
+		if (c == conversion[i])
+			return (1);
+		i++;
 	}
-	temp = ft_substr(parms->flag, k, l_flag);
-	parms->width = ft_atoi(temp);
-	free(temp);
+	return (0);
 }
