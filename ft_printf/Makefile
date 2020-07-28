@@ -6,10 +6,9 @@
 #    By: rdutenke <rdutenke@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/05/06 16:48:38 by rdutenke          #+#    #+#              #
-#    Updated: 2020/07/28 08:43:29 by rdutenke         ###   ########.fr        #
+#    Updated: 2020/07/28 08:59:08 by rdutenke         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
-
 
 NAME = libftprintf.a
 
@@ -26,7 +25,7 @@ FUNCTIONS = ft_printf.c ft_check_flag.c ft_int_len.c ft_print_x.c ft_itoa_base.c
 			ft_flag_precision.c ft_putchar_fd.c ft_strlen.c ft_calloc.c ft_substr.c ft_atoi.c ft_strchr.c \
 			ft_putstr_fd.c ft_strdup.c ft_memset.c ft_strjoin.c ft_itoa.c ft_strrchr.c ft_isdigit.c ft_print_padding.c\
 
-FLAGS = 
+FLAGS = -Wall -Wextra -Werror
 
 FUNCTIONS_O = $(subst .c,.o,$(FUNCTIONS))
 
@@ -38,7 +37,6 @@ $(NAME):
 		@$(COMPI) $(FLAGS) -c $(FUNCTIONS)
 		@ar rc $(NAME) $(FUNCTIONS_O) 
 
-
 clean:
 	@/bin/rm -f *.o 
 
@@ -46,11 +44,3 @@ fclean: clean
 	@/bin/rm -f $(NAME) 
 
 re:	fclean all
-
-run:	re
-	@clear
-	@$(COMPI) $(FLAGS) $(MAIN) -L. -lftprintf
-	@./a.out 
-
-test:	fclean 
-	@$(COMPI) $(FLAGS) -g $(MAIN) $(FUNCTIONS) 
