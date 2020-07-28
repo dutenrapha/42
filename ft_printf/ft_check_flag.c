@@ -6,7 +6,7 @@
 /*   By: rdutenke <rdutenke@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/11 12:04:36 by rdutenke          #+#    #+#             */
-/*   Updated: 2020/07/27 22:29:31 by rdutenke         ###   ########.fr       */
+/*   Updated: 2020/07/28 08:49:26 by rdutenke         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,10 @@ static void		ft_get_flag(t_ptf *parms)
 	{
 		temp = ft_substr(parms->flag, 1, l_flag - 1);
 		free(parms->flag);
+		parms->flag = ft_strdup(temp);
 		free(temp);
+		l_flag -= 1;
+		j -= 1;
 	}
 	parms->conversion = parms->flag[j - 1];
 }
