@@ -6,7 +6,7 @@
 /*   By: rdutenke <rdutenke@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/11 12:04:36 by rdutenke          #+#    #+#             */
-/*   Updated: 2020/07/27 22:23:45 by rdutenke         ###   ########.fr       */
+/*   Updated: 2020/07/27 22:29:31 by rdutenke         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ static int		ft_len_flag(t_ptf *parms)
 	return (j);
 }
 
-static	size_t	ft_aux(t_ptf *parms, size_t *end)
+static	void	ft_aux(t_ptf *parms, size_t *end, size_t *end2)
 {
 	size_t	l_flag;
 	size_t	j;
@@ -63,7 +63,7 @@ static	size_t	ft_aux(t_ptf *parms, size_t *end)
 	l_flag = 0;
 	l_flag = ft_len_flag(parms);
 	if (!(parms->flag = (char *)ft_calloc(l_flag + 1, sizeof(char))))
-		return (NULL);
+		return ;
 	parms->flag[0] = parms->str[parms->i];
 	j = 1;
 	while (j < l_flag)
@@ -72,7 +72,7 @@ static	size_t	ft_aux(t_ptf *parms, size_t *end)
 		j++;
 	}
 	*end = j;
-	return (l_flag);
+	*end2 = l_flag;
 }
 
 static void		ft_get_flag(t_ptf *parms)
@@ -84,7 +84,7 @@ static void		ft_get_flag(t_ptf *parms)
 	l_flag = 0;
 	j = 0;
 	temp = NULL;
-	l_flag = ft_aux(parms, &j);
+	ft_aux(parms, &j, &l_flag);
 	parms->len -= ft_strlen(parms->flag);
 	parms->i += ft_strlen(parms->flag);
 	if (parms->flag[0] == '0' && parms->flag[1] == '-')
