@@ -6,23 +6,11 @@
 /*   By: rdutenke <rdutenke@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/14 18:41:34 by rdutenke          #+#    #+#             */
-/*   Updated: 2020/07/27 20:10:23 by rdutenke         ###   ########.fr       */
+/*   Updated: 2020/07/27 22:09:50 by rdutenke         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-
-static void	ft_print_padding(int size, char c)
-{
-	int	i;
-
-	i = 0;
-	while (i < size)
-	{
-		ft_putchar_fd(c, 1);
-		i++;
-	}
-}
 
 static void	ft_aux_l(int size, t_ptf *pms)
 {
@@ -75,21 +63,23 @@ static void	ft_aux_0(int size, t_ptf *pms)
 	}
 }
 
+static void	ft_aux(t_ptf *pms)
+{
+	pms->len += 1;
+	pms->len_c = 1;
+	pms->v_str = (char *)ft_calloc(2, sizeof(char));
+	pms->v_str[0] = '%';
+}
+
 void		ft_padding(char type, t_ptf *pms)
 {
 	int	size;
 
 	size = 0;
 	if (pms->conversion == '%')
-	{
-		pms->len += 1;
-		pms->len_c = 1;
-		pms->v_str = (char *)ft_calloc(2, sizeof(char));
-		pms->v_str[0] = '%';
-	}
+		ft_aux(pms);
 	if (pms->v_str != NULL && pms->conversion != '\0')
 	{
-
 		size = pms->width - pms->len_c;
 		if (pms->conversion == 'c' && pms->v_str[0] == '\0')
 		{

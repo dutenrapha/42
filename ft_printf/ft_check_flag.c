@@ -6,7 +6,7 @@
 /*   By: rdutenke <rdutenke@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/11 12:04:36 by rdutenke          #+#    #+#             */
-/*   Updated: 2020/07/27 19:30:26 by rdutenke         ###   ########.fr       */
+/*   Updated: 2020/07/27 22:23:45 by rdutenke         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,18 +30,18 @@ static	void	ft_set_flag(t_ptf *parms)
 	}
 }
 
-static int	ft_len_flag(t_ptf *parms)
+static int		ft_len_flag(t_ptf *parms)
 {
-	int i;
-	int j;
-	int end;
-	
+	int	i;
+	int	j;
+	int	end;
+
 	end = 0;
 	j = 0;
 	while (1)
 	{
 		i = 0;
-		while (CONVERSIONS[i] != '\0' && end == 0 )
+		while (CONVERSIONS[i] != '\0' && end == 0)
 		{
 			if (parms->str[parms->i + j] == CONVERSIONS[i])
 				end = 1;
@@ -49,25 +49,21 @@ static int	ft_len_flag(t_ptf *parms)
 		}
 		j++;
 		if (end == 1 || parms->str[parms->i + j] == '\0')
-			break;
+			break ;
 	}
 	return (j);
 }
 
-
-static void		ft_get_flag(t_ptf *parms)
+static	size_t	ft_aux(t_ptf *parms, size_t *end)
 {
-	size_t l_flag;
-	size_t j;
-	char *temp;
+	size_t	l_flag;
+	size_t	j;
 
-	temp = NULL;
 	j = 0;
 	l_flag = 0;
 	l_flag = ft_len_flag(parms);
-
 	if (!(parms->flag = (char *)ft_calloc(l_flag + 1, sizeof(char))))
-		return ;
+		return (NULL);
 	parms->flag[0] = parms->str[parms->i];
 	j = 1;
 	while (j < l_flag)
@@ -75,25 +71,29 @@ static void		ft_get_flag(t_ptf *parms)
 		parms->flag[j] = parms->str[parms->i + j];
 		j++;
 	}
+	*end = j;
+	return (l_flag);
+}
+
+static void		ft_get_flag(t_ptf *parms)
+{
+	size_t	l_flag;
+	size_t	j;
+	char	*temp;
+
+	l_flag = 0;
+	j = 0;
+	temp = NULL;
+	l_flag = ft_aux(parms, &j);
 	parms->len -= ft_strlen(parms->flag);
 	parms->i += ft_strlen(parms->flag);
-	if (parms->flag[0] == '0' && parms->flag[1] =='-')
+	if (parms->flag[0] == '0' && parms->flag[1] == '-')
 	{
 		temp = ft_substr(parms->flag, 1, l_flag - 1);
 		free(parms->flag);
-		if (!(parms->flag = (char *)ft_calloc(l_flag - 1 + 1, sizeof(char))))
-			return ;
-		j = 0;
-		while (j < l_flag - 1) 
-		{	
-			parms->flag[j] = temp[j];
-			j++;
-		}
 		free(temp);
 	}
-
 	parms->conversion = parms->flag[j - 1];
-
 }
 
 void			ft_check_flag(t_ptf *parms)

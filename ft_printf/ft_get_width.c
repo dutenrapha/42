@@ -6,7 +6,7 @@
 /*   By: rdutenke <rdutenke@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/29 15:49:07 by rdutenke          #+#    #+#             */
-/*   Updated: 2020/07/27 19:55:29 by rdutenke         ###   ########.fr       */
+/*   Updated: 2020/07/27 22:12:50 by rdutenke         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 
 static int	ft_len_flag(t_ptf *parms, int k)
 {
-	int i;
-	int j;
-	int end;
-	
+	int	i;
+	int	j;
+	int	end;
+
 	end = 0;
 	j = 0;
 	while (1)
@@ -30,16 +30,15 @@ static int	ft_len_flag(t_ptf *parms, int k)
 			i++;
 		}
 		j++;
-		if (end == 1 || parms->flag[j + k] == '\0') 
-			break;
+		if (end == 1 || parms->flag[j + k] == '\0')
+			break ;
 	}
 	return (j);
 }
 
-
-void	ft_get_width(t_ptf *parms, int k)
+void		ft_get_width(t_ptf *parms, int k)
 {
-	int	l_flag;
+	int		l_flag;
 	char	*temp;
 
 	temp = NULL;

@@ -1,22 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isdigit.c                                       :+:      :+:    :+:   */
+/*   ft_print_padding.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rdutenke <rdutenke@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/07/27 14:12:32 by rdutenke          #+#    #+#             */
-/*   Updated: 2020/07/27 22:10:54 by rdutenke         ###   ########.fr       */
+/*   Created: 2020/07/27 22:08:14 by rdutenke          #+#    #+#             */
+/*   Updated: 2020/07/27 22:10:38 by rdutenke         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_isdigit(int c)
+void	ft_print_padding(int size, char c)
 {
-	if (c >= '0' && c <= '9')
+	int	i;
+
+	i = 0;
+	while (i < size)
 	{
-		return (1);
+		ft_putchar_fd(c, 1);
+		i++;
 	}
-	return (0);
 }
