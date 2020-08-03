@@ -6,39 +6,65 @@
 /*   By: rdutenke <rdutenke@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/29 21:43:07 by rdutenke          #+#    #+#             */
-/*   Updated: 2020/07/31 22:24:00 by rdutenke         ###   ########.fr       */
+/*   Updated: 2020/08/03 15:47:28 by rdutenke         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-static char	*ft_break(char *buf)
+static void	ft_break(char *buf, char **before, char **after)
 {
-	int		len_break;
-	int		len_buf;
-	char	*resp;
+	int		len_before;
+	int		len_after;
+	int		i;
+	int		j;
+	
+	len_before = 0;
+	i = 0;
+	j = 0;
+	while (buf[len_before] != '\n')
+		len_before++;
 
-	resp = NULL;
-	len_buf = 0;
-	len_buf = ft_strlen(buf);
-	len_break = 0;
-	while (buf[len_break] != '\n')
-		len_break++;
-	resp = (char *)malloc((len_break + 1)*sizeof(char));
-	resp[len_break] = '\0';
-	printf("len_buf = %i, len_break = %i\n", len_buf, len_break);
-	return (buf);
+	if (len_before != 0)
+	{
+		*before = (char *)malloc((len_before + 1) * sizeof(char));
+		before[len_before] = '\0';
+		while (buf[i] != '\n')
+		{
+			(*before)[i] = buf[i];
+			i++;
+		}
+	}
+	
+	len_before++;
+	len_after  = 0;
+	while (buf[len_before + len_after] != '\0')
+		len_after++;
+	if (len_after != 0)
+	{
+		*after = (char *)malloc((len_after + 1) * sizeof(char));
+		after[len_after] = '\0';
+		while (buf[++i] != '\0')
+		{
+			(*after)[j] = buf[i];
+			j++;
+		}
+	}
+
 }
 
 int			get_next_line(int fd, char **line)
 {
 	int		size;
 	char	buf[BUFFER_SIZE + 1];
+	// static char 	*memory[INT_MAX];
 	char	*breakline;
 	char	*temp;
-	char	*rest;
+	char	*before;
+	char	*after;
 
-	rest = NULL;
+	before = NULL;
+	after = NULL;
 	breakline = NULL;
 	temp = NULL;
 	size = read(fd, buf, BUFFER_SIZE);
@@ -49,9 +75,18 @@ int			get_next_line(int fd, char **line)
 		breakline = ft_strchr(buf, '\n');
 		if (breakline != NULL)
 		{
-			rest = ft_break(buf);
-			printf("resto %s\n", rest);
-			temp = ft_strjoin(*line, buf);
+			ft_break(buf, &before, &after);
+			printf("resto %s\n", after);
+			
+			if (before != NULL)
+			{
+				temp = ft_strjoin(*line, before);
+				free(*line);
+				*line = ft_strdup(temp);
+				free(temp);
+			}
+			size = ft_strlen(*line);
+			return (size);
 		}
 		else
 		{
