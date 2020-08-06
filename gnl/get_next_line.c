@@ -6,95 +6,116 @@
 /*   By: rdutenke <rdutenke@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/29 21:43:07 by rdutenke          #+#    #+#             */
-/*   Updated: 2020/08/03 15:47:28 by rdutenke         ###   ########.fr       */
+/*   Updated: 2020/08/05 21:42:49 by rdutenke         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-static void	ft_break(char *buf, char **before, char **after)
+static char	*ft_aux(char *buf)
 {
-	int		len_before;
-	int		len_after;
+	int		len;
 	int		i;
-	int		j;
-	
-	len_before = 0;
+	char	*resp;
+
+	len = 0;
 	i = 0;
-	j = 0;
-	while (buf[len_before] != '\n')
-		len_before++;
-
-	if (len_before != 0)
+	resp = NULL;
+	while (buf[len] != '\n')
+		len++;
+	resp = (char *)malloc((len + 1)*sizeof(char));
+	resp[len] = '\0';
+	while (i < len)
 	{
-		*before = (char *)malloc((len_before + 1) * sizeof(char));
-		before[len_before] = '\0';
-		while (buf[i] != '\n')
+		resp[i] = buf[i];
+		i++;
+	}
+	return (resp);
+}
+
+static char	*ft_large_buffer(char *buf)
+{
+	char	*line;
+	int		len;
+	int		i;
+
+	i = 0;
+	len = 0;
+	line = NULL;
+	while (buf[len] != '\n')
+		len++;
+	line = (char *)malloc((len + 1)*sizeof(char));
+	line[len] = '\0';
+	while (i < len)
+	{
+		line[i] = buf[i];
+		i++;
+	}
+	return (line);
+}
+
+static char	*ft_small_buffer(int fd, char *buf, char **memory)
+{
+	char	*temp;
+	char	*line;
+	int		size;
+
+	size = 0;
+	line = NULL;
+	temp = NULL;
+	line = ft_strdup(buf);
+	size = read(fd, buf, BUFFER_SIZE);
+	while(ft_strchr(buf, '\n') == NULL && size)
+	{
+		temp = ft_strdup(line);
+		free(line);
+		line = ft_strjoin(temp, buf);
+		free(temp);
+		size = read(fd, buf, BUFFER_SIZE);
+		if (ft_strchr(buf, '\n') != NULL)
+			break;
+	}
+	if (buf[0] == '\n')
+	{
+		if (ft_strlen(buf) != 1)
 		{
-			(*before)[i] = buf[i];
-			i++;
+			*memory = ft_substr(buf, 1, ft_strlen(buf));
 		}
 	}
-	
-	len_before++;
-	len_after  = 0;
-	while (buf[len_before + len_after] != '\0')
-		len_after++;
-	if (len_after != 0)
+	else if (buf[BUFFER_SIZE] == '\n')
 	{
-		*after = (char *)malloc((len_after + 1) * sizeof(char));
-		after[len_after] = '\0';
-		while (buf[++i] != '\0')
-		{
-			(*after)[j] = buf[i];
-			j++;
-		}
+		temp = ft_strdup(line);
+		free(line);
+		line = ft_strjoin(temp, ft_substr(buf, 0, ft_strlen(buf) - 1));
+		free(temp);
 	}
-
+	else
+	{
+		temp = ft_strdup(line);
+		free(line);
+		line = ft_strjoin(temp, ft_aux(buf));
+		free(temp);
+	}
+	return (line);
 }
 
 int			get_next_line(int fd, char **line)
 {
-	int		size;
-	char	buf[BUFFER_SIZE + 1];
-	// static char 	*memory[INT_MAX];
-	char	*breakline;
-	char	*temp;
-	char	*before;
-	char	*after;
+	int				size;
+	char			buf[BUFFER_SIZE + 1];
+	static char	*memory[INT_MAX];
+	// static char 	*memory[10000000];
 
-	before = NULL;
-	after = NULL;
-	breakline = NULL;
-	temp = NULL;
 	size = read(fd, buf, BUFFER_SIZE);
-	*line = ft_strdup(buf);
-	while (breakline == NULL)
+	if (ft_strchr(buf, '\n') != NULL)
 	{
-		size = read(fd, buf, BUFFER_SIZE);
-		breakline = ft_strchr(buf, '\n');
-		if (breakline != NULL)
-		{
-			ft_break(buf, &before, &after);
-			printf("resto %s\n", after);
-			
-			if (before != NULL)
-			{
-				temp = ft_strjoin(*line, before);
-				free(*line);
-				*line = ft_strdup(temp);
-				free(temp);
-			}
-			size = ft_strlen(*line);
-			return (size);
-		}
-		else
-		{
-			temp = ft_strjoin(*line, buf);
-		}
-		free(*line);
-		*line = ft_strdup(temp);
-		free(temp);
+		// *line = ft_large_buffer(fd, &buf, &memory);
+		*line = ft_large_buffer(buf);
 	}
+	else
+	{
+		*line = ft_small_buffer(fd, buf, &*memory);
+	}
+	size = ft_strlen(*line);
 	return (size);
 }
