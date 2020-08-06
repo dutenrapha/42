@@ -6,7 +6,7 @@
 /*   By: rdutenke <rdutenke@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/29 21:43:07 by rdutenke          #+#    #+#             */
-/*   Updated: 2020/08/05 21:42:49 by rdutenke         ###   ########.fr       */
+/*   Updated: 2020/08/06 13:17:35 by rdutenke         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ static char	*ft_aux(char *buf)
 	return (resp);
 }
 
-static char	*ft_large_buffer(char *buf)
+static char	*ft_large_buffer(char *buf, char memory[])
 {
 	char	*line;
 	int		len;
@@ -51,10 +51,18 @@ static char	*ft_large_buffer(char *buf)
 		line[i] = buf[i];
 		i++;
 	}
+	i = 0;
+	len++;
+	while (buf[len] != '\0')
+	{
+		memory[i] =	buf[len];
+		i++;
+		len++;
+	}
 	return (line);
 }
 
-static char	*ft_small_buffer(int fd, char *buf, char **memory)
+static char	*ft_small_buffer(int fd, char *buf, char memory[])
 {
 	char	*temp;
 	char	*line;
@@ -79,7 +87,14 @@ static char	*ft_small_buffer(int fd, char *buf, char **memory)
 	{
 		if (ft_strlen(buf) != 1)
 		{
-			*memory = ft_substr(buf, 1, ft_strlen(buf));
+			size = 0;
+			temp = ft_substr(buf, 1, ft_strlen(buf));
+			while (temp[size] != '\0')
+			{
+				memory[size] = temp[size];
+				size++;
+			}
+			free(temp);
 		}
 	}
 	else if (buf[BUFFER_SIZE] == '\n')
@@ -103,18 +118,18 @@ int			get_next_line(int fd, char **line)
 {
 	int				size;
 	char			buf[BUFFER_SIZE + 1];
-	static char	*memory[INT_MAX];
-	// static char 	*memory[10000000];
+	static char		memory[ARG_MAX];
+	// static char 	memory[1000];
 
 	size = read(fd, buf, BUFFER_SIZE);
 	if (ft_strchr(buf, '\n') != NULL)
 	{
 		// *line = ft_large_buffer(fd, &buf, &memory);
-		*line = ft_large_buffer(buf);
+		*line = ft_large_buffer(buf, memory);
 	}
 	else
 	{
-		*line = ft_small_buffer(fd, buf, &*memory);
+		*line = ft_small_buffer(fd, buf, memory);
 	}
 	size = ft_strlen(*line);
 	return (size);
