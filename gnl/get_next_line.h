@@ -6,7 +6,7 @@
 /*   By: rdutenke <rdutenke@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/29 21:45:00 by rdutenke          #+#    #+#             */
-/*   Updated: 2020/08/06 13:39:43 by rdutenke         ###   ########.fr       */
+/*   Updated: 2020/08/08 17:01:42 by rdutenke         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,7 @@
 # include <stdio.h>
 
 int		get_next_line(int fd, char **line);
-size_t	ft_strlen(const char *s);
 char	*ft_strchr(const char *s, int c);
-char	*ft_strjoin(char const *s1, char const *s2);
-char	*ft_strdup(const char *s1);
-char	*ft_substr(char const *s, unsigned int start, size_t len);
+size_t	ft_strlen(const char *s);
 
 #endif
