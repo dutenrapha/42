@@ -6,7 +6,7 @@
 /*   By: rdutenke <rdutenke@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/29 21:43:07 by rdutenke          #+#    #+#             */
-/*   Updated: 2020/08/08 18:11:42 by rdutenke         ###   ########.fr       */
+/*   Updated: 2020/08/10 06:46:57 by rdutenke         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,17 +56,30 @@
 // 	}
 // }
 
+static void ft_clean_vector(int len, char vector[])
+{
+	int i;
+	
+	i = 0;
+	while (i <  len)
+	{
+		vector[i] = '\0';
+		i++;
+	}
+}
+
 static void	ft_clear_memory(int len_line, char memory[])
 {
 	int		i;
 	char	temp[1000];
 
-	i = 0;
-	while (i < 1000)
-	{
-		temp[i] = '\0';
-		i++;
-	}
+	// i = 0;
+	// while (i < 1000)
+	// {
+	// 	temp[i] = '\0';
+	// 	i++;
+	// }
+	ft_clean_vector(1000, temp);
 	i = 0;
 	while (memory[len_line] != '\0')
 	{
@@ -151,11 +164,15 @@ int			get_next_line(int fd, char **line)
 		if (size > 0)
 		{
 			ft_add(buf, memory);
+			ft_clean_vector(BUFFER_SIZE + 1, buf);
 			while (size > 0 && ft_strchr(memory,'\n') == NULL)
 			{
 				size = read(fd,buf, BUFFER_SIZE);
 				if (size > 0)
+				{
 					ft_add(buf, memory);
+					ft_clean_vector(BUFFER_SIZE + 1, buf);
+				}
 			}
 		}
 	}
