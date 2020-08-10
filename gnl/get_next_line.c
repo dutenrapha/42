@@ -6,7 +6,7 @@
 /*   By: rdutenke <rdutenke@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/29 21:43:07 by rdutenke          #+#    #+#             */
-/*   Updated: 2020/08/10 07:18:02 by rdutenke         ###   ########.fr       */
+/*   Updated: 2020/08/10 08:00:04 by rdutenke         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,6 +100,42 @@ static void	ft_add(char buf[], char memory[])
 	}
 }
 
+// int			get_next_line(int fd, char **line)
+// {
+// 	int				size;
+// 	char			buf[BUFFER_SIZE + 1];
+// 	// static char		memory[INT_MAX];
+// 	static char		memory[1000];
+
+// 	ft_clean_vector(BUFFER_SIZE + 1, buf);
+// 	size = read(fd,buf, BUFFER_SIZE);
+// 	if (size == 0 && memory[0] == '\0')
+// 	{
+// 		return (0);
+// 	}
+// 	else
+// 	{
+// 		if (size > 0)
+// 		{
+// 			ft_add(buf, memory);
+// 			ft_clean_vector(BUFFER_SIZE + 1, buf);
+// 			while (size > 0 && ft_strchr(memory,'\n') == NULL)
+// 			{
+// 				size = read(fd,buf, BUFFER_SIZE);
+// 				if (size > 0)
+// 				{
+// 					ft_add(buf, memory);
+// 					ft_clean_vector(BUFFER_SIZE + 1, buf);
+// 				}
+// 			}
+// 		}
+// 	}
+// 	*line = ft_set_next_line(memory);
+// 	ft_clear_memory(ft_strlen(*line), memory);
+// 	return (1);
+// }
+
+
 int			get_next_line(int fd, char **line)
 {
 	int				size;
@@ -109,28 +145,27 @@ int			get_next_line(int fd, char **line)
 
 	ft_clean_vector(BUFFER_SIZE + 1, buf);
 	size = read(fd,buf, BUFFER_SIZE);
-	if (size == 0 && memory[0] == '\0')
+	if (size == -1)
+		return (-1);
+	if (size > 0)
 	{
-		return (0);
-	}
-	else
-	{
-		if (size > 0)
+		ft_add(buf, memory);
+		ft_clean_vector(BUFFER_SIZE + 1, buf);
+		while (size > 0 && ft_strchr(memory,'\n') == NULL)
 		{
-			ft_add(buf, memory);
-			ft_clean_vector(BUFFER_SIZE + 1, buf);
-			while (size > 0 && ft_strchr(memory,'\n') == NULL)
+			size = read(fd,buf, BUFFER_SIZE);
+			if (size > 0)
 			{
-				size = read(fd,buf, BUFFER_SIZE);
-				if (size > 0)
-				{
-					ft_add(buf, memory);
-					ft_clean_vector(BUFFER_SIZE + 1, buf);
-				}
+				ft_add(buf, memory);
+				ft_clean_vector(BUFFER_SIZE + 1, buf);
 			}
 		}
 	}
+
 	*line = ft_set_next_line(memory);
 	ft_clear_memory(ft_strlen(*line), memory);
-	return (1);
+	if (size == 0)
+		return (0);
+	else
+		return (1);
 }
