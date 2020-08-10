@@ -6,55 +6,11 @@
 /*   By: rdutenke <rdutenke@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/29 21:43:07 by rdutenke          #+#    #+#             */
-/*   Updated: 2020/08/10 06:46:57 by rdutenke         ###   ########.fr       */
+/*   Updated: 2020/08/10 07:02:53 by rdutenke         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
-
-// static void	ft_clear_memory(int len, char memory[])
-// {
-// 	int		i;
-// 	char	temp[1000];
-
-// 	i = 0;
-// 	if (len == 0)
-// 	{
-// 		i = 0;
-// 		while (memory[i] != '\0')
-// 		{
-// 			memory[i] = '\0';
-// 			i++;
-// 		}
-// 	}
-// 	else
-// 	{
-// 		while (memory[len] != '\0')
-// 		{
-// 			temp[i] = memory[len];
-// 			i++;
-// 			len++;
-// 		}
-// 		i = 0;
-// 		while (memory[i] != '\0')
-// 		{
-// 			memory[i] = '\0';
-// 			i++;
-// 		}
-// 		i = 0;
-// 		while (temp[i] != '\0')
-// 		{
-// 			memory[i] = temp[i];
-// 			i++;
-// 		}
-// 		i = 0;
-// 		while (temp[i] != '\0')
-// 		{
-// 			temp[i] = '\0';
-// 			i++;
-// 		}
-// 	}
-// }
 
 static void ft_clean_vector(int len, char vector[])
 {
@@ -71,21 +27,18 @@ static void ft_clean_vector(int len, char vector[])
 static void	ft_clear_memory(int len_line, char memory[])
 {
 	int		i;
+	int		first;
 	char	temp[1000];
 
-	// i = 0;
-	// while (i < 1000)
-	// {
-	// 	temp[i] = '\0';
-	// 	i++;
-	// }
+	first = 0;
 	ft_clean_vector(1000, temp);
 	i = 0;
 	while (memory[len_line] != '\0')
 	{
-		if (memory[len_line] == '\n')
+		if (memory[len_line] == '\n' && first == 0)
 		{
 			len_line++;
+			first = 1;
 			continue;
 		}
 		temp[i] = memory[len_line];

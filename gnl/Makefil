@@ -1,0 +1,27 @@
+run:
+	gcc -Wall -Wextra -Werror -D BUFFER_SIZE=1 -g main.c get_next_line.h  get_next_line.c get_next_line_utils.c && ./a.out
+	gcc -Wall -Wextra -Werror -D BUFFER_SIZE=2 -g main.c get_next_line.h  get_next_line.c get_next_line_utils.c && ./a.out
+	gcc -Wall -Wextra -Werror -D BUFFER_SIZE=3 -g main.c get_next_line.h  get_next_line.c get_next_line_utils.c && ./a.out
+	gcc -Wall -Wextra -Werror -D BUFFER_SIZE=4 -g main.c get_next_line.h  get_next_line.c get_next_line_utils.c && ./a.out
+	gcc -Wall -Wextra -Werror -D BUFFER_SIZE=5 -g main.c get_next_line.h  get_next_line.c get_next_line_utils.c && ./a.out
+	gcc -Wall -Wextra -Werror -D BUFFER_SIZE=6 -g main.c get_next_line.h  get_next_line.c get_next_line_utils.c && ./a.out
+	gcc -Wall -Wextra -Werror -D BUFFER_SIZE=7 -g main.c get_next_line.h  get_next_line.c get_next_line_utils.c && ./a.out
+	gcc -Wall -Wextra -Werror -D BUFFER_SIZE=8 -g main.c get_next_line.h  get_next_line.c get_next_line_utils.c && ./a.out
+	gcc -Wall -Wextra -Werror -D BUFFER_SIZE=9 -g main.c get_next_line.h  get_next_line.c get_next_line_utils.c && ./a.out
+	gcc -Wall -Wextra -Werror -D BUFFER_SIZE=10 -g main.c get_next_line.h  get_next_line.c get_next_line_utils.c && ./a.out
+
+	gcc -Wall -Wextra -Werror -D BUFFER_SIZE=11 -g main.c get_next_line.h  get_next_line.c get_next_line_utils.c && ./a.out
+	gcc -Wall -Wextra -Werror -D BUFFER_SIZE=12 -g main.c get_next_line.h  get_next_line.c get_next_line_utils.c && ./a.out
+	gcc -Wall -Wextra -Werror -D BUFFER_SIZE=13 -g main.c get_next_line.h  get_next_line.c get_next_line_utils.c && ./a.out
+	gcc -Wall -Wextra -Werror -D BUFFER_SIZE=14 -g main.c get_next_line.h  get_next_line.c get_next_line_utils.c && ./a.out
+	gcc -Wall -Wextra -Werror -D BUFFER_SIZE=15 -g main.c get_next_line.h  get_next_line.c get_next_line_utils.c && ./a.out
+	gcc -Wall -Wextra -Werror -D BUFFER_SIZE=16 -g main.c get_next_line.h  get_next_line.c get_next_line_utils.c && ./a.out
+	gcc -Wall -Wextra -Werror -D BUFFER_SIZE=17 -g main.c get_next_line.h  get_next_line.c get_next_line_utils.c && ./a.out
+	gcc -Wall -Wextra -Werror -D BUFFER_SIZE=18 -g main.c get_next_line.h  get_next_line.c get_next_line_utils.c && ./a.out
+	gcc -Wall -Wextra -Werror -D BUFFER_SIZE=19 -g main.c get_next_line.h  get_next_line.c get_next_line_utils.c && ./a.out
+	gcc -Wall -Wextra -Werror -D BUFFER_SIZE=20 -g main.c get_next_line.h  get_next_line.c get_next_line_utils.c && ./a.out
+	gcc -Wall -Wextra -Werror -D BUFFER_SIZE=100 -g main.c get_next_line.h  get_next_line.c get_next_line_utils.c && ./a.out
+	gcc -Wall -Wextra -Werror -D BUFFER_SIZE=1000 -g main.c get_next_line.h  get_next_line.c get_next_line_utils.c && ./a.out
+	gcc -Wall -Wextra -Werror -D BUFFER_SIZE=10000 -g main.c get_next_line.h  get_next_line.c get_next_line_utils.c && ./a.out
+	gcc -Wall -Wextra -Werror -D BUFFER_SIZE=100000 -g main.c get_next_line.h  get_next_line.c get_next_line_utils.c && ./a.out
+	gcc -Wall -Wextra -Werror -D BUFFER_SIZE=1000000 -g main.c get_next_line.h  get_next_line.c get_next_line_utils.c && ./a.out
