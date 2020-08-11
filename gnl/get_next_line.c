@@ -6,7 +6,7 @@
 /*   By: rdutenke <rdutenke@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/29 21:43:07 by rdutenke          #+#    #+#             */
-/*   Updated: 2020/08/11 00:04:10 by rdutenke         ###   ########.fr       */
+/*   Updated: 2020/08/11 08:05:00 by rdutenke         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,20 +97,23 @@ int			get_next_line(int fd, char **line)
 	// static char		memory[INT_MAX];
 	static char		memory[1000];
 
-	ft_clean_vector(BUFFER_SIZE + 1, buf);
-	size = read(fd,buf, BUFFER_SIZE);
-	if (size == -1)
-		return (-1);
-	if (size > 0)
+	if (ft_count_char(memory, '\n') < 1)
 	{
-		ft_add(buf, memory);
-		while (size > 0 && ft_strchr(buf,'\n') == NULL)
+		ft_clean_vector(BUFFER_SIZE + 1, buf);
+		size = read(fd,buf, BUFFER_SIZE);
+		if (size == -1)
+			return (-1);
+		if (size > 0)
 		{
-			ft_clean_vector(BUFFER_SIZE + 1, buf);
-			size = read(fd,buf, BUFFER_SIZE);
-			if (size > 0)
+			ft_add(buf, memory);
+			while (size > 0 && ft_strchr(buf,'\n') == NULL)
 			{
-				ft_add(buf, memory);
+				ft_clean_vector(BUFFER_SIZE + 1, buf);
+				size = read(fd,buf, BUFFER_SIZE);
+				if (size > 0)
+				{
+					ft_add(buf, memory);
+				}
 			}
 		}
 	}
