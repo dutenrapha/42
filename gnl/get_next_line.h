@@ -6,7 +6,7 @@
 /*   By: rdutenke <rdutenke@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/29 21:45:00 by rdutenke          #+#    #+#             */
-/*   Updated: 2020/08/08 17:01:42 by rdutenke         ###   ########.fr       */
+/*   Updated: 2020/08/10 21:30:36 by rdutenke         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,5 +27,6 @@
 int		get_next_line(int fd, char **line);
 char	*ft_strchr(const char *s, int c);
 size_t	ft_strlen(const char *s);
+int		ft_count_char(char const *s1, char c);
 
 #endif
