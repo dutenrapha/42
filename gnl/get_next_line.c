@@ -6,7 +6,7 @@
 /*   By: rdutenke <rdutenke@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/29 21:43:07 by rdutenke          #+#    #+#             */
-/*   Updated: 2020/08/11 08:22:46 by rdutenke         ###   ########.fr       */
+/*   Updated: 2020/08/13 06:41:45 by rdutenke         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,11 @@ static void ft_clean_vector(int len, char vector[])
 static void	ft_clear_memory(int len_line, char memory[])
 {
 	int		i;
-	char	temp[1000];
+	char	temp[ARG_MAX];
+	// char	temp[1000];
 
-	ft_clean_vector(1000, temp);
+	ft_clean_vector(ARG_MAX, temp);
+	// ft_clean_vector(1000, temp);
 	i = 0;
 	while (memory[len_line] != '\0')
 	{
@@ -94,8 +96,8 @@ int			get_next_line(int fd, char **line)
 {
 	int				size;
 	char			buf[BUFFER_SIZE + 1];
-	// static char		memory[INT_MAX];
-	static char		memory[1000];
+	static char		memory[ARG_MAX];
+	// static char		memory[1000];
 
 	size = -1;
 	if (ft_count_char(memory, '\n') < 1)
