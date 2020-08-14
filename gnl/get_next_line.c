@@ -6,7 +6,7 @@
 /*   By: rdutenke <rdutenke@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/29 21:43:07 by rdutenke          #+#    #+#             */
-/*   Updated: 2020/08/13 06:41:45 by rdutenke         ###   ########.fr       */
+/*   Updated: 2020/08/14 07:52:25 by rdutenke         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,6 +99,7 @@ int			get_next_line(int fd, char **line)
 	static char		memory[ARG_MAX];
 	// static char		memory[1000];
 
+	ft_clean_vector(ARG_MAX, memory);
 	size = -1;
 	if (ft_count_char(memory, '\n') < 1)
 	{
