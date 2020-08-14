@@ -6,7 +6,7 @@
 /*   By: rdutenke <rdutenke@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/29 21:43:07 by rdutenke          #+#    #+#             */
-/*   Updated: 2020/08/14 07:52:25 by rdutenke         ###   ########.fr       */
+/*   Updated: 2020/08/14 19:55:34 by rdutenke         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ static char	*ft_set_next_line(char memory[])
 	i = 0;
 	len = 0;
 	line = NULL;
-	while (memory[len] != '\n')
+	while (memory[len]!= '\n')
 		len++;
 	line = (char *)malloc((len + 1)*sizeof(char));
 	line[len] = '\0';
