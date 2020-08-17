@@ -6,7 +6,7 @@
 /*   By: rdutenke <rdutenke@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/29 21:45:27 by rdutenke          #+#    #+#             */
-/*   Updated: 2020/08/17 07:51:01 by rdutenke         ###   ########.fr       */
+/*   Updated: 2020/08/17 12:43:03 by rdutenke         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ char	*ft_strjoin(char const *s1, char const *s2)
 		return (NULL);
 	size1 = ft_strlen(s1);
 	i = ft_strlen(s2);
-	new = (char *)malloc((sizeof(char) * (size1 + i + 1)));
+	new = (char *)malloc((sizeof(char) * (size1 + i  + 1)));
 	if (new == NULL)
 		return (NULL);
 	i = 0;
@@ -73,7 +73,6 @@ char	*ft_strjoin(char const *s1, char const *s2)
 		new[size1 + i] = s2[i];
 		i++;
 	}
-	new[size1 + i] = '\0';
 	return (new);
 
 }
@@ -98,7 +97,6 @@ char	*ft_strdup(const char *s1)
 		*(point + i) = *(s1 + i);
 		i++;
 	}
-	*(point + i) = '\0';
 	return (point);
 }
 
@@ -127,6 +125,5 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 		i++;
 		start++;
 	}
-	*(substr + i) = '\0';
 	return (substr);
 }
