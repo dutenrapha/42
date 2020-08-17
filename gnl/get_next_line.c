@@ -6,7 +6,7 @@
 /*   By: rdutenke <rdutenke@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/29 21:43:07 by rdutenke          #+#    #+#             */
-/*   Updated: 2020/08/17 08:32:24 by rdutenke         ###   ########.fr       */
+/*   Updated: 2020/08/17 15:38:06 by rdutenke         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,11 @@ static char	*ft_set_next_line(char **memory)
 	char	*line;
 	int		end;
 
+	if (*memory == NULL)
+	{
+		line = ft_strdup("");
+		return(line);
+	}
 	end = 0;
 	if( ft_strchr(*memory, '\n') == NULL)
 	{
@@ -113,6 +118,11 @@ int			get_next_line(int fd, char **line)
 	size = -1;
 	if (ft_count_char(memory, '\n') < 1)
 	{
+		while (i < BUFFER_SIZE)
+		{
+			buf[i] = '\0';
+			i++;
+		}
 		size = read(fd,buf, BUFFER_SIZE);
 		if (size == -1)
 			return (-1);
