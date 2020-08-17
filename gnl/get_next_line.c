@@ -6,7 +6,7 @@
 /*   By: rdutenke <rdutenke@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/29 21:43:07 by rdutenke          #+#    #+#             */
-/*   Updated: 2020/08/17 15:38:06 by rdutenke         ###   ########.fr       */
+/*   Updated: 2020/08/17 16:11:03 by rdutenke         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,19 +90,19 @@ static char	*ft_set_next_line(char **memory)
 	return (line);
 }
 
-static void	ft_add(char buf[], char **memory)
+static void	ft_add(char **buf, char **memory)
 {
 	char	*temp;
 	if (*memory == NULL)
 	{
-		*memory  = ft_strdup(buf);
+		*memory  = ft_strdup(*buf);
 	}
 	else
 	{
 		temp = NULL;
 		temp = ft_strdup(*memory);
 		*memory = NULL;
-		*memory = ft_strjoin(temp, buf);
+		*memory = ft_strjoin(temp, *buf);
 		free(temp);
 	}
 }
@@ -110,7 +110,7 @@ static void	ft_add(char buf[], char **memory)
 int			get_next_line(int fd, char **line)
 {
 	int				size;
-	char			buf[BUFFER_SIZE + 1];
+	char			*buf;
 	static char		*memory;
 	int 			i;
 
@@ -128,7 +128,7 @@ int			get_next_line(int fd, char **line)
 			return (-1);
 		if (size > 0)
 		{
-			ft_add(buf, &memory);
+			ft_add(&buf, &memory);
 			while (size > 0 && ft_strchr(buf,'\n') == NULL)
 			{
 				i = 0;
@@ -141,7 +141,7 @@ int			get_next_line(int fd, char **line)
 				if (size > 0)
 				{
 
-					ft_add(buf, &memory);
+					ft_add(&buf, &memory);
 				}
 			}
 		}
