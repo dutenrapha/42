@@ -6,7 +6,7 @@
 /*   By: rdutenke <rdutenke@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/29 21:43:07 by rdutenke          #+#    #+#             */
-/*   Updated: 2020/08/18 09:03:10 by rdutenke         ###   ########.fr       */
+/*   Updated: 2020/08/18 10:02:56 by rdutenke         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,10 +91,20 @@ static char	*ft_set_next_line(char **memory)
 	return (line);
 }
 
-static void	ft_add(char buf[], char **memory)
+static void	ft_add(char *buf, char **memory)
 {
 	char	*temp;
+	int		i;
+	int		j;
+	int		len_buf;
+	int		len_memory;
 
+	len_buf = 0;
+	len_memory = 0;
+	i = 0;
+	j = 0;
+	len_buf = ft_strlen(buf);
+	len_memory = ft_strlen(*memory);
 	temp = NULL;
 	if (*memory == NULL)
 	{
@@ -102,10 +112,27 @@ static void	ft_add(char buf[], char **memory)
 	}
 	else
 	{
+		// temp = ft_strdup(*memory);
+		// free(*memory);
+		// *memory = NULL;
+		// *memory = ft_strjoin(temp, buf);
+		// free(temp);
 		temp = ft_strdup(*memory);
 		free(*memory);
 		*memory = NULL;
-		*memory = ft_strjoin(temp, buf);
+		*memory = (char *)malloc((len_buf + len_memory + 1)* sizeof(char));
+		while (i < len_memory)
+		{
+			(*memory)[i] = temp[i];
+			i++;
+		}
+		while (j < len_buf)
+		{
+			(*memory)[i] = buf[j];
+			i++;
+			j++;
+		}
+		(*memory)[i] = '\0';
 		free(temp);
 	}
 }
@@ -119,6 +146,8 @@ int			get_next_line(int fd, char **line)
 
 	i = 0;
 	size = -1;
+	if (BUFFER_SIZE == 0)
+		return (-1);
 	if (ft_count_char(memory, '\n') < 1)
 	{
 		while (i < BUFFER_SIZE)
