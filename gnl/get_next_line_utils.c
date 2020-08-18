@@ -6,7 +6,7 @@
 /*   By: rdutenke <rdutenke@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/29 21:45:27 by rdutenke          #+#    #+#             */
-/*   Updated: 2020/08/18 07:23:47 by rdutenke         ###   ########.fr       */
+/*   Updated: 2020/08/18 08:58:55 by rdutenke         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,9 +85,8 @@ char	*ft_strdup(const char *s1)
 
 	i = 0;
 	len = 0;
-	while (*(s1 + len) != '\0')
-		len++;
-	point = malloc(sizeof(char) * (len + 1));
+	len = ft_strlen(s1);
+	point = (char *)malloc(sizeof(char) * (len + 1));
 	if (point == 0)
 		return (0);
 	while (*(s1 + i) != '\0')

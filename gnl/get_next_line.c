@@ -6,7 +6,7 @@
 /*   By: rdutenke <rdutenke@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/29 21:43:07 by rdutenke          #+#    #+#             */
-/*   Updated: 2020/08/18 07:50:06 by rdutenke         ###   ########.fr       */
+/*   Updated: 2020/08/18 09:03:10 by rdutenke         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,6 @@ static void	ft_clear_memory(int len_line, char **memory)
 		}
 		else
 		{
-			// *memory = ft_substr(temp, len_line, end);
 			*memory = NULL;
 		}
 		free(temp);
@@ -78,7 +77,7 @@ static char	*ft_set_next_line(char **memory)
 		return(line);
 	}
 	end = 0;
-	if( ft_strchr(*memory, '\n') == NULL)
+	if(ft_strchr(*memory, '\n') == NULL)
 	{
 		end = ft_strlen(*memory);
 	}
@@ -95,14 +94,16 @@ static char	*ft_set_next_line(char **memory)
 static void	ft_add(char buf[], char **memory)
 {
 	char	*temp;
+
+	temp = NULL;
 	if (*memory == NULL)
 	{
 		*memory  = ft_strdup(buf);
 	}
 	else
 	{
-		temp = NULL;
 		temp = ft_strdup(*memory);
+		free(*memory);
 		*memory = NULL;
 		*memory = ft_strjoin(temp, buf);
 		free(temp);
@@ -151,7 +152,6 @@ int			get_next_line(int fd, char **line)
 	*line = ft_set_next_line(&memory);
 	ft_clear_memory(ft_strlen(*line), &memory);
 	if (size == 0 && ft_strlen(memory) == 0)
-	// if (size == 0 && (memory == NULL || *memory == '\0') && ft_strlen(*line) == 0)
 		return (0);
 	else
 		return (1);
