@@ -6,7 +6,7 @@
 /*   By: rdutenke <rdutenke@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/29 21:43:07 by rdutenke          #+#    #+#             */
-/*   Updated: 2020/08/17 16:18:21 by rdutenke         ###   ########.fr       */
+/*   Updated: 2020/08/18 07:50:06 by rdutenke         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,9 @@ static void	ft_clear_memory(int len_line, char **memory)
 	int		end;
 
 	end = 0;
-	end = ft_strchr(*memory, '\0') - ft_strchr(*memory, '\n');
-	if (end > 1)
+	if (ft_strchr(*memory, '\n') != NULL)
+		end = ft_strchr(*memory, '\0') - ft_strchr(*memory, '\n') - 1;
+	if (end >= 1)
 	{
 		temp = ft_strdup(*memory);
 		free(*memory);
@@ -54,7 +55,8 @@ static void	ft_clear_memory(int len_line, char **memory)
 		}
 		else
 		{
-			*memory = ft_substr(temp, len_line, end);
+			// *memory = ft_substr(temp, len_line, end);
+			*memory = NULL;
 		}
 		free(temp);
 	}
