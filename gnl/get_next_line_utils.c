@@ -6,7 +6,7 @@
 /*   By: rdutenke <rdutenke@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/29 21:45:27 by rdutenke          #+#    #+#             */
-/*   Updated: 2020/08/18 08:58:55 by rdutenke         ###   ########.fr       */
+/*   Updated: 2020/08/19 08:32:01 by rdutenke         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 size_t	ft_strlen(const char *s)
 {
 	size_t len;
-	
+
 	if (!s)
 		return (0);
 	len = 0;
@@ -26,14 +26,14 @@ size_t	ft_strlen(const char *s)
 	return (len);
 }
 
-int	ft_count_char(char const *s1, char c)
+int		ft_count_char(char const *s1, char c)
 {
 	int len;
 	int n;
 	int i;
 
 	if (!s1)
-		return(0);
+		return (0);
 	len = ft_strlen(s1);
 	n = 0;
 	i = 0;

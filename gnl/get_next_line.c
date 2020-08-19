@@ -6,7 +6,7 @@
 /*   By: rdutenke <rdutenke@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/29 21:43:07 by rdutenke          #+#    #+#             */
-/*   Updated: 2020/08/19 07:54:33 by rdutenke         ###   ########.fr       */
+/*   Updated: 2020/08/19 08:34:42 by rdutenke         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 static char	*ft_strchr(const char *s, int c)
 {
 	int	i;
+
 	if (!s)
 		return (NULL);
 	i = 0;
@@ -50,13 +51,9 @@ static void	ft_clear_memory(int len_line, char **memory)
 		free(*memory);
 		*memory = NULL;
 		if (temp[len_line] == '\n')
-		{
 			*memory = ft_substr(temp, len_line + 1, end);
-		}
 		else
-		{
 			*memory = NULL;
-		}
 		free(temp);
 	}
 	else
@@ -74,10 +71,10 @@ static char	*ft_set_next_line(char **memory)
 	if (*memory == NULL)
 	{
 		line = ft_strdup("");
-		return(line);
+		return (line);
 	}
 	end = 0;
-	if(ft_strchr(*memory, '\n') == NULL)
+	if (ft_strchr(*memory, '\n') == NULL)
 	{
 		end = ft_strlen(*memory);
 	}
@@ -94,45 +91,18 @@ static char	*ft_set_next_line(char **memory)
 static void	ft_add(char *buf, char **memory)
 {
 	char	*temp;
-	int		i;
-	int		j;
-	int		len_buf;
-	int		len_memory;
 
-	len_buf = 0;
-	len_memory = 0;
-	i = 0;
-	j = 0;
-	len_buf = ft_strlen(buf);
-	len_memory = ft_strlen(*memory);
 	temp = NULL;
 	if (*memory == NULL)
 	{
-		*memory  = ft_strdup(buf);
+		*memory = ft_strdup(buf);
 	}
 	else
 	{
-		// temp = ft_strdup(*memory);
-		// free(*memory);
-		// *memory = NULL;
-		// *memory = ft_strjoin(temp, buf);
-		// free(temp);
 		temp = ft_strdup(*memory);
 		free(*memory);
 		*memory = NULL;
-		*memory = (char *)malloc((len_buf + len_memory + 1)* sizeof(char));
-		while (i < len_memory)
-		{
-			(*memory)[i] = temp[i];
-			i++;
-		}
-		while (j < len_buf)
-		{
-			(*memory)[i] = buf[j];
-			i++;
-			j++;
-		}
-		(*memory)[i] = '\0';
+		*memory = ft_strjoin(temp, buf);
 		free(temp);
 	}
 }
@@ -142,26 +112,27 @@ int			get_next_line(int fd, char **line)
 	int				size;
 	char			buf[BUFFER_SIZE + 1];
 	static char		*memory;
-	int 			i;
+	int				i;
 
 	i = 0;
 	size = -1;
 	if (BUFFER_SIZE <= 0 || fd < 0 || line == NULL)
 		return (-1);
-	if (ft_count_char(memory, '\n') < 1)
+	// if (ft_count_char(memory, '\n') < 1)
+	if (ft_strchr(memory, '\n') == NULL)
 	{
 		while (i < BUFFER_SIZE + 1)
 		{
 			buf[i] = '\0';
 			i++;
 		}
-		size = read(fd,buf, BUFFER_SIZE);
+		size = read(fd, buf, BUFFER_SIZE);
 		if (size == -1)
 			return (-1);
 		if (size > 0)
 		{
 			ft_add(buf, &memory);
-			while (size > 0 && ft_strchr(buf,'\n') == NULL)
+			while (size > 0 && ft_strchr(buf, '\n') == NULL)
 			{
 				i = 0;
 				while (i < BUFFER_SIZE + 1)
@@ -169,10 +140,9 @@ int			get_next_line(int fd, char **line)
 					buf[i] = '\0';
 					i++;
 				}
-				size = read(fd,buf, BUFFER_SIZE);
+				size = read(fd, buf, BUFFER_SIZE);
 				if (size > 0)
 				{
-
 					ft_add(buf, &memory);
 				}
 			}
