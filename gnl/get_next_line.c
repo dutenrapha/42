@@ -6,7 +6,7 @@
 /*   By: rdutenke <rdutenke@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/29 21:43:07 by rdutenke          #+#    #+#             */
-/*   Updated: 2020/08/18 10:17:17 by rdutenke         ###   ########.fr       */
+/*   Updated: 2020/08/19 06:49:54 by rdutenke         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -150,7 +150,7 @@ int			get_next_line(int fd, char **line)
 		return (-1);
 	if (ft_count_char(memory, '\n') < 1)
 	{
-		while (i < BUFFER_SIZE)
+		while (i < BUFFER_SIZE + 1)
 		{
 			buf[i] = '\0';
 			i++;
@@ -164,7 +164,7 @@ int			get_next_line(int fd, char **line)
 			while (size > 0 && ft_strchr(buf,'\n') == NULL)
 			{
 				i = 0;
-				while (i < BUFFER_SIZE)
+				while (i < BUFFER_SIZE + 1)
 				{
 					buf[i] = '\0';
 					i++;
