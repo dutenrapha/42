@@ -6,7 +6,7 @@
 /*   By: rdutenke <rdutenke@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/29 21:43:07 by rdutenke          #+#    #+#             */
-/*   Updated: 2020/08/19 06:49:54 by rdutenke         ###   ########.fr       */
+/*   Updated: 2020/08/19 07:54:33 by rdutenke         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -146,7 +146,7 @@ int			get_next_line(int fd, char **line)
 
 	i = 0;
 	size = -1;
-	if (BUFFER_SIZE <= 0 || fd < 0)
+	if (BUFFER_SIZE <= 0 || fd < 0 || line == NULL)
 		return (-1);
 	if (ft_count_char(memory, '\n') < 1)
 	{
