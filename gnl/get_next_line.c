@@ -6,36 +6,11 @@
 /*   By: rdutenke <rdutenke@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/29 21:43:07 by rdutenke          #+#    #+#             */
-/*   Updated: 2020/08/19 08:34:42 by rdutenke         ###   ########.fr       */
+/*   Updated: 2020/08/27 14:24:59 by rdutenke         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
-
-static char	*ft_strchr(const char *s, int c)
-{
-	int	i;
-
-	if (!s)
-		return (NULL);
-	i = 0;
-	while (*(s + i) != '\0')
-	{
-		if (*(s + i) == c)
-		{
-			return ((char *)s + i);
-		}
-		i++;
-	}
-	if (c == '\0')
-	{
-		return ((char *)s + i);
-	}
-	else
-	{
-		return (NULL);
-	}
-}
 
 static void	ft_clear_memory(int len_line, char **memory)
 {
@@ -107,6 +82,26 @@ static void	ft_add(char *buf, char **memory)
 	}
 }
 
+static int	ft_aux(int size, int fd, char *buf, char **memory)
+{
+	int	i;
+
+	if (size > 0)
+	{
+		ft_add(buf, &*memory);
+		while (size > 0 && ft_strchr(buf, '\n') == NULL)
+		{
+			i = -1;
+			while (++i < BUFFER_SIZE + 1)
+				buf[i] = '\0';
+			size = read(fd, buf, BUFFER_SIZE);
+			if (size > 0)
+				ft_add(buf, &*memory);
+		}
+	}
+	return (size);
+}
+
 int			get_next_line(int fd, char **line)
 {
 	int				size;
@@ -114,39 +109,18 @@ int			get_next_line(int fd, char **line)
 	static char		*memory;
 	int				i;
 
-	i = 0;
+	i = -1;
 	size = -1;
 	if (BUFFER_SIZE <= 0 || fd < 0 || line == NULL)
 		return (-1);
-	// if (ft_count_char(memory, '\n') < 1)
 	if (ft_strchr(memory, '\n') == NULL)
 	{
-		while (i < BUFFER_SIZE + 1)
-		{
+		while (++i < BUFFER_SIZE + 1)
 			buf[i] = '\0';
-			i++;
-		}
 		size = read(fd, buf, BUFFER_SIZE);
 		if (size == -1)
 			return (-1);
-		if (size > 0)
-		{
-			ft_add(buf, &memory);
-			while (size > 0 && ft_strchr(buf, '\n') == NULL)
-			{
-				i = 0;
-				while (i < BUFFER_SIZE + 1)
-				{
-					buf[i] = '\0';
-					i++;
-				}
-				size = read(fd, buf, BUFFER_SIZE);
-				if (size > 0)
-				{
-					ft_add(buf, &memory);
-				}
-			}
-		}
+		size = ft_aux(size, fd, buf, &memory);
 	}
 	*line = ft_set_next_line(&memory);
 	ft_clear_memory(ft_strlen(*line), &memory);

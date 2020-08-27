@@ -6,7 +6,7 @@
 /*   By: rdutenke <rdutenke@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/29 21:45:27 by rdutenke          #+#    #+#             */
-/*   Updated: 2020/08/19 08:32:01 by rdutenke         ###   ########.fr       */
+/*   Updated: 2020/08/19 08:39:32 by rdutenke         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,26 +26,29 @@ size_t	ft_strlen(const char *s)
 	return (len);
 }
 
-int		ft_count_char(char const *s1, char c)
+char	*ft_strchr(const char *s, int c)
 {
-	int len;
-	int n;
-	int i;
+	int	i;
 
-	if (!s1)
-		return (0);
-	len = ft_strlen(s1);
-	n = 0;
+	if (!s)
+		return (NULL);
 	i = 0;
-	while (i < len)
+	while (*(s + i) != '\0')
 	{
-		if (s1[i] == c)
+		if (*(s + i) == c)
 		{
-			n++;
+			return ((char *)s + i);
 		}
 		i++;
 	}
-	return (n);
+	if (c == '\0')
+	{
+		return ((char *)s + i);
+	}
+	else
+	{
+		return (NULL);
+	}
 }
 
 char	*ft_strjoin(char const *s1, char const *s2)
